@@ -11,8 +11,13 @@
 |
 */
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
-    return view('welcome');
+    $districts = DB::table('district')->get();
+
+    return view('welcome', compact('districts'));
 });
 
 Route::get('about', function (){
