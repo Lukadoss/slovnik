@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome', compact('districts'));
 });
 
-Route::get('about', function (){
+Route::get('tmpl1', function (){
    return view('about');
+});
+
+Route::get('tmpl2', function (){
+    return view('index');
 });
