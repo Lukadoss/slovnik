@@ -27,3 +27,7 @@ Route::get('tmpl1', function (){
 Route::get('tmpl2', function (){
     return view('index');
 });
+
+Route::get('tmpl3', function (){
+    return view('blog');
+});
