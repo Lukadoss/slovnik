@@ -17,17 +17,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $districts = DB::table('district')->get();
 
-    return view('welcome', compact('districts'));
+    return view('pages.index', compact('districts'));
 });
 
 Route::get('tmpl1', function (){
-   return view('about');
+   return view('templates.android');
 });
 
 Route::get('tmpl2', function (){
-    return view('index');
+    return view('templates.graphs');
 });
 
 Route::get('tmpl3', function (){
-    return view('blog');
+    return view('templates.blog');
+});
+
+Route::get('rejstrik', function (){
+    return view('pages.catalog');
 });
