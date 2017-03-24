@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-red.min.css"/>
-    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/material.min.css"/>
+    <link rel="stylesheet" href="css/dict.css"/>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
     <meta charset="utf-8">
@@ -12,13 +12,12 @@
     <title>Nařeční slovník</title>
 </head>
 <body>
-<header class="mdl-layout__header mdl-layout__header--scroll mdl-layout--no-drawer-button">
-    <div class="mdl-layout-icon"></div>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout__header--scroll mdl-layout--no-drawer-button">
+<header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="tmpl1">Template 1</a>
-            <a class="mdl-navigation__link" href="tmpl2">Template 2</a>
-            <a class="mdl-navigation__link" href="tmpl3">Template 3</a>
+        <img src="images/zculogo.jpg" style="height: 100%;">
+        <nav class="mdl-navigation">
+            <span class="mdl-layout-title"></span>
             <a class="mdl-navigation__link" href="/">Vyhledávač</a>
             <a class="mdl-navigation__link" href="rejstrik">Rejstřík</a>
         </nav>

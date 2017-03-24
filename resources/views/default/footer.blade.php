@@ -7,4 +7,5 @@
         </ul>
     </div>
 </footer>
+</div>
 </body>

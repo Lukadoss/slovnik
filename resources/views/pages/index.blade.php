@@ -1,6 +1,5 @@
 @include('default.header')
-<body>
-<div class="mdl-layout mdl-js-layout">
+<div class="mdl-layout__content">
     <main>
         <div class="mdl-grid">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
@@ -29,5 +28,5 @@
 
         </div>
     </main>
-    @include('default.footer')
 </div>
+@include('default.footer')

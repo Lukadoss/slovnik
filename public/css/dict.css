@@ -1,0 +1,6 @@
+.mdl-mini-footer {
+    background-image: url(../images/footer-background.png);
+    background-size: cover;
+    padding: 2px 50px;
+    justify-content: center;
+}
