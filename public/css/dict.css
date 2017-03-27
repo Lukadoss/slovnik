@@ -4,3 +4,12 @@
     padding: 2px 50px;
     justify-content: center;
 }
+
+.mdl-layout__header {
+    background-color:rgb(35,83,155);
+}
+.kokot {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
