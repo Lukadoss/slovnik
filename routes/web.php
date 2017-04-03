@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $districts = DB::table('district')->get();
-
     return view('pages.index', compact('districts'));
 });
 
@@ -33,5 +31,6 @@ Route::get('tmpl3', function (){
 });
 
 Route::get('rejstrik', function (){
-    return view('pages.catalog');
+    $districts = DB::table('district')->get();
+    return view('pages.catalog', compact('districts'));
 });
