@@ -14,23 +14,11 @@
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('pages.index', compact('districts'));
-});
+Route::get('/', 'MainController@index');
 
-Route::get('tmpl1', function (){
-   return view('templates.android');
-});
-
-Route::get('tmpl2', function (){
-    return view('templates.graphs');
-});
-
-Route::get('tmpl3', function (){
-    return view('templates.blog');
-});
-
-Route::get('rejstrik', function (){
+Route::get('/list', function (){
     $districts = DB::table('district')->get();
     return view('pages.catalog', compact('districts'));
 });
+
+Route::get('/{id}', 'MainController@template');

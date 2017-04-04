@@ -8,7 +8,7 @@
                         <input class="mdl-textfield__input" type="text" id="searchTerm">
                         <label class="mdl-textfield__label" for="searchTerm">Hledané heslo</label>
                     </div>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--4-col mdl-cell--middle">
+                    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--4-col mdl-cell--middle">
                         <i class="material-icons">search</i> Hledej
                     </button>
                 </form>

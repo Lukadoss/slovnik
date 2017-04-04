@@ -8,19 +8,9 @@
 .mdl-layout__header {
     background-color:rgb(35,83,155);
 }
-.mdl-searchbox {
 
-    /*outline: none;*/
-    /*border: none;*/
-    /*font-size: 16px;*/
-    /*color: #FFFFFF;*/
-    /*background-color: #78909C;*/
-    /*padding: 0px 35px 0px 70px;*/
-    /*height: 40px;*/
-    /*line-height: 40px; !* TODO: This was recommended f    ;;or cross browser compatability of input height, check if its actually needed in modern browsers *!*/
-
-    /*border-radius: 5px 5px 5px 5px;*/
-    /*-moz-border-radius: 5px 5px 5px 5px;*/
-    /*-webkit-border-radius: 5px 5px 5px 5px;*/
+.mdl-navigation .mdl-navigation__link:hover {
+    background-color: rgba(255, 255, 255, 0.11);
+    /*color: #000;*/
 }
 
