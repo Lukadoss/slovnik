@@ -11,14 +11,16 @@
 |
 */
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@index');
 
-Route::get('/list', function (){
-    $districts = DB::table('district')->get();
-    return view('pages.catalog', compact('districts'));
-});
+Route::get('/list', 'MainController@showList');
 
-Route::get('/{id}', 'MainController@template');
+Route::get('/register', 'MainController@register');
+
+//Route::get('/{id}', 'MainController@template');
+
+Route::post('/user/register', 'UserController@registration');
+
+Route::post('/user/login', 'UserController@login');

@@ -26,5 +26,4 @@
                 </form>
             </div>
         </div>
-    </main>
 @endsection

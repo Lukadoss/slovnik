@@ -14,7 +14,8 @@
         </nav>
 
         <dialog class="mdl-dialog">
-            <form action="Login" method="post">
+            <form action="/user/login" method="post">
+                {{ csrf_field() }}
 
                 <div class="mdl-dialog__content">
                     <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">

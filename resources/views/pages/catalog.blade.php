@@ -2,21 +2,19 @@
 
 @section('content')
     <div class="mdl-grid">
-        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect mdl-cell--12-col">
         <?php $i = 97;
         while ($i < 123) { ?>
-        <div class="mdl-tabs__panel" id="terms-{{chr($i)}}">
-            <ul>
-                <?php
-                foreach ($districts as $v) {
-                    if (substr($v->municipality, 0, 1) === strtoupper(chr($i))) echo '<li>'.$v->municipality.'</li>';
+            <section @if($i==97) class="mdl-layout__tab-panel is-active mdl-cell--12-col" @else class="mdl-layout__tab-panel" @endif id="terms-{{chr($i)}}" style="margin: 10px 50px 0 50px;">
+                <div class="page-content" style="-webkit-column-count: 10; -moz-column-count: 10; column-count: 15;">
+                    <?php
+                    foreach ($districts as $v) {
+                        if (substr($v->municipality, 0, 1) === strtoupper(chr($i))) echo $v->municipality.'<br>';
 
-                }
-                $i++; ?>
-            </ul>
-        </div>
+                    }
+                    $i++; ?>
+                </div>
+            </section>
         <?php }?>
-        </div>
     </div>
 
 @endsection
