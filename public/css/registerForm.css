@@ -1,0 +1,35 @@
+.mdl-textfield{
+    padding: 0
+}
+
+.mdl-textfield__label {
+    top: 4px
+}
+
+.mdl-textfield__label:after {
+    top: 21px
+}
+
+.mdl-cell{
+    margin-right: 0;
+    margin-bottom: 20px;
+}
+.main-content {
+    width: 30%;
+    min-width: 480px;
+    margin: 20px auto;
+}
+
+.textLabel{
+    padding: 4px 0;
+    font-size: 16px;
+}
+
+h4{
+    display: inline-block;
+    text-align: center;
+}
+
+form{
+    padding: 0 5%;
+}
