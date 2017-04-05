@@ -9,7 +9,8 @@
 
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation">
-            <a id="show-dialog" class="mdl-navigation__link" href="#">Přihlásit</a>
+            <?php echo Request::segment(1);?>
+            @if(View::exists('user.registration'))<a id="show-dialog" class="mdl-navigation__link" href="#">Přihlásit</a>@endif
             <a class="mdl-navigation__link" href="register">Registrovat</a>
         </nav>
 

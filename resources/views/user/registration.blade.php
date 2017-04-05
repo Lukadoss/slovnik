@@ -14,19 +14,21 @@
 
                     <label class="mdl-cell mdl-cell--4-col textLabel">Email<span style="color: red">*</span>: </label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                        <input class="mdl-textfield__input" type="email" id="email" name="email">
+                        <input class="mdl-textfield__input" type="email" id="email" name="email" pattern="[a-zA-Z0-9-_]*@[a-zA-Z0-9-_]*\.[a-z]{2,4}">
                         <label class="mdl-textfield__label" for="email">jan.novy@seznam.cz</label>
                         <span class="mdl-textfield__error">Není validní email</span>
                     </div>
 
                     <label class="mdl-cell mdl-cell--4-col textLabel">Heslo<span style="color: red">*</span>: </label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                        <input class="mdl-textfield__input" type="password" name="pass">
+                        <input class="mdl-textfield__input" type="password" id="pass" name="pass">
+                        <label class="mdl-textfield__label" for="pass"></label>
                     </div>
 
                     <label class="mdl-cell mdl-cell--4-col textLabel">Potvrzení hesla<span style="color: red">*</span>: </label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                        <input class="mdl-textfield__input" type="password" name="passConf">
+                        <input class="mdl-textfield__input" type="password" id="pass2" name="passConf">
+                        <label class="mdl-textfield__label" for="pass2"></label>
                     </div>
 
                     <button type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset mdl-cell--6-col">Vytvoř nový účet</button>
