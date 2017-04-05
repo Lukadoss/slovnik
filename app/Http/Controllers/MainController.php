@@ -21,7 +21,7 @@ class MainController extends Controller
 
     public function showList()
     {
-        $districts = DB::table('district')->get();
+        $districts = DB::table('districts')->get();
         return view('pages.catalog', compact('districts'));
     }
 

@@ -9,8 +9,7 @@
 
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation">
-            <?php echo Request::segment(1);?>
-            @if(View::exists('user.registration'))<a id="show-dialog" class="mdl-navigation__link" href="#">Přihlásit</a>@endif
+            @if(Request::segment(1)!=='register')<a id="show-dialog" class="mdl-navigation__link" href="#">Přihlásit</a>@endif
             <a class="mdl-navigation__link" href="register">Registrovat</a>
         </nav>
 
@@ -39,28 +38,30 @@
         <script>
             var dialog = document.querySelector('dialog');
             var showDialogButton = document.querySelector('#show-dialog');
-            if (!dialog.showModal) {
-                dialogPolyfill.registerDialog(dialog);
+            if (showDialogButton !== null) {
+                if (!dialog.showModal) {
+                    dialogPolyfill.registerDialog(dialog);
+                }
+                showDialogButton.addEventListener('click', function () {
+                    dialog.showModal();
+                });
+                dialog.querySelector('.close').addEventListener('click', function () {
+                    dialog.close();
+                });
             }
-            showDialogButton.addEventListener('click', function () {
-                dialog.showModal();
-            });
-            dialog.querySelector('.close').addEventListener('click', function () {
-                dialog.close();
-            });
         </script>
     </div>
     <!-- Tabs -->
-    @if(basename(url()->current()) === 'list')
+    @if(Request::segment(1)==='list')
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
             <?php
-                $i = 97;
-                while ($i < (123)){
+            $i = 97;
+            while ($i < (123)){
             ?>
-                <a href="#terms-{{chr($i)}}" @if($i==97) class="mdl-layout__tab is-active" @else class="mdl-layout__tab" @endif>{{chr($i)}}</a>
+            <a href="#terms-{{chr($i)}}" @if($i==97) class="mdl-layout__tab is-active" @else class="mdl-layout__tab" @endif>{{chr($i)}}</a>
             <?php
-                $i++;
-                }
+            $i++;
+            }
             ?>
         </div>
     @endif

@@ -3,7 +3,6 @@
     <head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="css/material.min.css"/>
-        <link rel="stylesheet" type="text/css" href="css/dialog-polyfill.css"/>
         <link rel="stylesheet" href="css/layouts.css"/>
         <script src="js/dialog-polyfill.js"></script>
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
