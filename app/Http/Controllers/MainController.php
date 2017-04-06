@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Districts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +22,7 @@ class MainController extends Controller
 
     public function showList()
     {
-        $districts = DB::table('districts')->get();
+        $districts = Districts::all();
         return view('pages.catalog', compact('districts'));
     }
 

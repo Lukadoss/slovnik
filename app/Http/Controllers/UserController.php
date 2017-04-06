@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -11,9 +12,9 @@ class UserController extends Controller
     public function registration(){
         $validator = Validator::make(request()->all(), [
             'name' => 'required',
-            'email' => 'required|unique:users',
-            'password' => 'required',
-            'passConf' => 'required'
+            'email' => 'required|unique:users|email',
+            'password' => 'required|min:4|confirmed',
+            'password_confirmation' => 'required|min:4'
         ]);
 
         if ($validator->fails()) {
@@ -21,8 +22,13 @@ class UserController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+        $user = new User();
 
-        User::create(request(['name', 'email', 'password']));
+        $user->name = request()->get('name');
+        $user->email = request()->get('email');
+        $user->password = Hash::make(request()->get('password'));
+
+        $user->save();
 
         return redirect('/');
     }

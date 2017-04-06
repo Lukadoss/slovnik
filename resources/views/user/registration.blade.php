@@ -8,7 +8,7 @@
 
                     <label class="mdl-cell mdl-cell--4-col textLabel">Jméno a příjmení<span style="color: red">*</span>:
                         @if(count($errors)) @foreach($errors->default->get('name') as $error)
-                            <span class="error">{{$error}}</span>
+                            <span class="error">{{$error}}</span>@break
                         @endforeach @endif
                     </label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
@@ -18,7 +18,7 @@
 
                     <label class="mdl-cell mdl-cell--4-col textLabel">Email<span style="color: red">*</span>:
                         @if(count($errors)) @foreach($errors->default->get('email') as $error)
-                            <span class="error">{{$error}}</span>
+                            <span class="error">{{$error}}</span>@break
                         @endforeach @endif
                     </label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
@@ -29,7 +29,7 @@
 
                     <label class="mdl-cell mdl-cell--4-col textLabel">Heslo<span style="color: red">*</span>:
                         @if(count($errors)) @foreach($errors->default->get('password') as $error)
-                            <span class="error">{{$error}}</span>
+                            <span class="error">{{$error}}</span>@break
                         @endforeach @endif
                     </label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
@@ -39,12 +39,12 @@
 
                     <label class="mdl-cell mdl-cell--4-col textLabel">Potvrzení hesla<span style="color: red">*</span>:
                         @if(count($errors)) @foreach($errors->default->get('passConf') as $error)
-                            <span class="error">{{$error}}</span>
+                            <span class="error">{{$error}}</span>@break
                         @endforeach @endif
                     </label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                        <input class="mdl-textfield__input" type="password" id="passConf" name="passConf">
-                        <label class="mdl-textfield__label" for="passConf"></label>
+                        <input class="mdl-textfield__input" type="password" id="password_confirmation" name="password_confirmation">
+                        <label class="mdl-textfield__label" for="password_confirmation"></label>
                     </div>
 
                     <button type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset mdl-cell--6-col">Vytvoř nový účet</button>
