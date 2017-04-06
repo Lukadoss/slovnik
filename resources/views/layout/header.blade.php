@@ -20,12 +20,18 @@
                 <div class="mdl-dialog__content">
                     <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
                         <label class="mdl-textfield__label" for="email">Email:</label>
-                        <input class="mdl-textfield__input" type="email" id="email" pattern="[a-zA-Z0-9-_]*@[a-zA-Z0-9-_]*\.[a-z]{2,4}">
+                        <input class="mdl-textfield__input" type="email" id="email" name="email" pattern="[a-zA-Z0-9-_]*@[a-zA-Z0-9-_]*\.[a-z]{2,4}">
                         <span class="mdl-textfield__error"> Není validní email!</span>
+                        @if(count($errors)) @foreach($errors->default->get('password_confirmation') as $error)
+                            <span class="error">{{$error}}</span>@break
+                        @endforeach @endif
                     </div>
                     <div class="mdl-textfield mdl-textfield--full-width mdl-textfield--floating-label mdl-js-textfield">
                         <label class="mdl-textfield__label" for="password">Heslo:</label>
-                        <input class="mdl-textfield__input" type="password" id="password">
+                        <input class="mdl-textfield__input" type="password" id="password" name="password">
+                        @if(count($errors)) @foreach($errors->default->get('password_confirmation') as $error)
+                            <span class="error">{{$error}}</span>@break
+                        @endforeach @endif
                     </div>
                 </div>
                 <div class="mdl-dialog__actions mdl-dialog__actions--full-width">

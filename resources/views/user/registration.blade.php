@@ -38,7 +38,7 @@
                     </div>
 
                     <label class="mdl-cell mdl-cell--4-col textLabel">Potvrzení hesla<span style="color: red">*</span>:
-                        @if(count($errors)) @foreach($errors->default->get('passConf') as $error)
+                        @if(count($errors)) @foreach($errors->default->get('password_confirmation') as $error)
                             <span class="error">{{$error}}</span>@break
                         @endforeach @endif
                     </label>
@@ -47,7 +47,7 @@
                         <label class="mdl-textfield__label" for="password_confirmation"></label>
                     </div>
 
-                    <button type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset mdl-cell--6-col">Vytvoř nový účet</button>
+                    <button type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset mdl-cell--6-col mdl-button--raised mdl-button--accent">Vytvoř nový účet</button>
                 </form>
 
             </div>
