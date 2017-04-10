@@ -30,6 +30,15 @@
     position:absolute;
     font-size:12px;
     display:block;
+    visibility: visible;
+}
+
+.mdl-textfield.is-invalid .error {
+    visibility:hidden;
+}
+
+.mdl-button{
+    margin-top: 40px;
 }
 
 h4{

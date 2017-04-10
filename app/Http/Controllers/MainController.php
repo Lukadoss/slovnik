@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Districts;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('guest', ['only' => 'register']);
+    }
+
     public function index()
     {
         return view('pages.index', compact('districts'));

@@ -14,6 +14,19 @@
     /*color: #000;*/
 }
 
+.error {
+    color:#d50000;
+    margin-top: 3px;
+    position:absolute;
+    font-size:12px;
+    display:block;
+    visibility: visible;
+}
+
+.mdl-textfield.is-invalid .error {
+    visibility:hidden;
+}
+
 dialog {
     position: absolute;
     left: 0; right: 0;
