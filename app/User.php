@@ -12,6 +12,10 @@ class User extends Authenticatable
 
     public $timestamps = false;
 
+    protected $casts = [
+        'is_admin' => 'boolean',
+    ];
+
     protected $fillable = [
         'name', 'email', 'password'
     ];
@@ -21,8 +25,24 @@ class User extends Authenticatable
         'password', 'is_admin'
     ];
 
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
+
+    public function getRole(){
+        if($this->is_admin){
+            return "Administrátor";
+        }else{
+            return "Registrovaný uživatel";
+        }
+    }
 
     public function comments(){
         return $this->hasMany(Comment::class);
+    }
+
+    public function districtAdmin(){
+        return $this->belongsToMany(Districts::class, 'district_administration', 'user_id', 'district_id');
     }
 }

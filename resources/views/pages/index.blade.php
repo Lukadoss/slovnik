@@ -13,7 +13,6 @@
                     </button>
                 </form>
             </div>
-
             <div class="mdl-cell mdl-cell--12-col mdl-shadow--24dp mdl-cell--hide-desktop mdl-cell--hide-tablet" style="margin: 20px auto; min-width: 120px;">
                 <form action="#" style="padding: 0 5%;">
                     <div class="mdl-textfield mdl-js-textfield">
@@ -25,5 +24,7 @@
                     </button>
                 </form>
             </div>
+            @if(isset($err)) {{$err}}@endif
+
         </div>
 @endsection

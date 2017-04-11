@@ -9,7 +9,7 @@
                     <div class="mdl-grid" style="margin: auto; padding: 10px;">
                         <div class="mdl-cell mdl-cell--12-col mdl-color--grey-50">
                             {{$comment->text}}
-                            <p style="text-align: right; margin: 0;">napsal <a href="\user\{{$comment->user_id}}">{{$comment->user->name}}</a><br>
+                            <p style="text-align: right; margin: 0;">napsal <a href="\profile\{{$comment->user_id}}">{{$comment->user->name}}</a><br>
                             {{$comment->created_at->diffForHumans()}}
                             </p>
                         </div>

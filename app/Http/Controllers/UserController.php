@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -13,7 +15,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest', ['except' => ['logout', 'settings']]);
+        $this->middleware('guest', ['only' => ['registration', 'login']]);
     }
 
     public function registration(){
@@ -32,7 +34,7 @@ class UserController extends Controller
 
         auth()->login($user);
 
-        return view('user.profile');
+        return redirect()->to('/profile');
     }
 
     public function login(){
@@ -52,8 +54,18 @@ class UserController extends Controller
         return view('user.settings');
     }
 
-    public function profile(){
-        return view('user.profile');
+    public function showMember($id = 0){
+        $user = new User();
+        if (auth()->check() && $id == 0){
+            $user = auth()->user();
+            return view('user.profile', compact('user'));
+        }
+        else if(DB::table('users')->where('id', $id)->exists()){
+            $user = User::where('id', $id)->first();
+            return view('user.profile', compact('user'));
+        }
+
+        return view('pages.index');
     }
 
 }
