@@ -1,7 +1,7 @@
 @extends('layout.master')
 @section('content')
     <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--1-offset mdl-shadow--6dp mdl-color--white main-content">
+        <div class="mdl-cell mdl-shadow--6dp mdl-color--white main-content">
             <form action="/register" method="post" class="mdl-grid">
                 {{ csrf_field() }}
                 <h4 class="mdl-cell--12-col">Registrace nového uživatele</h4>

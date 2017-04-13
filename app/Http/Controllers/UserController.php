@@ -15,48 +15,16 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest', ['only' => ['registration', 'login']]);
+        $this->middleware('auth', ['only' => 'showSettings']);
     }
 
-    public function registration(){
-        $this->validate(request(), [
-            'name' => 'required',
-            'email' => 'required|unique:users|email',
-            'password' => 'required|min:4|confirmed',
-            'password_confirmation' => 'required|min:4'
-        ]);
-
-        $user = User::create([
-            'name' => request('name'),
-            'email' => request('email'),
-            'password' => Hash::make(request('password'))
-        ]);
-
-        auth()->login($user);
-
-        return redirect()->to('/profile');
-    }
-
-    public function login(){
-        if (! auth()->attempt(request(['email', 'password']))){
-           return redirect()->to('/register');
-        }
-
-        return redirect()->home();
-    }
-
-    public function logout(){
-        auth()->logout();
-        return redirect()->home();
-    }
-
-    public function settings(){
-        return view('user.settings');
+    public function showSettings(){
+        $user = new User();
+        return view('user.settings', compact('user'));
     }
 
     public function showMember($id = 0){
-        $user = new User();
-        if (auth()->check() && $id == 0){
+        if (auth()->check() && $id === 0){
             $user = auth()->user();
             return view('user.profile', compact('user'));
         }
@@ -65,7 +33,7 @@ class UserController extends Controller
             return view('user.profile', compact('user'));
         }
 
-        return view('pages.index');
+        return redirect()->to('/');
     }
 
 }

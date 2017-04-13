@@ -23,7 +23,9 @@ Route::get('/register', 'MainController@register');
 
 Route::get('/comments', 'CommentsController@showAll');
 
-Route::post('/register', 'UserController@registration');
-Route::post('/login', 'UserController@login');
-Route::get('/logout', 'UserController@logout');
+Route::post('/register', 'SessionController@registration');
+Route::post('/login', 'SessionController@login');
+Route::get('/logout', 'SessionController@logout');
+
+Route::get('/profile/settings', 'UserController@showSettings');
 Route::get('/profile/{id?}', 'UserController@showMember');

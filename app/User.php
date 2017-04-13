@@ -38,8 +38,8 @@ class User extends Authenticatable
         }
     }
 
-    public function comments(){
-        return $this->hasMany(Comment::class);
+    public function meanings(){
+        return $this->hasMany(Meaning::class);
     }
 
     public function districtAdmin(){
