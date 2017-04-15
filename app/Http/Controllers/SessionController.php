@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class SessionController extends Controller
@@ -32,7 +33,7 @@ class SessionController extends Controller
 
     public function login(){
         if (! auth()->attempt(request(['email', 'password']))){
-            return redirect()->to('/register');
+            return redirect()->to('/');
         }
 
         return redirect()->home();

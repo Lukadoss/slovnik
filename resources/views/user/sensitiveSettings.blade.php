@@ -21,71 +21,46 @@
             <div class="mdl-cell mdl-cell--12-col" style="text-align: left;">
                 <strong style="font-size: 18px;">Změna osobních údajů:</strong><br>
             </div>
-            <form id="firstForm" action="/profile/settings" method="post" class="mdl-grid">
+            <form id="firstForm" action="/profile/pwd_settings" method="post" class="mdl-grid">
                 {{ method_field('PATCH') }}
                 {{ csrf_field() }}
-                <label class="mdl-cell mdl-cell--4-col textLabel" for="name">Nový email:</label>
-                <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <input type="text" class="mdl-textfield__input" id="name" name="name">
-                    <label class="mdl-textfield__label" for="name">{{$user->name}}</label>
-                    @if(count($errors)) @foreach($errors->default->get('name') as $error)
-                        <span class="error">{{$error}}</span>@break
-                    @endforeach @endif
+                <div class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" style="border-radius: 1px">
+                    <label class="mdl-cell mdl-cell--4-col textLabel" for="email">Nový email:</label>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
+                        <input type="text" class="mdl-textfield__input" id="email" name="email" value="{{ old('email') }}">
+                        <label class="mdl-textfield__label" for="email">{{$user->email}}</label>
+                        <span class="error">{{$errors->first('email')}}</span>
+                    </div>
                 </div>
+                <div class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" style="border-radius: 1px">
 
-                <label class="mdl-cell mdl-cell--4-col textLabel" for="year">Nové heslo</label>
-                <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" maxlength="4" id="year" name="year">
-                    <label class="mdl-textfield__label" for="year">{{$user->year_of_birth}}</label>
-                    <span class="mdl-textfield__error">Zadaná hodnota neni číslo</span>
-                    @if(count($errors)) @foreach($errors->default->get('year') as $error)
-                        <span class="error">{{$error}}</span>@break
-                    @endforeach @endif
+                    <label class="mdl-cell mdl-cell--4-col textLabel">Nové heslo:</label>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
+                        <input class="mdl-textfield__input" type="password" id="password" name="password">
+                        <label class="mdl-textfield__label" for="password"></label>
+                        <span class="error">{{$errors->first('password')}}</span>
+                    </div>
+                    <label class="mdl-cell mdl-cell--4-col textLabel">Potvrzení nového hesla:</label>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
+                        <input class="mdl-textfield__input" type="password" id="password_confirmation" name="password_confirmation">
+                        <label class="mdl-textfield__label" for="password_confirmation"></label>
+                        <span class="error">{{$errors->first('password_confirmation')}}</span>
+                    </div>
                 </div>
-                <label class="mdl-cell mdl-cell--4-col textLabel" for="native">Znovu nové heslo:</label>
-                <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-
-                    <input id="native" name="native" type="hidden" value="">
-                    @if(count($errors)) @foreach($errors->default->get('native') as $error)
-                        <span class="error">{{$error}}</span>@break
-                    @endforeach @endif
+                <div class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" style="border-radius: 1px">
+                    <label class="mdl-cell mdl-cell--4-col textLabel" id="labelOldPass" for="oldpassword">Staré heslo<span style="color: red">*</span>:</label>
+                    <div class="mdl-tooltip" data-mdl-for="labelOldPass">
+                        Nutné pro změnu emailu nebo nového hesla
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
+                        <input class="mdl-textfield__input" type="password" id="oldpassword" name="oldpassword">
+                        <label class="mdl-textfield__label" for="oldpassword"></label>
+                        <span class="error">{{$errors->first('oldpassword')}}{{ session('oldpass') }}</span>
+                    </div>
                 </div>
-
-                <label class="mdl-cell mdl-cell--4-col textLabel" for="curr_city">Staré heslo:</label>
-                <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-
-                    <input id="curr_city" name="curr_city" type="hidden" value="">
-                    @if(count($errors)) @foreach($errors->default->get('curr_city') as $error)
-                        <span class="error">{{$error}}</span>@break
-                    @endforeach @endif
-                </div>
-
-                <button type="submit" onclick="sub()" class="mdl-button mdl-js-button mdl-cell--3-offset mdl-cell--6-col mdl-button--raised mdl-button--accent">Odeslat</button>
+                <button type="submit" style="margin-top: 20px" class="mdl-button mdl-js-button mdl-cell--3-offset mdl-cell--6-col mdl-button--raised mdl-button--accent">Odeslat</button>
             </form>
         </div>
     </div>
-
-    <script>
-        function sub() {
-            document.getElementById("native").value = document.getElementById("natsel").value;
-            document.getElementById("curr_city").value = document.getElementById("cursel").value;
-        }
-        $(document).ready(function () {
-            $(".native").select2({
-                minimumInputLength: 2,
-                language: "cs",
-                delay: 250
-            });
-            $(".curr_city").select2({
-                minimumInputLength: 2,
-                language: "cs",
-                delay: 250
-            });
-        });
-    </script>
-    <script src="{{asset('js/select2.min.js')}}"></script>
-    <script src="{{asset('js/cs.js')}}"></script>
-
-    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}"/>
     <link rel="stylesheet" href="/css/settings.css">
 @endsection

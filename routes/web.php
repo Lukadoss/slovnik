@@ -29,5 +29,6 @@ Route::get('/logout', 'SessionController@logout');
 
 Route::get('/profile/settings', 'UserController@showSettings');
 Route::get('/profile/pwd_settings', 'UserController@showSensSettings');
+Route::patch('/profile/pwd_settings', 'UserController@editSensUser');
 Route::get('/profile/{id?}', 'UserController@showMember');
 Route::patch('/profile/settings', 'UserController@editUser');

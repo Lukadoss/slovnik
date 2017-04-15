@@ -24,50 +24,46 @@
             <form id="firstForm" action="/profile/settings" method="post" class="mdl-grid">
                 {{ method_field('PATCH') }}
                 {{ csrf_field() }}
-                <label class="mdl-cell mdl-cell--4-col textLabel" for="name">Jméno a příjmení:</label>
-                <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <input type="text" class="mdl-textfield__input" id="name" name="name">
-                    <label class="mdl-textfield__label" for="name">{{$user->name}}</label>
-                    @if(count($errors)) @foreach($errors->default->get('name') as $error)
-                        <span class="error">{{$error}}</span>@break
-                    @endforeach @endif
-                </div>
 
-                <label class="mdl-cell mdl-cell--4-col textLabel" for="year">Rok narození:</label>
-                <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" maxlength="4" id="year" name="year">
-                    <label class="mdl-textfield__label" for="year">{{$user->year_of_birth}}</label>
-                    <span class="mdl-textfield__error">Zadaná hodnota neni číslo</span>
-                    @if(count($errors)) @foreach($errors->default->get('year') as $error)
-                        <span class="error">{{$error}}</span>@break
-                    @endforeach @endif
+                <div class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" style="border-radius: 1px">
+                    <label class="mdl-cell mdl-cell--4-col textLabel" for="name">Jméno a příjmení:</label>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
+                        <input type="text" class="mdl-textfield__input" id="name" name="name" value="{{$user->name}}">
+                        <span class="error">{{$errors->first('name')}}</span>
+                    </div>
                 </div>
-                <label class="mdl-cell mdl-cell--4-col textLabel" for="native">Původní bydliště:</label>
-                <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <select id="natsel" class="native" style="width: 100%;">
-                        <option selected="selected"></option>
-                        @foreach($towns as $town)
-                            <option value="{{$town->id}}" @if($user->native===$town->id) selected="selected" @endif>{{$town->municipality.", ".$town->region}}</option>
-                        @endforeach
-                    </select>
-                    <input id="native" name="native" type="hidden" value="">
-                    @if(count($errors)) @foreach($errors->default->get('native') as $error)
-                        <span class="error">{{$error}}</span>@break
-                    @endforeach @endif
+                <div class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" style="border-radius: 1px">
+                    <label class="mdl-cell mdl-cell--4-col textLabel" for="year">Rok narození:</label>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
+                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" maxlength="4" id="year" name="year" value="{{$user->year_of_birth}}">
+                        <span class="mdl-textfield__error">Zadaná hodnota neni číslo</span>
+                        <span class="error">{{$errors->first('year')}}</span>
+                    </div>
                 </div>
+                <div class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" style="border-radius: 1px">
+                    <label class="mdl-cell mdl-cell--4-col textLabel" for="native">Původní bydliště:</label>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
+                        <select id="natsel" class="native" style="width: 100%;">
+                            <option selected="selected"></option>
+                            @foreach($towns as $town)
+                                <option value="{{$town->id}}" @if($user->native===$town->id) selected="selected" @endif>{{$town->municipality.", ".$town->region}}</option>
+                            @endforeach
+                        </select>
+                        <input id="native" name="native" type="hidden" value="">
+                        <span class="error">{{$errors->first('native')}}</span>
+                    </div>
 
-                <label class="mdl-cell mdl-cell--4-col textLabel" for="curr_city">Momentální bydliště:</label>
-                <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <select id="cursel" class="curr_city" style="width: 100%;">
-                        <option selected="selected"></option>
-                        @foreach($towns as $town)
-                            <option value="{{$town->id}}" @if($user->current_city===$town->id) selected="selected" @endif>{{$town->municipality.", ".$town->region}}</option>
-                        @endforeach
-                    </select>
-                    <input id="curr_city" name="curr_city" type="hidden" value="">
-                    @if(count($errors)) @foreach($errors->default->get('curr_city') as $error)
-                        <span class="error">{{$error}}</span>@break
-                    @endforeach @endif
+                    <label class="mdl-cell mdl-cell--4-col textLabel" for="curr_city">Momentální bydliště:</label>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
+                        <select id="cursel" class="curr_city" style="width: 100%;">
+                            <option selected="selected"></option>
+                            @foreach($towns as $town)
+                                <option value="{{$town->id}}" @if($user->current_city===$town->id) selected="selected" @endif>{{$town->municipality.", ".$town->region}}</option>
+                            @endforeach
+                        </select>
+                        <input id="curr_city" name="curr_city" type="hidden" value="">
+                        <span class="error">{{$errors->first('curr_city')}}</span>
+                    </div>
                 </div>
 
                 <button type="submit" onclick="sub()" class="mdl-button mdl-js-button mdl-cell--3-offset mdl-cell--6-col mdl-button--raised mdl-button--accent">Odeslat</button>
