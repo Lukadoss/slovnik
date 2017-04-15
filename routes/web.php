@@ -28,4 +28,6 @@ Route::post('/login', 'SessionController@login');
 Route::get('/logout', 'SessionController@logout');
 
 Route::get('/profile/settings', 'UserController@showSettings');
+Route::get('/profile/pwd_settings', 'UserController@showSensSettings');
 Route::get('/profile/{id?}', 'UserController@showMember');
+Route::patch('/profile/settings', 'UserController@editUser');

@@ -9,10 +9,10 @@
             <div class="mdl-cell mdl-cell--12-col" style="word-wrap: break-word;">
                 <h3 style="margin-bottom: auto; padding-bottom: 0"><strong>{{$user->name}}</strong></h3>
                 <h5 style="margin: 10px auto; color: #f82b2b;"><strong>{{$user->getRole()}}</strong></h5>
-                <a type="button" href="/profile/pwd_settings" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                    <i class="material-icons mdl-list__item-icon" style="color: #fffaf1">gavel</i> Změna emailu a hesla
+                <a type="button" href="/profile/pwd_settings" style="visibility: hidden; width: 100%" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                    <i class="material-icons mdl-list__item-icon" style="color: #fffaf1; ">gavel</i> Změna emailu a hesla
                 </a>
-                <a type="button" href="/profile" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" style="margin-top: 10px">
+                <a type="button" href="/profile/settings" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" style="margin-top: 10px">
                     <i class="material-icons mdl-list__item-icon" style="color: #fffaf1">keyboard_backspace</i> Zpět
                 </a>
             </div>
@@ -24,7 +24,7 @@
             <form id="firstForm" action="/profile/settings" method="post" class="mdl-grid">
                 {{ method_field('PATCH') }}
                 {{ csrf_field() }}
-                <label class="mdl-cell mdl-cell--4-col textLabel" for="name">Jméno a příjmení:</label>
+                <label class="mdl-cell mdl-cell--4-col textLabel" for="name">Nový email:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
                     <input type="text" class="mdl-textfield__input" id="name" name="name">
                     <label class="mdl-textfield__label" for="name">{{$user->name}}</label>
@@ -33,7 +33,7 @@
                     @endforeach @endif
                 </div>
 
-                <label class="mdl-cell mdl-cell--4-col textLabel" for="year">Rok narození:</label>
+                <label class="mdl-cell mdl-cell--4-col textLabel" for="year">Nové heslo</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
                     <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" maxlength="4" id="year" name="year">
                     <label class="mdl-textfield__label" for="year">{{$user->year_of_birth}}</label>
@@ -42,28 +42,18 @@
                         <span class="error">{{$error}}</span>@break
                     @endforeach @endif
                 </div>
-                <label class="mdl-cell mdl-cell--4-col textLabel" for="native">Původní bydliště:</label>
+                <label class="mdl-cell mdl-cell--4-col textLabel" for="native">Znovu nové heslo:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <select id="natsel" class="native" style="width: 100%;">
-                        <option selected="selected"></option>
-                        @foreach($towns as $town)
-                            <option value="{{$town->id}}" @if($user->native===$town->id) selected="selected" @endif>{{$town->municipality.", ".$town->region}}</option>
-                        @endforeach
-                    </select>
+
                     <input id="native" name="native" type="hidden" value="">
                     @if(count($errors)) @foreach($errors->default->get('native') as $error)
                         <span class="error">{{$error}}</span>@break
                     @endforeach @endif
                 </div>
 
-                <label class="mdl-cell mdl-cell--4-col textLabel" for="curr_city">Momentální bydliště:</label>
+                <label class="mdl-cell mdl-cell--4-col textLabel" for="curr_city">Staré heslo:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <select id="cursel" class="curr_city" style="width: 100%;">
-                        <option selected="selected"></option>
-                        @foreach($towns as $town)
-                            <option value="{{$town->id}}" @if($user->current_city===$town->id) selected="selected" @endif>{{$town->municipality.", ".$town->region}}</option>
-                        @endforeach
-                    </select>
+
                     <input id="curr_city" name="curr_city" type="hidden" value="">
                     @if(count($errors)) @foreach($errors->default->get('curr_city') as $error)
                         <span class="error">{{$error}}</span>@break

@@ -57,7 +57,7 @@ return [
     'mimes'                => 'The :attribute must be a file of type: :values.',
     'mimetypes'            => 'The :attribute must be a file of type: :values.',
     'min'                  => [
-        'numeric' => 'Minimlní počet :min.',
+        'numeric' => 'The :attribute must have at least :min.',
         'file'    => 'The :attribute must be at least :min kilobytes.',
         'string'  => 'Minimální počet znaků :min.',
         'array'   => 'The :attribute must have at least :min items.',

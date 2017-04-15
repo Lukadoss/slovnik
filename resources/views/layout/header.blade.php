@@ -19,7 +19,7 @@
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                     for="demo-menu-lower-right">
                     <li class="mdl-menu__item">Nové události</li>
-                    <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Nastavení</li>
+                    <a class="mdl-menu__item mdl-menu__item--full-bleed-divider" href="/profile/settings">Nastavení</a>
                     <a class="mdl-menu__item" href="/logout">Odhlásit</a>
                 </ul>
             @else

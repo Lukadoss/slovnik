@@ -20,8 +20,8 @@
                 <strong style="font-size: 18px;">Základní info</strong><br>
                 <p>
                     Rok narození: @if(isset($user->year_of_birth)){{$user->year_of_birth}} @else neuvedeno @endif<br>
-                    Původní bydliště: @if(isset($user->native)){{$user->native}} @else neuvedeno @endif<br>
-                    Momentální bydliště: @if(isset($user->current_city)){{$user->current_city}} @else neuvedeno @endif<br>
+                    Původní bydliště: @if(isset($user->native)){{$user->getNativeCity->municipality}} @else neuvedeno @endif<br>
+                    Momentální bydliště: @if(isset($user->current_city)){{$user->getCurrCity->municipality}} @else neuvedeno @endif<br>
                 </p>
             </div>
             <div class="mdl-cell mdl-cell--6-col">

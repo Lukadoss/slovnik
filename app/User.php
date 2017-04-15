@@ -17,7 +17,7 @@ class User extends Authenticatable
     ];
 
     protected $fillable = [
-        'name', 'email', 'password'
+        'name', 'email', 'password', 'year_of_birth', 'native', 'current_city'
     ];
 
 
@@ -36,6 +36,14 @@ class User extends Authenticatable
         }else{
             return "Registrovaný uživatel";
         }
+    }
+
+    public function getNativeCity(){
+        return $this->belongsTo(Districts::class, 'native');
+    }
+
+    public function getCurrCity(){
+        return $this->belongsTo(Districts::class, 'current_city');
     }
 
     public function meanings(){

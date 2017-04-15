@@ -24,7 +24,11 @@
                     </button>
                 </form>
             </div>
-            @if(isset($err)) {{$err}}@endif
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
 
         </div>
 @endsection

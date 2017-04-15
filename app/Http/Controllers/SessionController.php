@@ -13,7 +13,7 @@ class SessionController extends Controller
 
     public function registration(){
         $this->validate(request(), [
-            'name' => 'required',
+            'name' => 'required|min:3',
             'email' => 'required|unique:users|email',
             'password' => 'required|min:4|confirmed',
             'password_confirmation' => 'required|min:4'

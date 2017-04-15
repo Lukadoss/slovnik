@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="{{ asset('css/layouts.css') }}"/>
         <script src="{{ asset('js/dialog-polyfill.js') }}"></script>
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
