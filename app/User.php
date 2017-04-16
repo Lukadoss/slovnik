@@ -33,7 +33,10 @@ class User extends Authenticatable
     public function getRole(){
         if($this->is_admin){
             return "Administrátor";
-        }else{
+        }elseif($this->districtAdmin()->count()>0){
+            return "Správce okresů";
+        }
+        else{
             return "Registrovaný uživatel";
         }
     }

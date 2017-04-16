@@ -17,7 +17,7 @@
                 </a>
             </div>
         </div>
-        <div class="mdl-cell mdl-cell--5-col mdl-color--white mdl-shadow--2dp mdl-grid">
+        <div class="mdl-cell mdl-cell--5-col mdl-color--white mdl-shadow--2dp mdl-grid test">
             <div class="mdl-cell mdl-cell--12-col" style="text-align: left;">
                 <strong style="font-size: 18px;">Změna osobních údajů:</strong><br>
             </div>
@@ -27,8 +27,7 @@
                 <div class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" style="border-radius: 1px">
                     <label class="mdl-cell mdl-cell--4-col textLabel" for="email">Nový email:</label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                        <input type="text" class="mdl-textfield__input" id="email" name="email" value="{{ old('email') }}">
-                        <label class="mdl-textfield__label" for="email">{{$user->email}}</label>
+                        <input type="text" class="mdl-textfield__input" id="email" name="email" value="{{$user->email}}">
                         <span class="error">{{$errors->first('email')}}</span>
                     </div>
                 </div>

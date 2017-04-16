@@ -22,13 +22,17 @@ Route::get('/list', 'MainController@showList');
 Route::get('/register', 'MainController@register');
 
 Route::get('/comments', 'CommentsController@showAll');
+Route::post('/comments', 'CommentsController@publishComment');
 
 Route::post('/register', 'SessionController@registration');
 Route::post('/login', 'SessionController@login');
 Route::get('/logout', 'SessionController@logout');
 
-Route::get('/profile/settings', 'UserController@showSettings');
 Route::get('/profile/pwd_settings', 'UserController@showSensSettings');
+Route::get('/profile/settings', 'UserController@showSettings');
 Route::patch('/profile/pwd_settings', 'UserController@editSensUser');
-Route::get('/profile/{id?}', 'UserController@showMember');
 Route::patch('/profile/settings', 'UserController@editUser');
+Route::get('/profile/{id?}', 'UserController@showMember');
+
+Route::get('/members', 'AdministrationController@showMembers');
+Route::get('/districts', 'AdministrationController@showDistricts');
