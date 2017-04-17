@@ -36,4 +36,9 @@ class MainController extends Controller
     {
         return view('user.registration');
     }
+
+    public function login()
+    {
+        return view('user.login');
+    }
 }

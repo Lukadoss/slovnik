@@ -20,6 +20,7 @@ Route::get('/protected', ['middleware' => ['auth', 'admin'], function() {
 Route::get('/', 'MainController@index')->name('home');
 Route::get('/list', 'MainController@showList');
 Route::get('/register', 'MainController@register');
+Route::get('/login', 'MainController@login');
 
 Route::get('/comments', 'CommentsController@showAll');
 Route::post('/comments', 'CommentsController@publishComment');
