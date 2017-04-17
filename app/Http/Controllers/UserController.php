@@ -65,7 +65,6 @@ class UserController extends Controller
             $user->current_city = request('curr_city');
         }
         $user->save();
-
         return redirect('/profile/settings')->with('status', 'Profile updated!');
     }
 

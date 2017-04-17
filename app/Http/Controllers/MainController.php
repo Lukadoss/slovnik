@@ -27,9 +27,8 @@ class MainController extends Controller
 
     public function showList()
     {
-        $districts = DB::table('districts')->select(DB::raw('LEFT(municipality, 1) AS municipality'))->get();
-//            Districts::all();
-//        dd($districts);
+        $districts = DB::table('districts')->select(DB::raw('DISTINCT LEFT(municipality, 1) COLLATE utf8_czech_ci'))->get();
+
         return view('pages.catalog', compact('districts'));
     }
 

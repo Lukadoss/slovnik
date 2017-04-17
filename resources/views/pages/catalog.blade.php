@@ -8,7 +8,7 @@
                 <div class="page-content" style="-webkit-column-count: 10; -moz-column-count: 10; column-count: 15;">
                     <?php
                     foreach ($districts as $v) {
-                        if (substr($v->municipality, 0, 1) === strtoupper(chr($i))) echo $v->municipality.'<br>';
+//                        if (substr($v->municipality, 0, 1) === strtoupper(chr($i))) echo $v->municipality.'<br>';
 
                     }
                     $i++; ?>
