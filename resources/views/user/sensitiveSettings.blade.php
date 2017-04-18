@@ -57,7 +57,7 @@
                         <span class="error">{{$errors->first('oldpassword')}}{{ session('oldpass') }}</span>
                     </div>
                 </div>
-                <button type="submit" style="margin-top: 20px" class="mdl-button mdl-js-button mdl-cell--3-offset mdl-cell--6-col mdl-button--raised mdl-button--accent">Odeslat</button>
+                <button type="submit" style="margin-top: 20px" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Odeslat</button>
             </form>
         </div>
     </div>

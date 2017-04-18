@@ -3,7 +3,7 @@
     <div class="mdl-grid">
         <form action="/register" method="post" class="mdl-cell mdl-cell--4-col mdl-cell--4-offset mdl-grid mdl-color--white mdl-shadow--2dp">
             {{ csrf_field() }}
-            <h4 class="mdl-cell--12-col mdl-cell">Registrace nového uživatele</h4>
+            <h4 class="mdl-cell--12-col mdl-cell"><strong>Registrace nového uživatele</strong></h4>
 
             <label class="mdl-cell mdl-cell--4-col textLabel">Jméno a příjmení<span style="color: red">*</span>:</label>
             <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
@@ -15,7 +15,7 @@
             <label class="mdl-cell mdl-cell--4-col textLabel">Email<span style="color: red">*</span>:</label>
             <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
                 <input class="mdl-textfield__input" type="email" id="email" name="email" value="{{ old('email') }}" pattern="[a-zA-Z0-9-_]*@[a-zA-Z0-9-_]*\.[a-z]{2,4}">
-                <label class="mdl-textfield__label" for="email">jan.novy@email.cz</label>
+                <label class="mdl-textfield__label" for="email">jan.novy@seznam.cz</label>
                 <span class="mdl-textfield__error">Není validní email</span>
                 <span class="error">{{$errors->first('email')}}</span>
             </div>
@@ -33,8 +33,7 @@
                 <label class="mdl-textfield__label" for="password_confirmation"></label>
                 <span class="error">{{$errors->first('password_confirmation')}}</span>
             </div>
-
-            <button type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Vytvoř nový účet</button>
+            <button type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--middle mdl-cell--6-col mdl-button--raised mdl-button--accent">Vytvoř nový účet</button>
         </form>
 
     </div>

@@ -5,8 +5,10 @@
             <a class="mdl-navigation__link" href="/">Vyhledávač</a>
             <a class="mdl-navigation__link" href="/list">Rejstřík</a>
             <a class="mdl-navigation__link" href="/comments">Vzkazy</a>
+            @if(auth()->check())
+                | | |<a class="mdl-navigation__link" href="/term/new" ><i class="material-icons">note_add</i> Nové heslo</a>
+            @endif
         </nav>
-
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation">
             @if(auth()->check())

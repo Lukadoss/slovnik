@@ -42,3 +42,6 @@ Route::post('/admin/district', 'AdministrationController@addDistrict');
 Route::delete('/admin/deleteU-{id}', 'AdministrationController@deleteUser');
 Route::delete('/admin/deleteD-{id}', 'AdministrationController@deleteDistrict');
 
+Route::get('/term/new', 'TermController@addTerm');
+
+

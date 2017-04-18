@@ -14,7 +14,7 @@ class MainController extends Controller
 
     public function index()
     {
-        return view('pages.index', compact('districts'));
+        return view('main.index', compact('districts'));
     }
 
     public function template($id)
@@ -27,7 +27,7 @@ class MainController extends Controller
     public function showList()
     {
         $districts = DB::table('districts')->distinct()->select(DB::raw('LEFT(municipality, 1) COLLATE utf8_czech_ci'))->get();
-        return view('pages.catalog', compact('districts'));
+        return view('main.catalog', compact('districts'));
     }
 
     public function register()

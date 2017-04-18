@@ -47,7 +47,7 @@ class UserController extends Controller
     {
         $this->validate(request(), [
             'name' => 'nullable|min:3',
-            'year' => 'nullable|numeric|digits:4|min:1800|max:' . Carbon::now()->year,
+            'year' => 'nullable|numeric|digits:4|min:' . (Carbon::now()->year-150) . '|max:' . Carbon::now()->year,
             'native' => 'nullable|exists:districts,id',
             'curr_city' => 'nullable|exists:districts,id'
         ]);
@@ -68,7 +68,7 @@ class UserController extends Controller
         $user->save();
 
         if(auth()->user()->isAdmin()) return redirect('/members')->with('status', 'Profile updated!');
-        return redirect('/profile/settings')->with('status', 'Profile updated!');
+        return redirect()->back()->with('status', 'Profile updated!');
     }
 
     public function editSensUser()

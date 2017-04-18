@@ -20,7 +20,7 @@ class PagesController extends Controller
 
     public function showComments(){
         $comments = Comment::all()->sortByDesc('created_at');
-        return view('pages.msg_board', compact('comments'));
+        return view('main.msg_board', compact('comments'));
     }
 
     public function publishComment(){
@@ -35,11 +35,11 @@ class PagesController extends Controller
 
     public function showMembers(){
         $users = User::all('id', 'name', 'year_of_birth', 'native', 'current_city');
-        return view('auth_pages.members', compact('users'));
+        return view('auth.members', compact('users'));
     }
 
     public function showDistricts(){
-        $districts = Districts::all()->where('id', '>', Districts::all()->count()-15)->take(15);
-        return view('auth_pages.districts', compact('districts'));
+        $districts = Districts::all()->take(15);
+        return view('auth.districts', compact('districts'));
     }
 }

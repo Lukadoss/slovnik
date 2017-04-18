@@ -3,7 +3,7 @@
     <div class="mdl-grid">
         <form action="/login" method="post" class="mdl-cell mdl-cell--4-col mdl-cell--4-offset mdl-grid mdl-color--white mdl-shadow--2dp">
             {{ csrf_field() }}
-            <h4 class="mdl-cell--12-col">Přihlášení uživatele</h4>
+            <h4 class="mdl-cell--12-col mdl-cell">Přihlášení uživatele</h4>
 
             <label class="mdl-cell mdl-cell--4-col textLabel">Email:</label>
             <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
@@ -20,8 +20,8 @@
                 <span class="error">{{$errors->first('password')}}</span>
             </div>
 
-            <button type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset mdl-cell--6-col mdl-button--raised mdl-button--accent">Vytvoř nový účet</button>
+            <button type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Vytvoř nový účet</button>
         </form>
     </div>
-    <link rel="stylesheet" href="css/registerForm.css">
+    <link rel="stylesheet" href="{{asset('css/registerForm.css')}}">
 @endsection

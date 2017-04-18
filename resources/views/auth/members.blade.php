@@ -68,31 +68,29 @@
 
     </dialog>
 
-
-    <link rel="stylesheet" href="{{asset('css/tables.css')}}">
     <script>
         $(document).ready(function () {
             $(".clickable").click(function () {
-                var $id = $(this).attr('id');
-                var $name = $(this).attr('about');
+                var id = $(this).attr('id');
+                var name = $(this).attr('about');
 
                 jQuery("input[name='options']").each(function () {
                     if (this.checked) {
                         switch (parseInt(this.value)) {
                             case 1:
-                                location.href = "/profile/" + $id;
+                                location.href = "/profile/" + id;
                                 break;
                             case 2:
-                                location.href = "/admin/editU-" + $id;
+                                location.href = "/admin/editU-" + id;
                                 break;
                             case 3:
                                 dialogPolyfill.registerDialog(dialog);
                                 dialog.showModal();
-                                $(".yolo").attr("action", "/admin/deleteU-" + $id);
-                                $(".rolo").text($name);
+                                $(".yolo").attr("action", "/admin/deleteU-" + id);
+                                $(".rolo").text(name);
                                 break;
                             default:
-                                location.href = "/profile/" + $id;
+                                location.href = "/profile/" + id;
                         }
                     }
                 });

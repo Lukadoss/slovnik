@@ -27,6 +27,11 @@
     visibility:hidden;
 }
 
+.clickable:hover{
+    cursor: pointer;
+    color: red;
+}
+
 dialog {
     position: absolute;
     left: 0; right: 0;

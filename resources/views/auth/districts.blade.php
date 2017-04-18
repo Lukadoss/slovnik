@@ -89,7 +89,6 @@
 
     </dialog>
 
-    <link rel="stylesheet" href="{{asset('css/tables.css')}}">
     <script>
         $(document).ready(function () {
             $(".clickable").click(function () {
