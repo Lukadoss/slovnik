@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Pon 17. dub 2017, 01:04
+-- Vytvořeno: Úte 18. dub 2017, 02:15
 -- Verze serveru: 10.1.21-MariaDB
 -- Verze PHP: 7.1.1
 
@@ -57,7 +57,7 @@ CREATE TABLE `districts` (
   `municipality` varchar(100) CHARACTER SET utf8 NOT NULL,
   `district` varchar(100) COLLATE utf8_czech_ci NOT NULL,
   `region` varchar(100) COLLATE utf8_czech_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci ROW_FORMAT=COMPACT;
 
 --
 -- Vypisuji data pro tabulku `districts`
@@ -6451,7 +6451,7 @@ CREATE TABLE `users` (
   `name` varchar(255) COLLATE utf8_czech_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_czech_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_czech_ci NOT NULL,
-  `year_of_birth` year(4) DEFAULT NULL,
+  `year_of_birth` int(4) DEFAULT NULL,
   `native` int(11) DEFAULT NULL,
   `current_city` int(11) DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8_czech_ci DEFAULT NULL,
@@ -6463,17 +6463,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `year_of_birth`, `native`, `current_city`, `remember_token`, `is_admin`) VALUES
-(1, 'Petr Lukašík', '$2y$10$gccO24n/6F9T2D/KBCYUqenhELkCOuOMMsbcRERLlTc9O5JkEHXza', 'asd@asd.asd', 1995, 5529, 693, 'OBYxmi70K2yyAi4z34kPFUhJUcHVrPUWLOExpPUhHACeBvTKo05g8zwcuL0I', 1),
-(2, 'Pepa Novák', '$2y$10$iIbYKyqGzu5JBk64xw/7DO8Nqx0jz3hktOvpN9jsocTXnHMuGuoGS', 'qwq@wqd.ca', 1982, 89, 2271, '65qInIr5Tnfk4JdEbSuFjhynXNvA4A9flbTKcJ7CZM0V1ai1OudanyvxogAR', 0),
+(1, 'Petr Lukašík', '$2y$10$gccO24n/6F9T2D/KBCYUqenhELkCOuOMMsbcRERLlTc9O5JkEHXza', 'asd@asd.asd', 1995, 5529, 693, 'DDqY4IWFoqJzM2kj6EMbzssHI88qufhSeYFVzZAq1CpnFFlSFbLJu6jMR8aL', 1),
+(2, 'Pepa Novák', '$2y$10$iIbYKyqGzu5JBk64xw/7DO8Nqx0jz3hktOvpN9jsocTXnHMuGuoGS', 'qwq@wqd.ca', 1982, 89, 2271, 'U1ffJyVknzaRxenvNS52a2s3MbuSJKWLnSprOWMFK7132sJ0aCmRdjbSOnfi', 0),
 (4, 'Bobeš Koukal', '$2y$10$X5uReLvEtFLqWu22jEbswugfZpSBuziXY9jLxDt9AbIhYtRQ8MxWG', 'qwq@wqd.asd', NULL, NULL, NULL, NULL, 0),
-(5, 'Jaromír Vavřinský', '$2y$10$yXUhE2wj6dVFOH/RDuzO9.bC4dZHhxqd0NIUZBIts9yCZaQY5Qh6W', 'qwq@wqd.asdd', NULL, NULL, NULL, NULL, 0),
+(5, 'Jaromír Vavřinský', '$2y$10$yXUhE2wj6dVFOH/RDuzO9.bC4dZHhxqd0NIUZBIts9yCZaQY5Qh6W', 'qwq@wqd.asdd', NULL, 3715, NULL, NULL, 0),
 (6, 'Super Man', '$2y$10$vN9im4/5Fi0sF2tVA0w5HupcMaPo1c04Kkygio7wszOL6.fy4VE4.', 'caas@ewf.ctr', NULL, NULL, NULL, NULL, 0),
 (7, 'Létající Čestmír', '$2y$10$BLlm/K3F7iXt0PXM366egO3F4UGy1ya23RN4jRsSQk58X4EQ1c5xe', 'qwq@wdqd.ca', NULL, NULL, NULL, NULL, 0),
-(8, 'qwdqwfq', '$2y$10$Hz.rxsiCbGx8IqH6JcZwCerxx9l3Ow0wuBcmRpGIVqaxEQNuKVFd2', 'qwq@wqd.ad', NULL, NULL, NULL, NULL, 0),
-(9, 'asd', '$2y$10$dfWPscpCfAD/VztUc38MIebzuOGZQwlnJN3b092WSPJnaqZs5fvvO', 'asdqw@sdwqf.cy', NULL, NULL, NULL, NULL, 0),
-(10, 'wqdqwd', '$2y$10$R6hFRnfMp3geq/aRERIoQuyMuEkYFKEq2QmnlhJ75q6FbQHPPHT3q', 'asd@asd.asdd', NULL, NULL, NULL, NULL, 0),
-(11, 'wqdqwd', '$2y$10$UHM/tEOGF4OQLxmEV8t.uO1COqK1J2mXnPN8ZmIfVw/TN.V79TmdK', 'asd@asd.dsa', NULL, NULL, NULL, NULL, 0),
-(12, 'Radek Faksa', '$2y$10$BxgmET/rjjSRCvBP1b1OuuYfJBevqcURFxAb3niUmsp8dxffu28.W', 'ahoj@pepo.cz', NULL, NULL, NULL, NULL, 0);
+(8, 'Batman', '$2y$10$Hz.rxsiCbGx8IqH6JcZwCerxx9l3Ow0wuBcmRpGIVqaxEQNuKVFd2', 'qwq@wqd.ad', 1855, 583, 20, NULL, 0),
+(10, 'Anna Franková', '$2y$10$R6hFRnfMp3geq/aRERIoQuyMuEkYFKEq2QmnlhJ75q6FbQHPPHT3q', 'asd@asd.asdd', 1929, 1106, 136, NULL, 0),
+(11, 'Toxe Gustoslav', '$2y$10$UHM/tEOGF4OQLxmEV8t.uO1COqK1J2mXnPN8ZmIfVw/TN.V79TmdK', 'asd@asd.dsa', 1800, 52, 14, NULL, 0),
+(12, 'Radek Faksa', '$2y$10$BxgmET/rjjSRCvBP1b1OuuYfJBevqcURFxAb3niUmsp8dxffu28.W', 'ahoj@pepo.cz', NULL, NULL, NULL, NULL, 0),
+(14, 'Filip je kámoš', '$2y$10$ahUNEzOCoseRg1GPV1wEcep/T5xCJ73Zsqe.YL8GuBF9TrxBuLd/G', 'jsem@filek.cz', 1992, NULL, NULL, 'mlzCCD8Pt0tEUkeRiNvCdfxm89nSyfDcoIn3pD7nhIedQ2cjEws0cWgJGpZQ', 0);
 
 -- --------------------------------------------------------
 
@@ -6497,6 +6497,12 @@ CREATE TABLE `verb` (
 -- Klíče pro tabulku `comments`
 --
 ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Klíče pro tabulku `districts`
+--
+ALTER TABLE `districts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6555,7 +6561,12 @@ ALTER TABLE `verb`
 -- AUTO_INCREMENT pro tabulku `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pro tabulku `districts`
+--
+ALTER TABLE `districts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6253;
 --
 -- AUTO_INCREMENT pro tabulku `district_administration`
 --
@@ -6590,7 +6601,7 @@ ALTER TABLE `tokens`
 -- AUTO_INCREMENT pro tabulku `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT pro tabulku `verb`
 --
