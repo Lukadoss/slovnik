@@ -21,11 +21,11 @@ Route::get('/', 'MainController@index')->name('home');
 Route::get('/list', 'MainController@showList');
 Route::get('/register', 'MainController@register');
 Route::get('/login', 'MainController@login');
-Route::get('/members', 'MainController@showMembers');
-Route::get('/districts', 'MainController@showDistricts');
 
-Route::get('/comments', 'CommentsController@showAll');
-Route::post('/comments', 'CommentsController@publishComment');
+Route::get('/members', 'PagesController@showMembers');
+Route::get('/districts', 'PagesController@showDistricts');
+Route::get('/comments', 'PagesController@showComments');
+Route::post('/comments', 'PagesController@publishComment');
 
 Route::post('/register', 'SessionController@registration');
 Route::post('/login', 'SessionController@login');
