@@ -30,30 +30,45 @@ class User extends Authenticatable
         return $this->is_admin;
     }
 
-    public function getRole(){
-        if($this->is_admin){
+    public function getRole()
+    {
+        if ($this->is_admin) {
             return "Administrátor";
-        }elseif($this->districtAdmin()->count()>0){
+        } elseif ($this->districtAdmin()->count() > 0) {
             return "Správce okresů";
-        }
-        else{
+        } else {
             return "Registrovaný uživatel";
         }
     }
 
-    public function getNativeCity(){
+    public function getUserCities()
+    {
+        $cities = "";
+        if ($this->districtAdmin()->count() > 0) {
+            foreach ($this->districtAdmin as $district) {
+                $cities === "" ? $cities = $district->municipality : $cities = $cities.", ".$district->municipality;
+            }
+        }
+        return $cities;
+    }
+
+    public function getNativeCity()
+    {
         return $this->belongsTo(Districts::class, 'native');
     }
 
-    public function getCurrCity(){
+    public function getCurrCity()
+    {
         return $this->belongsTo(Districts::class, 'current_city');
     }
 
-    public function meanings(){
+    public function meanings()
+    {
         return $this->hasMany(Meaning::class);
     }
 
-    public function districtAdmin(){
+    public function districtAdmin()
+    {
         return $this->belongsToMany(Districts::class, 'district_administration', 'user_id', 'district_id');
     }
 }

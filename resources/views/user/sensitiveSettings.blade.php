@@ -6,13 +6,13 @@
             <div class="mdl-cell mdl-cell--12-col">
                 <img src="{{asset('images/profile.png')}}" style="width: 50%;  background-color: rgba(0,0,0,0.05)">
             </div>
-            <div class="mdl-cell mdl-cell--12-col" style="word-wrap: break-word;">
-                <h3 style="margin-bottom: auto; padding-bottom: 0"><strong>{{$user->name}}</strong></h3>
-                <h5 style="margin: 10px auto; color: #f82b2b;"><strong>{{$user->getRole()}}</strong></h5>
-                <a type="button" href="/profile/pwd_settings" style="visibility: hidden; width: 100%" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            <div class="mdl-cell mdl-cell--12-col mdl-grid" style="word-wrap: break-word;">
+                <h3 class="mdl-cell mdl-cell--12-col" style="margin-bottom: auto; padding-bottom: 0"><strong>{{$user->name}}</strong></h3>
+                <h5 class="mdl-cell mdl-cell--12-col" style="margin: 10px auto; color: #f82b2b;"><strong>{{$user->getRole()}}</strong></h5>
+                <a type="button" href="/profile/pwd_settings" style="visibility: hidden;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col">
                     <i class="material-icons mdl-list__item-icon" style="color: #fffaf1; ">gavel</i> Změna emailu a hesla
                 </a>
-                <a type="button" href="/profile/settings" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" style="margin-top: 10px">
+                <a type="button" href="/profile/settings" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-cell mdl-cell--12-col" style="margin-top: 10px">
                     <i class="material-icons mdl-list__item-icon" style="color: #fffaf1">keyboard_backspace</i> Zpět
                 </a>
             </div>

@@ -21,6 +21,8 @@ Route::get('/', 'MainController@index')->name('home');
 Route::get('/list', 'MainController@showList');
 Route::get('/register', 'MainController@register');
 Route::get('/login', 'MainController@login');
+Route::get('/members', 'MainController@showMembers');
+Route::get('/districts', 'MainController@showDistricts');
 
 Route::get('/comments', 'CommentsController@showAll');
 Route::post('/comments', 'CommentsController@publishComment');
@@ -35,5 +37,8 @@ Route::patch('/profile/pwd_settings', 'UserController@editSensUser');
 Route::patch('/profile/settings', 'UserController@editUser');
 Route::get('/profile/{id?}', 'UserController@showMember');
 
-Route::get('/members', 'AdministrationController@showMembers');
-Route::get('/districts', 'AdministrationController@showDistricts');
+Route::get('/admin/editU-{id}', 'AdministrationController@editUser');
+Route::post('/admin/district', 'AdministrationController@addDistrict');
+Route::delete('/admin/deleteU-{id}', 'AdministrationController@deleteUser');
+Route::delete('/admin/deleteD-{id}', 'AdministrationController@deleteDistrict');
+

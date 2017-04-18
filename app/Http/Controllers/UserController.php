@@ -51,7 +51,8 @@ class UserController extends Controller
             'native' => 'nullable|exists:districts,id',
             'curr_city' => 'nullable|exists:districts,id'
         ]);
-        $user = auth()->user();
+        auth()->user()->isAdmin() ? $user = User::find(request('id')) : $user = auth()->user();
+
         if (request()->has('name') && (request('name') !== $user->name)) {
             $user->name = request('name');
         }
@@ -65,6 +66,8 @@ class UserController extends Controller
             $user->current_city = request('curr_city');
         }
         $user->save();
+
+        if(auth()->user()->isAdmin()) return redirect('/members')->with('status', 'Profile updated!');
         return redirect('/profile/settings')->with('status', 'Profile updated!');
     }
 
