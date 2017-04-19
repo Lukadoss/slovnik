@@ -17,6 +17,7 @@ Route::get('/protected', ['middleware' => ['auth', 'admin'], function() {
     return "this page requires that you be logged in and an Admin";
 }]);
 
+Route::get('/tmpl{id}', 'MainController@template');
 Route::get('/', 'MainController@index')->name('home');
 Route::get('/list', 'MainController@showList');
 Route::get('/register', 'MainController@register');

@@ -35,11 +35,15 @@
     visibility:hidden;
 }
 
-.mdl-button{
+#form2{
+    visibility: hidden;
+}
+
+form .mdl-button{
     margin-top: 40px;
 }
 
-h4{
+h6{
     display: inline-block;
     text-align: center;
 }
