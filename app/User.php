@@ -12,30 +12,30 @@ class User extends Authenticatable
 
     public $timestamps = false;
 
-    protected $casts = [
-        'is_admin' => 'boolean',
-    ];
-
     protected $fillable = [
         'name', 'email', 'password', 'year_of_birth', 'native', 'current_city'
     ];
 
 
     protected $hidden = [
-        'password', 'is_admin'
+        'password', 'auth_level'
+    ];
+
+    protected $guarded = [
+        'password', 'auth_level'
     ];
 
     public function isAdmin()
     {
-        return $this->is_admin;
+        return ($this->auth_level === 2);
     }
 
     public function getRole()
     {
-        if ($this->is_admin) {
+        if ($this->auth_level === 2) {
             return "Administrátor";
         } elseif ($this->districtAdmin()->count() > 0) {
-            return "Správce okresů";
+            return "Správce oblasti";
         } else {
             return "Registrovaný uživatel";
         }
@@ -54,12 +54,12 @@ class User extends Authenticatable
 
     public function getNativeCity()
     {
-        return $this->belongsTo(Districts::class, 'native');
+        return $this->belongsTo(District::class, 'native');
     }
 
     public function getCurrCity()
     {
-        return $this->belongsTo(Districts::class, 'current_city');
+        return $this->belongsTo(District::class, 'current_city');
     }
 
     public function meanings()
@@ -69,6 +69,6 @@ class User extends Authenticatable
 
     public function districtAdmin()
     {
-        return $this->belongsToMany(Districts::class, 'district_administration', 'user_id', 'district_id');
+        return $this->belongsToMany(District::class, 'district_administration', 'user_id', 'district_id');
     }
 }

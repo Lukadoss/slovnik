@@ -6,15 +6,14 @@
             <a class="mdl-navigation__link" href="/list">Rejstřík</a>
             <a class="mdl-navigation__link" href="/comments">Vzkazy</a>
             @if(auth()->check())
-                | | |<a class="mdl-navigation__link" href="/term/new" ><i class="material-icons">note_add</i> Nové heslo</a>
+                |<a class="mdl-navigation__link" href="/term/new">Nové heslo</a>
             @endif
         </nav>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation">
             @if(auth()->check())
                 <a class="mdl-navigation__link" href="/profile" style="font-size: 24px">{{auth()->user()->name}}</a>
-                <button id="demo-menu-lower-right"
-                        class="mdl-button mdl-js-button mdl-button--icon">
+                <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon" >
                     <i class="material-icons">more_vert</i>
                 </button>
 

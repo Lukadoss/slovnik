@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Districts;
+use App\District;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\User;
@@ -33,7 +33,7 @@ class UserController extends Controller
     public function showSettings()
     {
         $user = auth()->user();
-        $towns = Districts::all();
+        $towns = District::all();
         return view('user.settings', compact('user', 'towns'));
     }
 
@@ -67,8 +67,8 @@ class UserController extends Controller
         }
         $user->save();
 
-        if(auth()->user()->isAdmin()) return redirect('/members')->with('status', 'Profile updated!');
-        return redirect()->back()->with('status', 'Profile updated!');
+        if(auth()->user()->isAdmin()) return redirect('/members')->with('success', 'Uživatel "'. $user->name .'" upraven!');
+        return redirect()->back()->with('success', 'Profil aktualizován!');
     }
 
     public function editSensUser()

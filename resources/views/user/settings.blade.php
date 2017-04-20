@@ -9,12 +9,19 @@
             <div class="mdl-cell mdl-cell--12-col mdl-grid" style="word-wrap: break-word;">
                 <h3 class="mdl-cell mdl-cell--12-col" style="margin-bottom: auto; padding-bottom: 0"><strong>{{$user->name}}</strong></h3>
                 <h5 class="mdl-cell mdl-cell--12-col" style="margin: 10px auto; color: #f82b2b;"><strong>{{$user->getRole()}}</strong></h5>
-                <a type="button" href="/profile/pwd_settings" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col" style="font-size: 0.7vw;">
-                    Změna emailu a hesla
-                </a>
-                <a type="button" href="/profile" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-cell mdl-cell--12-col" style="margin-top: 10px">
-                    <i class="material-icons mdl-list__item-icon" style="color: #fffaf1">keyboard_backspace</i> Zpět
-                </a>
+                @if(auth()->user() == $user)
+                    <a type="button" href="/profile/pwd_settings" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col"
+                       style="font-size: 0.7vw;">
+                        Změna emailu a hesla
+                    </a>
+                    <a type="button" href="/profile" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-cell mdl-cell--12-col" style="margin-top: 10px">
+                        <i class="material-icons mdl-list__item-icon" style="color: #fffaf1">keyboard_backspace</i> Zpět
+                    </a>
+                @elseif(auth()->user()->isAdmin())
+                    <a type="button" href="/members" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary mdl-cell mdl-cell--12-col" style="margin-top: 10px">
+                        <i class="material-icons mdl-list__item-icon" style="color: #fffaf1">keyboard_backspace</i> Zpět
+                    </a>
+                @endif
             </div>
         </div>
         <div class="mdl-cell mdl-cell--5-col mdl-color--white mdl-shadow--2dp mdl-grid">
@@ -67,7 +74,9 @@
                     </div>
                 </div>
 
-                <button type="submit" onclick="sub()" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Odeslat</button>
+                <button type="submit" onclick="sub()" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">
+                    Odeslat
+                </button>
             </form>
         </div>
     </div>

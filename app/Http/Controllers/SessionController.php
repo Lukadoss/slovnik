@@ -13,7 +13,8 @@ class SessionController extends Controller
         $this->middleware('guest', ['only' => ['registration', 'login']]);
     }
 
-    public function registration(){
+    public function registration()
+    {
         $this->validate(request(), [
             'name' => 'required|min:3',
             'email' => 'required|unique:users|email',
@@ -21,26 +22,36 @@ class SessionController extends Controller
             'password_confirmation' => 'required|min:4'
         ]);
 
-        $user = User::create([
+        User::create([
             'name' => request('name'),
             'email' => request('email'),
             'password' => Hash::make(request('password'))
         ]);
 
-        auth()->login($user);
-
-        return redirect()->to('/profile');
+        return redirect()->home()->with('success', '<strong>Registrace úspěšná!</strong><br>Nyní vyčkejte na potvrzení administrátorem.');
     }
 
-    public function login(){
-        if (! auth()->attempt(request(['email', 'password']))){
-            return redirect()->to('/');
+    public function login()
+    {
+
+        $this->validate(request(), [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (User::where('email', request('email'))->firstOrFail()->auth_level === 0) {
+            return redirect()->back()->with('info', 'Uživatel ještě není schválen administrátorem.<br>Kontaktujte administrátora pro schválení registrace.');
+        } else {
+            if (auth()->attempt(request(['email', 'password']), request('remember'))) {
+                return redirect()->home()->with('success', '<strong>Úspěšně přihlášen!</strong>');
+            }
         }
-
-        return redirect()->home();
+        return redirect()->back()->with('error', 'Špatný email nebo heslo. Zkuste to prosím znovu');
     }
 
-    public function logout(){
+    public
+    function logout()
+    {
         auth()->logout();
         return redirect()->home();
     }

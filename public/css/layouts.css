@@ -32,6 +32,11 @@
     color: red;
 }
 
+.clickableReg:hover{
+    cursor: pointer;
+    color: red;
+}
+
 dialog {
     position: absolute;
     left: 0; right: 0;

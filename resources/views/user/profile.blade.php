@@ -11,7 +11,7 @@
                 <h5 style="margin: 10px auto; color: #f82b2b;"><strong>{{$user->getRole()}}</strong></h5>
                 @if(auth()->user() == $user)
                     <a type="button" href="/profile/settings" class="mdl-cell--12-col mdl-cell mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                        Nastavení <i class="material-icons mdl-list__item-icon" style="color: #fffaf1">settings</i>
+                        Nastavení
                     </a>
                     @if(auth()->user()->isAdmin())
                         <hr>
@@ -52,19 +52,19 @@
                         <table class="mdl-data-table mdl-js-data-table mdl-cell--12-col mdl-cell">
                             <thead>
                             <tr>
-                                <th class="mdl-data-table__cell--non-numeric">Akceptováno</th>
                                 <th class="mdl-data-table__cell--non-numeric">Heslo</th>
+                                <th>Akceptováno</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($user->meanings as $meaning)
                                 <tr id="{{$meaning->term_id."-".$meaning->term->term}}" class="clickable">
-                                    <td class="mdl-data-table__cell--non-numeric">
+                                    <td class="mdl-data-table__cell--non-numeric">{{$meaning->term->term}}</td>
+                                    <td>
                                         @if(!$meaning->term->accepted)<i class="material-icons mdl-list__item-icon" style="color: #ff0007;">close</i>
                                         @else <i class="material-icons mdl-list__item-icon" style="color: #009813;">check</i>
                                         @endif
                                     </td>
-                                    <td class="mdl-data-table__cell--non-numeric">{{$meaning->term->term}}</td>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -2,39 +2,51 @@
 
 @section('content')
     <div class="mdl-grid">
-        @if(auth()->user()->isAdmin())
-        <div class="mdl-cell mdl-cell--2-col">
-            <div class="mdl-color--white mdl mdl-grid mdl-shadow--2dp">
-                <div style="text-align: center" class="mdl-cell mdl-cell--12-col"><h4>Vyberte akci</h4></div>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-cell mdl-cell--12-col" for="option-1">
-                    <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" checked>
-                    <span class="mdl-radio__label">Smazat oblast</span>
-                </label>
-                <button id="show-dialog" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent mdl-cell mdl-cell--12-col">Přidat novou oblast</button>
-            </div>
-        </div>
-        @else
-            <div class="mdl-layout-spacer"></div>
-        @endif
-        <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--8-col mdl-shadow--2dp mdl-color--white">
-            <thead>
-            <tr>
-                <th class="mdl-data-table__cell--non-numeric">Obec</th>
-                <th class="mdl-data-table__cell--non-numeric">Okres</th>
-                <th class="mdl-data-table__cell--non-numeric">Kraj</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($districts as $district)
-                <tr class="clickable" id="{{$district->id}}" about="{{$district->municipality}}">
-                    <td class="mdl-data-table__cell--non-numeric">{{$district->municipality}}</td>
-                    <td class="mdl-data-table__cell--non-numeric">{{$district->district}}</td>
-                    <td class="mdl-data-table__cell--non-numeric">{{$district->region}}</td>
+        <div class="mdl-cell mdl-cell--10-col mdl-grid">
+            @if(auth()->user()->isAdmin())
+                <div class="mdl-cell mdl-cell--2-col">
+                    <div class="mdl-color--white mdl mdl-grid mdl-shadow--2dp">
+                        <div style="text-align: center" class="mdl-cell mdl-cell--12-col"><h4>Vyberte akci</h4></div>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-cell mdl-cell--12-col" for="option-1">
+                            <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" checked>
+                            <span class="mdl-radio__label">Smazat oblast</span>
+                        </label>
+                        <button id="show-dialog" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent mdl-cell mdl-cell--12-col">Přidat novou oblast</button>
+                    </div>
+                </div>
+            @else
+                <div class="mdl-layout-spacer"></div>
+            @endif
+            <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--10-col mdl-shadow--2dp mdl-color--white">
+                <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Obec</th>
+                    <th class="mdl-data-table__cell--non-numeric">Okres</th>
+                    <th class="mdl-data-table__cell--non-numeric">Kraj</th>
                 </tr>
-            @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                @foreach($districts as $district)
+                    <tr class="clickable" id="{{$district->id}}" about="{{$district->municipality}}">
+                        <td class="mdl-data-table__cell--non-numeric">{{$district->municipality}}</td>
+                        <td class="mdl-data-table__cell--non-numeric">{{$district->district}}</td>
+                        <td class="mdl-data-table__cell--non-numeric">{{$district->region}}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
         <div class="mdl-layout-spacer"></div>
+        @if (session('success'))
+            <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--green-400 mdl-color-text--primary-contrast" style="margin-top: 10px; text-align: center">
+                <?php echo session('success') ?>
+            </div>
+        @endif
+        @if (session('info'))
+            <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--yellow-400 mdl-color-text--grey-900" style="margin-top: 10px; text-align: center">
+                <?php echo session('info') ?>
+            </div>
+        @endif
     </div>
 
     <dialog class="mdl-dialog dialog">
