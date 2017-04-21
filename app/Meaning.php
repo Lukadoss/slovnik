@@ -9,4 +9,14 @@ class Meaning extends Model
     {
         return $this->belongsTo(Term::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
 }

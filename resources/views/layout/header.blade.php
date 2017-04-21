@@ -6,7 +6,7 @@
             <a class="mdl-navigation__link" href="/list">Rejstřík</a>
             <a class="mdl-navigation__link" href="/comments">Vzkazy</a>
             @if(auth()->check())
-                |<a class="mdl-navigation__link" href="/term/new">Nové heslo</a>
+                |<a class="mdl-navigation__link" href="/term">Nové heslo</a>
             @endif
         </nav>
         <div class="mdl-layout-spacer"></div>
@@ -34,13 +34,13 @@
     @if(Request::segment(1)==='list')
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
             <?php
-            $i = 97;
-            while ($i < (123)){
+                $alphabet = (new \App\Http\Controllers\MainController)->getAlphabet();
+                $first = true;
+                foreach ($alphabet as $letter){
             ?>
-            <a href="#terms-{{chr($i)}}" @if($i==97) class="mdl-layout__tab is-active" @else class="mdl-layout__tab" @endif>{{chr($i)}}</a>
+                <a href="/terms-{{$letter}}" @if($first) class="mdl-layout__tab is-active" <?php $first = false; ?> @else class="mdl-layout__tab" @endif>{{$letter}}</a>
             <?php
-            $i++;
-            }
+                }
             ?>
         </div>
     @endif

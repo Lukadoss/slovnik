@@ -27,7 +27,7 @@
                 <div class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" style="border-radius: 1px">
                     <label class="mdl-cell mdl-cell--4-col textLabel" for="email">Nový email:</label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                        <input type="text" class="mdl-textfield__input" id="email" name="email" value="{{$user->email}}">
+                        <input type="text" class="mdl-textfield__input" id="email" name="email">
                         <span class="error">{{$errors->first('email')}}</span>
                     </div>
                 </div>

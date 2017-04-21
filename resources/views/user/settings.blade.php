@@ -22,6 +22,11 @@
                         <i class="material-icons mdl-list__item-icon" style="color: #fffaf1">keyboard_backspace</i> Zpět
                     </a>
                 @endif
+                @if (session('success'))
+                    <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--green-400 mdl-color-text--primary-contrast" style="margin-top: 150px; text-align: center">
+                        <?php echo session('success') ?>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="mdl-cell mdl-cell--5-col mdl-color--white mdl-shadow--2dp mdl-grid">

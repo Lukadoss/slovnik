@@ -3,20 +3,18 @@
 @section('content')
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--10-col mdl-grid">
-            @if(auth()->user()->isAdmin())
-                <div class="mdl-cell mdl-cell--2-col">
-                    <div class="mdl-color--white mdl mdl-grid mdl-shadow--2dp">
-                        <div style="text-align: center" class="mdl-cell mdl-cell--12-col"><h4>Vyberte akci</h4></div>
+            <div class="mdl-cell mdl-cell--2-col">
+                <div class="mdl-color--white mdl mdl-grid mdl-shadow--2dp">
+                    <div style="text-align: center" class="mdl-cell mdl-cell--12-col"><h4>Vyberte akci</h4></div>
+                    @if(auth()->user()->isAdmin())
                         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-cell mdl-cell--12-col" for="option-1">
                             <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" checked>
                             <span class="mdl-radio__label">Smazat oblast</span>
                         </label>
-                        <button id="show-dialog" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent mdl-cell mdl-cell--12-col">Přidat novou oblast</button>
-                    </div>
+                    @endif
+                    <button id="show-dialog" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent mdl-cell mdl-cell--12-col">Přidat novou oblast</button>
                 </div>
-            @else
-                <div class="mdl-layout-spacer"></div>
-            @endif
+            </div>
             <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--10-col mdl-shadow--2dp mdl-color--white">
                 <thead>
                 <tr>
@@ -47,6 +45,11 @@
                 <?php echo session('info') ?>
             </div>
         @endif
+        @if (count($errors)>0)
+            <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--red-500 mdl-color-text--primary-contrast" style="margin-top: 10px; text-align: center">
+                <?php echo "Oblast nemohla být přidána. Zkontrolujte si prosím " ?>
+            </div>
+        @endif
     </div>
 
     <dialog class="mdl-dialog dialog">
@@ -69,7 +72,7 @@
     </dialog>
 
     <dialog class="mdl-dialog dialog2">
-        <form class="yolo" action="/admin/district" method="post">
+        <form class="yolo" action="/user/district" method="post">
             {{ csrf_field() }}
 
             <div class="mdl-dialog__content">

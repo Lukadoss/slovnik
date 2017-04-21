@@ -15,7 +15,7 @@ class PageController extends Controller
         Carbon::setLocale('cs');
         date_default_timezone_set('Europe/Prague');
 
-        $this->middleware('auth', ['only' => ['showMembers', 'showDistricts']]);
+        $this->middleware('auth', ['only' => ['showMembers', 'showDistricts', 'showNewTerm']]);
     }
 
     public function showComments(){
@@ -43,5 +43,10 @@ class PageController extends Controller
     public function showDistricts(){
         $districts = District::all()->take(15);
         return view('auth.districts', compact('districts'));
+    }
+
+    public function showNewTerm(){
+        $towns = District::all();
+        return view('term.newTerm', compact('towns'));
     }
 }

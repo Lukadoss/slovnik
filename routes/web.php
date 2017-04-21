@@ -27,6 +27,7 @@ Route::get('/members', 'PageController@showMembers');
 Route::get('/districts', 'PageController@showDistricts');
 Route::get('/comments', 'PageController@showComments');
 Route::post('/comments', 'PageController@publishComment');
+Route::get('/term', 'PageController@showNewTerm');
 
 Route::post('/register', 'SessionController@registration');
 Route::post('/login', 'SessionController@login');
@@ -45,6 +46,6 @@ Route::delete('/admin/deleteD-{id}', 'AdministrationController@deleteDistrict');
 
 Route::post('/user/district', 'DistrictController@addDistrict');
 
-Route::get('/term/new', 'TermController@addTerm');
+Route::post('/term/new', 'TermController@addTerm');
 
 

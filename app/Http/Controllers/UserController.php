@@ -90,7 +90,7 @@ class UserController extends Controller
             }
 
             $user->save();
-            return redirect('/profile/settings')->with('status', 'Profile updated!');
+            return redirect('/profile/settings')->with('success', 'Profil aktualizován!');
         }
         return redirect('/profile/pwd_settings')->with('oldpass', 'Špatné heslo!');
     }
