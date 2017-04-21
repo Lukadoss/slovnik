@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Úte 18. dub 2017, 02:15
+-- Vytvořeno: Pát 21. dub 2017, 06:00
 -- Verze serveru: 10.1.21-MariaDB
 -- Verze PHP: 7.1.1
 
@@ -6339,8 +6339,8 @@ CREATE TABLE `district_administration` (
 --
 
 INSERT INTO `district_administration` (`id`, `user_id`, `district_id`) VALUES
-(1, 1, 5),
-(2, 1, 45),
+(1, 3, 5),
+(2, 2, 45),
 (3, 2, 22);
 
 -- --------------------------------------------------------
@@ -6353,12 +6353,11 @@ DROP TABLE IF EXISTS `meanings`;
 CREATE TABLE `meanings` (
   `id` int(11) NOT NULL,
   `meaning` varchar(255) COLLATE utf8_czech_ci NOT NULL,
-  `symptom` varchar(255) COLLATE utf8_czech_ci NOT NULL,
-  `pronunciation` varchar(255) COLLATE utf8_czech_ci NOT NULL,
-  `context` varchar(255) COLLATE utf8_czech_ci NOT NULL,
-  `exemplification` varchar(255) COLLATE utf8_czech_ci NOT NULL,
-  `examples` varchar(255) COLLATE utf8_czech_ci NOT NULL,
-  `synonym` varchar(255) COLLATE utf8_czech_ci NOT NULL,
+  `symptom` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
+  `context` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
+  `exemplification` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
+  `examples` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
+  `synonym` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
   `thesaurus` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
   `audio_path` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
   `term_id` int(11) NOT NULL,
@@ -6370,35 +6369,43 @@ CREATE TABLE `meanings` (
 -- Vypisuji data pro tabulku `meanings`
 --
 
-INSERT INTO `meanings` (`id`, `meaning`, `symptom`, `pronunciation`, `context`, `exemplification`, `examples`, `synonym`, `thesaurus`, `audio_path`, `term_id`, `user_id`, `district_id`) VALUES
-(1, 'podprsenka', 'něco', '[podrpsenka]', 'nasadila si na sebe šajsku', 'asdasd', 'wtf', 'podrpsenka', 'asd', 'tudy/tam/kudy/cesta/vede', 1, 1, 5),
-(2, 'popel', 'popelnatý', 'popelvole', 'uhořel na popel', 'popl', 'popelík', 'prach', 'bronsosaurus', '/asd/aswfwff', 2, 1, 15);
+INSERT INTO `meanings` (`id`, `meaning`, `symptom`, `context`, `exemplification`, `examples`, `synonym`, `thesaurus`, `audio_path`, `term_id`, `user_id`, `district_id`) VALUES
+(1, 'podprsenka', 'historický', 'nasadila si na sebe šajsku', 'šajzk', 'wtf', 'podrpsenka', 'asd', 'tudy/tam/kudy/cesta/vede', 1, 1, 5),
+(2, 'popel', 'archaický', 'uhořel na popel', 'popl', 'popelík', 'prach', 'bronsosaurus', '/asd/aswfwff', 2, 1, 15),
+(3, 'wqbdq', NULL, NULL, NULL, NULL, NULL, NULL, '15967467_10206186883431325_634388467_o.jpg', 3, 17, 50);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `noun`
+-- Struktura tabulky `nouns`
 --
 
-DROP TABLE IF EXISTS `noun`;
-CREATE TABLE `noun` (
+DROP TABLE IF EXISTS `nouns`;
+CREATE TABLE `nouns` (
   `id` int(11) NOT NULL,
-  `noun_gender` varchar(255) COLLATE utf8_czech_ci NOT NULL,
-  `noun_sufix` varchar(255) COLLATE utf8_czech_ci NOT NULL,
+  `noun_gender` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
+  `noun_sufix` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
   `part_of_speech_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `part_of_speech`
+-- Struktura tabulky `part_of_speeches`
 --
 
-DROP TABLE IF EXISTS `part_of_speech`;
-CREATE TABLE `part_of_speech` (
+DROP TABLE IF EXISTS `part_of_speeches`;
+CREATE TABLE `part_of_speeches` (
   `id` int(11) NOT NULL,
   `part_of_speech` varchar(255) COLLATE utf8_czech_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci ROW_FORMAT=COMPACT;
+
+--
+-- Vypisuji data pro tabulku `part_of_speeches`
+--
+
+INSERT INTO `part_of_speeches` (`id`, `part_of_speech`) VALUES
+(1, 'Přídavné jméno');
 
 -- --------------------------------------------------------
 
@@ -6412,7 +6419,7 @@ CREATE TABLE `terms` (
   `term` varchar(255) COLLATE utf8_czech_ci NOT NULL,
   `last_find` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `pronunciation` varchar(255) COLLATE utf8_czech_ci NOT NULL,
-  `origin` varchar(255) COLLATE utf8_czech_ci NOT NULL,
+  `origin` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
   `accepted` int(11) NOT NULL DEFAULT '0',
   `part_of_speech_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci ROW_FORMAT=COMPACT;
@@ -6423,7 +6430,8 @@ CREATE TABLE `terms` (
 
 INSERT INTO `terms` (`id`, `term`, `last_find`, `pronunciation`, `origin`, `accepted`, `part_of_speech_id`) VALUES
 (1, 'Šajska', '2017-04-11 23:21:26', '[šajska]', 'Jižní Čechy', 0, 1),
-(2, 'Popel', '2017-04-13 15:03:47', '[popel]', 'Střední čechy', 1, 2);
+(2, 'Popel', '2017-04-13 15:03:47', '[popel]', 'Střední čechy', 1, 2),
+(3, 'wqbdqwb', '2017-04-21 00:49:24', 'qwbdqwb', NULL, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -6455,37 +6463,36 @@ CREATE TABLE `users` (
   `native` int(11) DEFAULT NULL,
   `current_city` int(11) DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8_czech_ci DEFAULT NULL,
-  `is_admin` int(2) NOT NULL DEFAULT '0'
+  `auth_level` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci ROW_FORMAT=COMPACT;
 
 --
 -- Vypisuji data pro tabulku `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `password`, `email`, `year_of_birth`, `native`, `current_city`, `remember_token`, `is_admin`) VALUES
-(1, 'Petr Lukašík', '$2y$10$gccO24n/6F9T2D/KBCYUqenhELkCOuOMMsbcRERLlTc9O5JkEHXza', 'asd@asd.asd', 1995, 5529, 693, 'DDqY4IWFoqJzM2kj6EMbzssHI88qufhSeYFVzZAq1CpnFFlSFbLJu6jMR8aL', 1),
-(2, 'Pepa Novák', '$2y$10$iIbYKyqGzu5JBk64xw/7DO8Nqx0jz3hktOvpN9jsocTXnHMuGuoGS', 'qwq@wqd.ca', 1982, 89, 2271, 'U1ffJyVknzaRxenvNS52a2s3MbuSJKWLnSprOWMFK7132sJ0aCmRdjbSOnfi', 0),
-(4, 'Bobeš Koukal', '$2y$10$X5uReLvEtFLqWu22jEbswugfZpSBuziXY9jLxDt9AbIhYtRQ8MxWG', 'qwq@wqd.asd', NULL, NULL, NULL, NULL, 0),
-(5, 'Jaromír Vavřinský', '$2y$10$yXUhE2wj6dVFOH/RDuzO9.bC4dZHhxqd0NIUZBIts9yCZaQY5Qh6W', 'qwq@wqd.asdd', NULL, 3715, NULL, NULL, 0),
-(6, 'Super Man', '$2y$10$vN9im4/5Fi0sF2tVA0w5HupcMaPo1c04Kkygio7wszOL6.fy4VE4.', 'caas@ewf.ctr', NULL, NULL, NULL, NULL, 0),
-(7, 'Létající Čestmír', '$2y$10$BLlm/K3F7iXt0PXM366egO3F4UGy1ya23RN4jRsSQk58X4EQ1c5xe', 'qwq@wdqd.ca', NULL, NULL, NULL, NULL, 0),
-(8, 'Batman', '$2y$10$Hz.rxsiCbGx8IqH6JcZwCerxx9l3Ow0wuBcmRpGIVqaxEQNuKVFd2', 'qwq@wqd.ad', 1855, 583, 20, NULL, 0),
-(10, 'Anna Franková', '$2y$10$R6hFRnfMp3geq/aRERIoQuyMuEkYFKEq2QmnlhJ75q6FbQHPPHT3q', 'asd@asd.asdd', 1929, 1106, 136, NULL, 0),
-(11, 'Toxe Gustoslav', '$2y$10$UHM/tEOGF4OQLxmEV8t.uO1COqK1J2mXnPN8ZmIfVw/TN.V79TmdK', 'asd@asd.dsa', 1800, 52, 14, NULL, 0),
-(12, 'Radek Faksa', '$2y$10$BxgmET/rjjSRCvBP1b1OuuYfJBevqcURFxAb3niUmsp8dxffu28.W', 'ahoj@pepo.cz', NULL, NULL, NULL, NULL, 0),
-(14, 'Filip je kámoš', '$2y$10$ahUNEzOCoseRg1GPV1wEcep/T5xCJ73Zsqe.YL8GuBF9TrxBuLd/G', 'jsem@filek.cz', 1992, NULL, NULL, 'mlzCCD8Pt0tEUkeRiNvCdfxm89nSyfDcoIn3pD7nhIedQ2cjEws0cWgJGpZQ', 0);
+INSERT INTO `users` (`id`, `name`, `password`, `email`, `year_of_birth`, `native`, `current_city`, `remember_token`, `auth_level`) VALUES
+(1, 'Petr Lukašík', '$2y$10$gccO24n/6F9T2D/KBCYUqenhELkCOuOMMsbcRERLlTc9O5JkEHXza', 'asd@asd.asd', 1995, 5529, 3858, 'PhzBYmDyTOliRqnfA1b5LTfClpGllsaL4uark5rRMl47YY19h8Vk2re5Ayux', 2),
+(2, 'Pepa Novák', '$2y$10$iIbYKyqGzu5JBk64xw/7DO8Nqx0jz3hktOvpN9jsocTXnHMuGuoGS', 'qwq@wqd.ca', 1982, 89, 2271, 'd2JabOkbRAojDZd2FiLcIvjQD9CcjGDsDXDpQUSDT3JicfK8RRrAYRXhm0VH', 1),
+(4, 'Bobeš Koukal', '$2y$10$X5uReLvEtFLqWu22jEbswugfZpSBuziXY9jLxDt9AbIhYtRQ8MxWG', 'qwq@wqd.asd', NULL, NULL, NULL, NULL, 1),
+(5, 'Jaromír Vavřinský', '$2y$10$yXUhE2wj6dVFOH/RDuzO9.bC4dZHhxqd0NIUZBIts9yCZaQY5Qh6W', 'qwq@wqd.asdd', NULL, 3715, NULL, NULL, 1),
+(6, 'Super Man', '$2y$10$vN9im4/5Fi0sF2tVA0w5HupcMaPo1c04Kkygio7wszOL6.fy4VE4.', 'caas@ewf.ctr', NULL, NULL, NULL, NULL, 1),
+(7, 'Létající Čestmír', '$2y$10$BLlm/K3F7iXt0PXM366egO3F4UGy1ya23RN4jRsSQk58X4EQ1c5xe', 'qwq@wdqd.ca', NULL, NULL, NULL, NULL, 1),
+(11, 'Toxe Gustoslav', '$2y$10$UHM/tEOGF4OQLxmEV8t.uO1COqK1J2mXnPN8ZmIfVw/TN.V79TmdK', 'asd@asd.dsa', 1800, 52, 14, NULL, 1),
+(14, 'Filip je kámoš', '$2y$10$ahUNEzOCoseRg1GPV1wEcep/T5xCJ73Zsqe.YL8GuBF9TrxBuLd/G', 'jsem@filek.cz', 1992, NULL, NULL, 'mlzCCD8Pt0tEUkeRiNvCdfxm89nSyfDcoIn3pD7nhIedQ2cjEws0cWgJGpZQ', 1),
+(15, 'Malej Bobek', '$2y$10$ao1P6H4b4lNN2XduM5n.keYoajCRLP7osJUYYsK4NDCEAjwhNWNLy', 'asd@feq.as', 1888, 89, 1102, NULL, 1),
+(17, 'Dikhed', '$2y$10$wJOuk1s1dHfdL33Y.99GfOZAmet8m3OtztfMhghwAT69o/3ecVOSC', 'dik@hed.cz', 1884, NULL, 2824, '6R3MJ5l0vydyV2FCNegNHg5Dald0LsVTm82EwQAtxEGzX2NoQkZy1mKzHZU6', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `verb`
+-- Struktura tabulky `verbs`
 --
 
-DROP TABLE IF EXISTS `verb`;
-CREATE TABLE `verb` (
+DROP TABLE IF EXISTS `verbs`;
+CREATE TABLE `verbs` (
   `id` int(11) NOT NULL,
-  `verb_aspect` varchar(255) COLLATE utf8_czech_ci NOT NULL,
-  `verb_valence` varchar(255) COLLATE utf8_czech_ci NOT NULL,
+  `verb_aspect` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
+  `verb_valence` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
   `part_of_speech_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci ROW_FORMAT=COMPACT;
 
@@ -6518,15 +6525,15 @@ ALTER TABLE `meanings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Klíče pro tabulku `noun`
+-- Klíče pro tabulku `nouns`
 --
-ALTER TABLE `noun`
+ALTER TABLE `nouns`
   ADD PRIMARY KEY (`id`);
 
 --
--- Klíče pro tabulku `part_of_speech`
+-- Klíče pro tabulku `part_of_speeches`
 --
-ALTER TABLE `part_of_speech`
+ALTER TABLE `part_of_speeches`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6548,9 +6555,9 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Klíče pro tabulku `verb`
+-- Klíče pro tabulku `verbs`
 --
-ALTER TABLE `verb`
+ALTER TABLE `verbs`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6566,7 +6573,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT pro tabulku `districts`
 --
 ALTER TABLE `districts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6253;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6255;
 --
 -- AUTO_INCREMENT pro tabulku `district_administration`
 --
@@ -6576,22 +6583,22 @@ ALTER TABLE `district_administration`
 -- AUTO_INCREMENT pro tabulku `meanings`
 --
 ALTER TABLE `meanings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT pro tabulku `noun`
+-- AUTO_INCREMENT pro tabulku `nouns`
 --
-ALTER TABLE `noun`
+ALTER TABLE `nouns`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pro tabulku `part_of_speech`
+-- AUTO_INCREMENT pro tabulku `part_of_speeches`
 --
-ALTER TABLE `part_of_speech`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `part_of_speeches`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pro tabulku `terms`
 --
 ALTER TABLE `terms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pro tabulku `tokens`
 --
@@ -6601,11 +6608,11 @@ ALTER TABLE `tokens`
 -- AUTO_INCREMENT pro tabulku `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
--- AUTO_INCREMENT pro tabulku `verb`
+-- AUTO_INCREMENT pro tabulku `verbs`
 --
-ALTER TABLE `verb`
+ALTER TABLE `verbs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
