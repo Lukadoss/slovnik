@@ -16,11 +16,7 @@
     </head>
 
     <body>
-        @if(basename(url()->current()) === 'list')
-            <?php echo '<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout__header--scroll mdl-layout--no-drawer-button mdl-layout--fixed-tabs">' ?>
-        @else
-            <?php echo '<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-drawer-button mdl-layout__header--scroll">' ?>
-        @endif
+        <?php echo '<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-drawer-button mdl-layout__header--scroll mdl-layout--fixed-tabs">' ?>
 
         @include('layout.header')
 

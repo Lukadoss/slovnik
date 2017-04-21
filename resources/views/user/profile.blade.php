@@ -48,7 +48,7 @@
                 @if($user->meanings->count()>0)
                     <div class="mdl-cell--12-col mdl-cell">
                         <hr>
-                        <strong style="font-size: 18px;">Hesla přidaná uživatelem: </strong>
+                        <strong style="font-size: 18px;">Nedávná hesla přidaná uživatelem: </strong>
                         <table class="mdl-data-table mdl-js-data-table mdl-cell--12-col mdl-cell">
                             <thead>
                             <tr>

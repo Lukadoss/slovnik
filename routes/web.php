@@ -19,7 +19,6 @@ Route::get('/protected', ['middleware' => ['auth', 'admin'], function() {
 
 Route::get('/tmpl{id}', 'MainController@template');
 Route::get('/', 'MainController@index')->name('home');
-Route::get('/list', 'MainController@showList');
 Route::get('/register', 'MainController@register');
 Route::get('/login', 'MainController@login');
 
@@ -41,11 +40,14 @@ Route::get('/profile/{id?}', 'UserController@showMember');
 
 Route::get('/admin/authU-{id}', 'AdministrationController@authUser');
 Route::get('/admin/editU-{id}', 'AdministrationController@editUser');
+Route::get('/admin/editUD-{id}', 'AdministrationController@showUserDistrict');
+Route::post('/admin/editUD-{id}', 'AdministrationController@addUserDistrict');
 Route::delete('/admin/deleteU-{id}', 'AdministrationController@deleteUser');
 Route::delete('/admin/deleteD-{id}', 'AdministrationController@deleteDistrict');
 
 Route::post('/user/district', 'DistrictController@addDistrict');
 
 Route::post('/term/new', 'TermController@addTerm');
-
+Route::get('/terms/{sign}', 'TermController@showTerms');
+Route::get('/list', 'TermController@showTerms');
 

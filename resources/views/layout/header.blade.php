@@ -12,6 +12,20 @@
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation">
             @if(auth()->check())
+                @if(auth()->user()->isAdmin())
+                    <a class="mdl-navigation__link" href="/profile" style="font-size: 20px; color: yellow;">
+                        <?php
+                            $num = (new \App\Term())::where('accepted', 0)->count();
+                            if ($num === 1){
+                                echo $num.' nové heslo';
+                            }elseif($num <= 4){
+                                echo $num.' nová hesla';
+                            }else{
+                                echo $num.' nových hesel';
+                            }
+                        ?>
+                    </a> |
+                @endif
                 <a class="mdl-navigation__link" href="/profile" style="font-size: 24px">{{auth()->user()->name}}</a>
                 <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon" >
                     <i class="material-icons">more_vert</i>
@@ -30,15 +44,15 @@
             @endif
         </nav>
     </div>
-    <!-- Tabs -->
-    @if(Request::segment(1)==='list')
+
+    @if(Request::segment(1)==='list' || Request::segment(1)==='terms')
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
             <?php
-                $alphabet = (new \App\Http\Controllers\MainController)->getAlphabet();
-                $first = true;
-                foreach ($alphabet as $letter){
+                $alphabet = (new \App\Http\Controllers\TermController())->getAlphabet();
+                Request::segment(1)==='terms' ? $activeSign = Request::segment(2) : $activeSign = $alphabet[0];
+            foreach ($alphabet as $letter){
             ?>
-                <a href="/terms-{{$letter}}" @if($first) class="mdl-layout__tab is-active" <?php $first = false; ?> @else class="mdl-layout__tab" @endif>{{$letter}}</a>
+                <a href="/terms/{{$letter}}" @if($activeSign===$letter) class="mdl-layout__tab is-active" @else class="mdl-layout__tab" @endif>{{$letter}}</a>
             <?php
                 }
             ?>

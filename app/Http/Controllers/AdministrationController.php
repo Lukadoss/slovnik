@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\District;
+use App\District_administration;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -23,9 +24,8 @@ class AdministrationController extends Controller
     }
 
     public function editUser($id){
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $towns = District::all();
-        if($user===null) return redirect()->back();
         return view('user.settings', compact('user', 'towns'));
     }
 
@@ -43,5 +43,24 @@ class AdministrationController extends Controller
             District::destroy($id);
         }
         return redirect()->back();
+    }
+
+    public function showUserDistrict($id){
+        $user = User::findOrFail($id);
+        $towns = District::distinct()->select('region')->get();
+        return view('auth.distSettings', compact('user', 'towns'));
+    }
+
+    public function addUserDistrict(){
+        $selected = explode(',', request('region_name'));
+        foreach ($selected as $item){
+            foreach (District::where('region', $item)->get() as $district){
+                District_administration::create([
+                    'user_id' => request('user_id'),
+                    'district_id' => $district->id
+                ]);
+            }
+        }
+        return redirect('/members')->with('success', 'Uživateli nyní spravuje vybrané oblasti.');
     }
 }

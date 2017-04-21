@@ -37,18 +37,22 @@
             @if(auth()->user()->isAdmin())
                 <div class="mdl-cell mdl-cell--2-col">
                     <div class="mdl-color--white mdl-grid mdl-shadow--2dp" >
-                        <div style="text-align: center" class="mdl-cell mdl-cell--12-col"><h4>Vyberte akci</h4></div>
+                        <div style="text-align: center" class="mdl-cell mdl-cell--12-col"><h4>Vyberte akci na uživatele</h4></div>
                         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-cell mdl-cell--12-col" for="option-1">
                             <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" checked>
-                            <span class="mdl-radio__label">Zobrazit profil uživatele</span>
+                            <span class="mdl-radio__label">Zobrazit profil</span>
                         </label>
                         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-cell mdl-cell--12-col" for="option-2">
                             <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2">
-                            <span class="mdl-radio__label">Editovat uživatele</span>
+                            <span class="mdl-radio__label">Editovat údaje</span>
                         </label>
                         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-cell mdl-cell--12-col" for="option-3">
                             <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="3">
-                            <span class="mdl-radio__label">Smazat uživatele</span>
+                            <span class="mdl-radio__label">Přidat správu oblasti</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-cell mdl-cell--12-col" for="option-4">
+                            <input type="radio" id="option-4" class="mdl-radio__button" name="options" value="4">
+                            <span class="mdl-radio__label">Smazat</span>
                         </label>
                     </div>
                 </div>
@@ -127,6 +131,9 @@
                                 location.href = "/admin/editU-" + id;
                                 break;
                             case 3:
+                                location.href = "/admin/editUD-" + id;
+                                break;
+                            case 4:
                                 dialogPolyfill.registerDialog(dialog);
                                 dialog.showModal();
                                 $(".yolo").attr("action", "/admin/deleteU-" + id);
