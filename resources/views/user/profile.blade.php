@@ -37,10 +37,10 @@
                 </div>
                 <div class="mdl-cell mdl-cell--6-col">
                     @if($user->districtAdmin()->count()>0)
-                        <strong style="font-size: 18px;">Správce okresů:</strong>
+                        <strong style="font-size: 18px;">Správce krajů:</strong>
                         <p style="padding-left: 10px">
-                            @foreach($user->districtAdmin as $district)
-                                {{$district->district}}<br>
+                            @foreach($user->districtAdmin() as $district)
+                                {{$district->region}}<br>
                             @endforeach
                         </p>
                     @endif

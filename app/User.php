@@ -6,6 +6,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 
+/**
+ * @property mixed id
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -45,8 +48,9 @@ class User extends Authenticatable
     {
         $cities = "";
         if ($this->districtAdmin()->count() > 0) {
-            foreach ($this->districtAdmin as $district) {
-                $cities === "" ? $cities = $district->municipality : $cities = $cities.", ".$district->municipality;
+            foreach ($this->districtAdmin() as $district) {
+                $cities === "" ? $cities = $district->region : $cities = $cities.", ".$district->region;
+                if(strlen($cities)>60) return $cities.", ...";
             }
         }
         return $cities;
@@ -69,6 +73,11 @@ class User extends Authenticatable
 
     public function districtAdmin()
     {
-        return $this->belongsToMany(District::class, 'district_administration', 'user_id', 'district_id');
+        return District::distinct()->select('region')
+            ->join('district_administration', 'district_administration.district_id', '=', 'districts.id')
+            ->leftJoin('users', 'users.id' , '=', 'district_administration.user_id')
+            ->where('user_id', $this->id)
+            ->get();
+//            $this->belongsToMany(District::class, 'district_administration', 'user_id', 'district_id');
     }
 }

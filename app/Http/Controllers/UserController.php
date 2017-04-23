@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\District;
+use App\District_administration;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\User;

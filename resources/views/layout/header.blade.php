@@ -4,7 +4,7 @@
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="/">Vyhledávač</a>
             <a class="mdl-navigation__link" href="/list">Rejstřík</a>
-            <a class="mdl-navigation__link" href="/comments">Vzkazy</a>
+            {{--<a class="mdl-navigation__link" href="/comments">Vzkazy</a>--}}
             @if(auth()->check())
                 |<a class="mdl-navigation__link" href="/term">Nové heslo</a>
             @endif
@@ -13,7 +13,7 @@
         <nav class="mdl-navigation">
             @if(auth()->check())
                 @if(auth()->user()->isAdmin())
-                    <a class="mdl-navigation__link" href="/profile" style="font-size: 20px; color: yellow;">
+                    <a class="mdl-navigation__link" href="/term/waiting" style="font-size: 20px; color: yellow;">
                         <?php
                             $num = (new \App\Term())::where('accepted', 0)->count();
                             if ($num === 1){
@@ -45,14 +45,14 @@
         </nav>
     </div>
 
-    @if(Request::segment(1)==='list' || Request::segment(1)==='terms')
+    @if(Request::segment(1)==='list')
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
             <?php
                 $alphabet = (new \App\Http\Controllers\TermController())->getAlphabet();
-                Request::segment(1)==='terms' ? $activeSign = Request::segment(2) : $activeSign = $alphabet[0];
+                Request::segment(2) ? $activeSign = Request::segment(2) : $activeSign = $alphabet[0];
             foreach ($alphabet as $letter){
             ?>
-                <a href="/terms/{{$letter}}" @if($activeSign===$letter) class="mdl-layout__tab is-active" @else class="mdl-layout__tab" @endif>{{$letter}}</a>
+                <a href="/list/{{$letter}}" @if($activeSign===$letter) class="mdl-layout__tab is-active" @else class="mdl-layout__tab" @endif>{{$letter}}</a>
             <?php
                 }
             ?>

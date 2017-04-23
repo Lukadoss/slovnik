@@ -37,8 +37,16 @@
                     </thead>
                     <tbody>
                     @foreach($item as $town)
-                        <tr id="{{$town->region}}">
-                            <td class="mdl-data-table__cell--non-numeric">{{$town->region}}</td>
+                        @if(isset($checked))
+                            @foreach($checked as $check)
+                                @if($town->region === $check->region)
+                                    <?php $isSel = true; ?>
+                                    @break
+                                @endif
+                            @endforeach
+                        @endif
+                        <tr id="{{$town->region}}" @if(isset($isSel) && $isSel) class="is-selected" <?php $isSel = false; ?>@endif>
+                        <td class="mdl-data-table__cell--non-numeric">{{$town->region}}</td>
                         </tr>
                     @endforeach
 

@@ -69,6 +69,23 @@ class TermController extends Controller
 
     }
 
+    public function checkTerms(){
+        $terms = Term::where('accepted', '0')->get();
+        return view('term.termCheck', compact('terms'));
+    }
+
+    public function editTerm(){
+
+    }
+
+    public function deleteTerm(){
+
+    }
+
+    public function acceptTerm(){
+
+    }
+
     public function showTerms($sign = null)
     {
         $sign===null ? $terms = Term::where('term', 'LIKE', $this->getAlphabet()[0].'%')->where('accepted', '1')->get() : $terms = Term::where('term', 'LIKE', $sign.'%')->where('accepted', '1')->get();

@@ -48,6 +48,12 @@ Route::delete('/admin/deleteD-{id}', 'AdministrationController@deleteDistrict');
 Route::post('/user/district', 'DistrictController@addDistrict');
 
 Route::post('/term/new', 'TermController@addTerm');
-Route::get('/terms/{sign}', 'TermController@showTerms');
+Route::get('/term/waiting', 'TermController@checkTerms');
+Route::get('/list/{sign}', 'TermController@showTerms');
 Route::get('/list', 'TermController@showTerms');
+
+Route::get('/term/accept-{id}', 'TermController@acceptTerm');
+Route::get('/term/edit/{id}', 'TermController@showEdit');
+Route::patch('/term/edit-{id}', 'TermController@editTerm');
+Route::delete('/term/delete-{id}', 'TermController@deleteTerm');
 
