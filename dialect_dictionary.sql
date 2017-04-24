@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Pon 24. dub 2017, 06:37
+-- Vytvořeno: Pon 24. dub 2017, 06:40
 -- Verze serveru: 10.1.21-MariaDB
 -- Verze PHP: 7.1.1
 
@@ -6348,7 +6348,21 @@ INSERT INTO `district_administration` (`id`, `user_id`, `district_id`) VALUES
 (44, 2, 7),
 (45, 2, 2),
 (46, 2, 29),
-(47, 2, 3997);
+(47, 2, 3997),
+(48, 19, 1),
+(49, 19, 2),
+(50, 19, 3),
+(51, 19, 4),
+(52, 19, 5),
+(53, 19, 6),
+(54, 19, 7),
+(55, 19, 10),
+(56, 19, 12),
+(57, 19, 17),
+(58, 19, 19),
+(59, 19, 26),
+(60, 19, 29),
+(61, 19, 3997);
 
 -- --------------------------------------------------------
 
@@ -6511,7 +6525,7 @@ INSERT INTO `users` (`id`, `name`, `password`, `email`, `year_of_birth`, `native
 (14, 'Filip je kámoš', '$2y$10$ahUNEzOCoseRg1GPV1wEcep/T5xCJ73Zsqe.YL8GuBF9TrxBuLd/G', 'jsem@filek.cz', 1992, NULL, NULL, 'mlzCCD8Pt0tEUkeRiNvCdfxm89nSyfDcoIn3pD7nhIedQ2cjEws0cWgJGpZQ', 1),
 (15, 'Malej Bobek', '$2y$10$ao1P6H4b4lNN2XduM5n.keYoajCRLP7osJUYYsK4NDCEAjwhNWNLy', 'asd@feq.as', 1888, 89, 1102, NULL, 1),
 (17, 'Dikhed', '$2y$10$wJOuk1s1dHfdL33Y.99GfOZAmet8m3OtztfMhghwAT69o/3ecVOSC', 'dik@hed.cz', 1884, NULL, 2824, '6R3MJ5l0vydyV2FCNegNHg5Dald0LsVTm82EwQAtxEGzX2NoQkZy1mKzHZU6', 1),
-(18, 'admin', '$2y$10$bf4jNhqx1f86P84CivJkZ.LyGDFp/cfcOqKYIwIICzPhrimBTVKGW', 'admin@admin.cz', NULL, NULL, NULL, NULL, 2),
+(18, 'admin', '$2y$10$bf4jNhqx1f86P84CivJkZ.LyGDFp/cfcOqKYIwIICzPhrimBTVKGW', 'admin@admin.cz', NULL, NULL, NULL, 'VqgLXTmI26nrt1HNUm14vJtIiLrxzgIP11o5OIspvWbehl12GkeDU9zld0qR', 2),
 (19, 'spravce', '$2y$10$96GH8GcKSvdvX99v4ysScuHvdJw69Oj6bR9GUy5cmQx7Rebj36fue', 'spravce@spravce.cz', NULL, NULL, NULL, NULL, 1),
 (20, 'user', '$2y$10$sdUeXswPzhztZODIBoEcAuSJ2o3lst3ccXyYPqG24HJLTTsRiqlkW', 'user@user.cz', NULL, NULL, NULL, NULL, 1);
 
@@ -6618,7 +6632,7 @@ ALTER TABLE `districts`
 -- AUTO_INCREMENT pro tabulku `district_administration`
 --
 ALTER TABLE `district_administration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT pro tabulku `meanings`
 --
