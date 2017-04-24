@@ -30,12 +30,12 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return ($this->auth_level == 2);
+        return ($this->auth_level === 2);
     }
 
     public function getRole()
     {
-        if ($this->auth_level == 2) {
+        if ($this->auth_level === 2) {
             return "Administrátor";
         } elseif ($this->districtAdmin()->count() > 0) {
             return "Správce oblasti";
