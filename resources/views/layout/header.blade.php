@@ -11,23 +11,23 @@
         </nav>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation">
-            @if(auth()->user()->isAdmin())
-                <?php
-                $num = (new \App\Http\Controllers\AdministrationController())->getWaitingUsers();
-                if ($num>0){?>
-                <a class="mdl-navigation__link" href="/members" style="font-size: 20px; color: yellow;">
-                    <?php
-                    }
-                    if ($num === 1) {
-                        echo $num . ' nový uživatel';
-                    } elseif ($num <= 4 && $num>1) {
-                        echo $num . ' nový uživatelé';
-                    } elseif ($num>4) {
-                        echo $num . ' nových uživatelů';
-                    }
-                    if($num>0){?> </a> | <?php } ?>
-            @endif
             @if(auth()->check())
+                @if(auth()->user()->isAdmin())
+                    <?php
+                    $num = (new \App\Http\Controllers\AdministrationController())->getWaitingUsers();
+                    if ($num>0){?>
+                    <a class="mdl-navigation__link" href="/members" style="font-size: 20px; color: yellow;">
+                        <?php
+                        }
+                        if ($num === 1) {
+                            echo $num . ' nový uživatel';
+                        } elseif ($num <= 4 && $num>1) {
+                            echo $num . ' nový uživatelé';
+                        } elseif ($num>4) {
+                            echo $num . ' nových uživatelů';
+                        }
+                        if($num>0){?> </a> | <?php } ?>
+                @endif
                     <?php
                     $num = (new \App\Http\Controllers\TermController())->getNonCheckTermNum();
                     if ($num>0){?>
