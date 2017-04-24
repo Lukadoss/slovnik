@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--10-col mdl-grid">
-            @if(auth()->user()->isAdmin() && count($waitingUsers)>0)
+        @if(auth()->user()->isAdmin() && count($waitingUsers)>0)
+            <div class="mdl-cell mdl-cell--10-col mdl-grid">
                 <div class="mdl-cell mdl-cell--2-col mdl-color--white mdl-grid mdl-shadow--2dp">
                     <div style="text-align: center" class="mdl-cell mdl-cell--12-col"><h4>Schvalování registrace</h4></div>
                     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-cell mdl-cell--12-col" for="opt1">
@@ -15,25 +15,25 @@
                         <span class="mdl-radio__label">Smazat uživatele</span>
                     </label>
                 </div>
-            <div class="mdl-cell mdl-cell--10-col mdl-grid" style=" padding: 0; margin: 0;">
-                <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--white mdldata">
-                    <thead>
-                    <tr>
-                        <th class="mdl-data-table__cell--non-numeric">Uživatel ke schválení</th>
-                        <th class="mdl-data-table__cell--non-numeric">Email</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($waitingUsers as $user)
-                        <tr id="{{$user->id}}" class="clickableReg" about="{{$user->name}}">
-                            <td class="mdl-data-table__cell--non-numeric">{{$user->name}}</td>
-                            <td class="mdl-data-table__cell--non-numeric">{{$user->email}}</td>
+                <div class="mdl-cell mdl-cell--10-col mdl-grid" style=" padding: 0; margin: 0;">
+                    <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--white mdldata">
+                        <thead>
+                        <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Uživatel ke schválení</th>
+                            <th class="mdl-data-table__cell--non-numeric">Email</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        @foreach($waitingUsers as $user)
+                            <tr id="{{$user->id}}" class="clickableReg" about="{{$user->name}}">
+                                <td class="mdl-data-table__cell--non-numeric">{{$user->name}}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{$user->email}}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
         @endif
         @if(auth()->user()->isAdmin())
             <div class="mdl-cell mdl-cell--10-col mdl-grid">
