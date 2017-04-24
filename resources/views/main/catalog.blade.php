@@ -24,6 +24,16 @@
                     <div class="mdl-layout-spacer"></div>
                 @endif
         </div>
+        @if (session('success'))
+            <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--green-400 mdl-color-text--primary-contrast" style="margin-top: 150px; text-align: center">
+                <?php echo session('success') ?>
+            </div>
+        @endif
+        @if (session('info'))
+            <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--yellow-400 mdl-color-text--grey-900" style="margin-top: 10px; text-align: center">
+                <?php echo session('info') ?>
+            </div>
+        @endif
     </div>
     <script>
         $(document).ready(function () {

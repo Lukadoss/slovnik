@@ -90,13 +90,13 @@ class TermController extends Controller
         $verb = Verb::where('part_of_speech_id', $pos->id)->first();
 
         if(!auth()->user()->isTermViable($meaning->district->region))
-            return redirect()->to('/term/waiting')->with('info', 'K takové operaci nemáte přístup');
+            return redirect()->to('/list')->with('info', 'K takové operaci nemáte přístup');
         return view('term.editTerm', compact('term', 'towns', 'meaning', 'pos', 'noun', 'verb'));
     }
 
     public function deleteTerm($id){
         if(!auth()->user()->isTermViable(Meaning::where('term_id', $id)->first()->district->region))
-            return redirect()->to('/term/waiting')->with('info', 'K takové operaci nemáte přístup');
+            return redirect()->to('/list')->with('info', 'K takové operaci nemáte přístup');
 
         $term = Term::find($id);
         $pos = Part_of_speech::find($term->part_of_speech_id);
@@ -110,7 +110,7 @@ class TermController extends Controller
         Meaning::where('term_id', $id)->first()->delete();
         Term::destroy($id);
 
-        return redirect()->back()->with('info', 'Heslo úspěšně smazáno');
+        return redirect()->to('/list')->with('info', 'Heslo úspěšně smazáno');
     }
 
     public function acceptTerm($id){
@@ -125,6 +125,9 @@ class TermController extends Controller
     }
 
     public function editTerm($termId){
+        if(!auth()->user()->isTermViable(Meaning::where('term_id', $termId)->first()->district->region))
+            return redirect()->to('/list')->with('info', 'K takové operaci nemáte přístup');
+
         $this->validate(request(), [
             'term' => 'required',
             'pronunciation' => 'required',
@@ -179,7 +182,7 @@ class TermController extends Controller
         $meaning->district_id = request('district');
         $meaning->save();
 
-        return redirect('/term/waiting')->with('success', 'Heslo úspěšně přidáno.');
+        return redirect('/list')->with('success', 'Heslo úspěšně upraveno.');
     }
 
     public function getNonCheckTermNum(){

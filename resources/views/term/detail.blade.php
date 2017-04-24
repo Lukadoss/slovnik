@@ -105,6 +105,46 @@
                         </p>
                     </div>
                 @endif
+                <div class="mdl-cell mdl-cell--12-col mdl-grid">
+                    <a type="button" href="/term/edit/{{$term->id}}" class="mdl-button mdl-js-button mdl-cell mdl-cell--2-col mdl-button--raised mdl-button--primary">
+                        Editovat
+                    </a>
+                    <button id="{{$term->id}}" type="button" about="{{$term->term}}"  class="mdl-button mdl-js-button mdl-cell mdl-cell--2-col mdl-button--raised mdl-button--accent dial">
+                        Smazat
+                    </button>
+                    <dialog class="mdl-dialog">
+                        <form class="yolo" method="post">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <h4 class="rolo" style="text-align: center"></h4>
+                            <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                                <button type="submit" class="mdl-button">Smazat heslo</button>
+                                <button type="button" class="mdl-button close">Zavřít</button>
+                            </div>
+                        </form>
+
+                    </dialog>
+                </div>
+                <script>
+                    $(document).ready(function () {
+
+                        $(".dial").click(function () {
+                            var id = $(this).attr('id');
+                            var name = $(this).attr('about');
+
+                            dialogPolyfill.registerDialog(dialog);
+                            dialog.showModal();
+                            $(".yolo").attr("action", "/term/delete/" + id);
+                            $(".rolo").text(name);
+                        });
+
+                        var dialog = document.querySelector('dialog');
+
+                        dialog.querySelector('.close').addEventListener('click', function () {
+                            dialog.close();
+                        });
+                    });
+                </script>
             </div>
         </div>
     </div>

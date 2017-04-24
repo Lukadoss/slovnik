@@ -129,7 +129,7 @@
                             <li class="mdl-menu__item" data-val="3">Zájmeno</li>
                             <li class="mdl-menu__item" data-val="4">Číslovka</li>
                             <li class="mdl-menu__item" data-val="5">Sloveso</li>
-                            <li class="mdl-menu__item" data-val="6">Příslovec</li>
+                            <li class="mdl-menu__item" data-val="6">Příslovce</li>
                             <li class="mdl-menu__item" data-val="7">Předložka</li>
                             <li class="mdl-menu__item" data-val="8">Spojka</li>
                             <li class="mdl-menu__item" data-val="9">Částice</li>

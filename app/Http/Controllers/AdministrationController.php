@@ -100,4 +100,8 @@ class AdministrationController extends Controller
 
         return redirect('/members')->with('success', 'Uživateli nyní spravuje vybrané oblasti.');
     }
+
+    public function getWaitingUsers(){
+        return User::all('id', 'name', 'email', 'auth_level')->where('auth_level', '0')->count();
+    }
 }
