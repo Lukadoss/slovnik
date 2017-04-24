@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Pát 21. dub 2017, 06:00
+-- Vytvořeno: Pon 24. dub 2017, 06:01
 -- Verze serveru: 10.1.21-MariaDB
 -- Verze PHP: 7.1.1
 
@@ -6339,9 +6339,16 @@ CREATE TABLE `district_administration` (
 --
 
 INSERT INTO `district_administration` (`id`, `user_id`, `district_id`) VALUES
-(1, 3, 5),
-(2, 2, 45),
-(3, 2, 22);
+(15, 15, 4),
+(16, 15, 6),
+(38, 2, 1),
+(40, 2, 3),
+(42, 2, 5),
+(43, 2, 6),
+(44, 2, 7),
+(45, 2, 2),
+(46, 2, 29),
+(47, 2, 3997);
 
 -- --------------------------------------------------------
 
@@ -6372,7 +6379,10 @@ CREATE TABLE `meanings` (
 INSERT INTO `meanings` (`id`, `meaning`, `symptom`, `context`, `exemplification`, `examples`, `synonym`, `thesaurus`, `audio_path`, `term_id`, `user_id`, `district_id`) VALUES
 (1, 'podprsenka', 'historický', 'nasadila si na sebe šajsku', 'šajzk', 'wtf', 'podrpsenka', 'asd', 'tudy/tam/kudy/cesta/vede', 1, 1, 5),
 (2, 'popel', 'archaický', 'uhořel na popel', 'popl', 'popelík', 'prach', 'bronsosaurus', '/asd/aswfwff', 2, 1, 15),
-(3, 'wqbdq', NULL, NULL, NULL, NULL, NULL, NULL, '15967467_10206186883431325_634388467_o.jpg', 3, 17, 50);
+(3, 'wqbdq', 'wqf', 'qwf', 'fwq', 'yolo', 'wf', 'qwf', 'trumpcat.gif', 3, 1, 328),
+(4, 'wqvwqbdq', 'qbw', 'wbq', NULL, 'wdbq', 'wb', NULL, NULL, 4, 1, 206),
+(6, 'rhtrmt', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6, 1, 607),
+(8, 'Milovník koní', 'mozkové poruchy, bronochopneumonie, ZMK', 'Prcálista filip', 'Kdy to dělal v devěta-šedesátým, když děda skákal na granáty', 'Tvoje máma \"filip\"', 'Buřtnágl, prasečí', 'Tyranosaurus', 'trumpcat.gif', 8, 1, 2788);
 
 -- --------------------------------------------------------
 
@@ -6387,6 +6397,15 @@ CREATE TABLE `nouns` (
   `noun_sufix` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
   `part_of_speech_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci ROW_FORMAT=COMPACT;
+
+--
+-- Vypisuji data pro tabulku `nouns`
+--
+
+INSERT INTO `nouns` (`id`, `noun_gender`, `noun_sufix`, `part_of_speech_id`) VALUES
+(1, NULL, NULL, 2),
+(3, NULL, NULL, 4),
+(14, '-a', 'mužský', 6);
 
 -- --------------------------------------------------------
 
@@ -6405,7 +6424,11 @@ CREATE TABLE `part_of_speeches` (
 --
 
 INSERT INTO `part_of_speeches` (`id`, `part_of_speech`) VALUES
-(1, 'Přídavné jméno');
+(1, 'Sloveso'),
+(2, 'Podstatné jméno'),
+(4, 'Podstatné jméno'),
+(6, 'Podstatné jméno'),
+(7, 'Podstatné jméno');
 
 -- --------------------------------------------------------
 
@@ -6429,9 +6452,12 @@ CREATE TABLE `terms` (
 --
 
 INSERT INTO `terms` (`id`, `term`, `last_find`, `pronunciation`, `origin`, `accepted`, `part_of_speech_id`) VALUES
-(1, 'Šajska', '2017-04-11 23:21:26', '[šajska]', 'Jižní Čechy', 0, 1),
-(2, 'Popel', '2017-04-13 15:03:47', '[popel]', 'Střední čechy', 1, 2),
-(3, 'wqbdqwb', '2017-04-21 00:49:24', 'qwbdqwb', NULL, 0, 1);
+(1, 'Šajska', '2017-04-24 02:00:52', 'šajska', 'aj.', 1, 1),
+(2, 'Popel', '2017-04-24 01:07:03', 'popel', 'nj.', 1, 2),
+(3, 'Něco normálního', '2017-04-24 02:00:50', 'tu je', 'pl.', 1, 1),
+(4, 'Papír', '2017-04-21 13:58:42', 'kqwjfoqn', NULL, 1, 2),
+(6, 'zrnmrt', '2017-04-21 14:24:14', 'htmrthr', NULL, 1, 4),
+(8, 'Filip', '2017-04-24 02:00:54', 'Fífal', 'Němec', 1, 6);
 
 -- --------------------------------------------------------
 
@@ -6471,8 +6497,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `year_of_birth`, `native`, `current_city`, `remember_token`, `auth_level`) VALUES
-(1, 'Petr Lukašík', '$2y$10$gccO24n/6F9T2D/KBCYUqenhELkCOuOMMsbcRERLlTc9O5JkEHXza', 'asd@asd.asd', 1995, 5529, 3858, 'PhzBYmDyTOliRqnfA1b5LTfClpGllsaL4uark5rRMl47YY19h8Vk2re5Ayux', 2),
-(2, 'Pepa Novák', '$2y$10$iIbYKyqGzu5JBk64xw/7DO8Nqx0jz3hktOvpN9jsocTXnHMuGuoGS', 'qwq@wqd.ca', 1982, 89, 2271, 'd2JabOkbRAojDZd2FiLcIvjQD9CcjGDsDXDpQUSDT3JicfK8RRrAYRXhm0VH', 1),
+(1, 'Petr Lukašík', '$2y$10$gccO24n/6F9T2D/KBCYUqenhELkCOuOMMsbcRERLlTc9O5JkEHXza', 'asd@asd.asd', 1995, 5529, 3858, 'tQBZRp1cJlQrerIGnHsaQhAMZLq3It4DOHncBFAMv4FRKyEavHCeaJ82ceQ3', 2),
+(2, 'Pepa Novák', '$2y$10$iIbYKyqGzu5JBk64xw/7DO8Nqx0jz3hktOvpN9jsocTXnHMuGuoGS', 'qwq@wqd.ca', 1982, 89, 2271, 'gdUd1DxThgECRHEl5n4xvjRDAVcCDQRiAnfkcMPr4RWlGBZgCdSvxcDuEKwn', 1),
 (4, 'Bobeš Koukal', '$2y$10$X5uReLvEtFLqWu22jEbswugfZpSBuziXY9jLxDt9AbIhYtRQ8MxWG', 'qwq@wqd.asd', NULL, NULL, NULL, NULL, 1),
 (5, 'Jaromír Vavřinský', '$2y$10$yXUhE2wj6dVFOH/RDuzO9.bC4dZHhxqd0NIUZBIts9yCZaQY5Qh6W', 'qwq@wqd.asdd', NULL, 3715, NULL, NULL, 1),
 (6, 'Super Man', '$2y$10$vN9im4/5Fi0sF2tVA0w5HupcMaPo1c04Kkygio7wszOL6.fy4VE4.', 'caas@ewf.ctr', NULL, NULL, NULL, NULL, 1),
@@ -6480,7 +6506,10 @@ INSERT INTO `users` (`id`, `name`, `password`, `email`, `year_of_birth`, `native
 (11, 'Toxe Gustoslav', '$2y$10$UHM/tEOGF4OQLxmEV8t.uO1COqK1J2mXnPN8ZmIfVw/TN.V79TmdK', 'asd@asd.dsa', 1800, 52, 14, NULL, 1),
 (14, 'Filip je kámoš', '$2y$10$ahUNEzOCoseRg1GPV1wEcep/T5xCJ73Zsqe.YL8GuBF9TrxBuLd/G', 'jsem@filek.cz', 1992, NULL, NULL, 'mlzCCD8Pt0tEUkeRiNvCdfxm89nSyfDcoIn3pD7nhIedQ2cjEws0cWgJGpZQ', 1),
 (15, 'Malej Bobek', '$2y$10$ao1P6H4b4lNN2XduM5n.keYoajCRLP7osJUYYsK4NDCEAjwhNWNLy', 'asd@feq.as', 1888, 89, 1102, NULL, 1),
-(17, 'Dikhed', '$2y$10$wJOuk1s1dHfdL33Y.99GfOZAmet8m3OtztfMhghwAT69o/3ecVOSC', 'dik@hed.cz', 1884, NULL, 2824, '6R3MJ5l0vydyV2FCNegNHg5Dald0LsVTm82EwQAtxEGzX2NoQkZy1mKzHZU6', 1);
+(17, 'Dikhed', '$2y$10$wJOuk1s1dHfdL33Y.99GfOZAmet8m3OtztfMhghwAT69o/3ecVOSC', 'dik@hed.cz', 1884, NULL, 2824, '6R3MJ5l0vydyV2FCNegNHg5Dald0LsVTm82EwQAtxEGzX2NoQkZy1mKzHZU6', 1),
+(18, 'admin', '$2y$10$bf4jNhqx1f86P84CivJkZ.LyGDFp/cfcOqKYIwIICzPhrimBTVKGW', 'admin@admin.cz', NULL, NULL, NULL, NULL, 1),
+(19, 'spravce', '$2y$10$96GH8GcKSvdvX99v4ysScuHvdJw69Oj6bR9GUy5cmQx7Rebj36fue', 'spravce@spravce.cz', NULL, NULL, NULL, NULL, 1),
+(20, 'user', '$2y$10$sdUeXswPzhztZODIBoEcAuSJ2o3lst3ccXyYPqG24HJLTTsRiqlkW', 'user@user.cz', NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -6495,6 +6524,13 @@ CREATE TABLE `verbs` (
   `verb_valence` varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
   `part_of_speech_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci ROW_FORMAT=COMPACT;
+
+--
+-- Vypisuji data pro tabulku `verbs`
+--
+
+INSERT INTO `verbs` (`id`, `verb_aspect`, `verb_valence`, `part_of_speech_id`) VALUES
+(2, 'qbwd', 'qdwb', 1);
 
 --
 -- Klíče pro exportované tabulky
@@ -6573,32 +6609,32 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT pro tabulku `districts`
 --
 ALTER TABLE `districts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6255;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6251;
 --
 -- AUTO_INCREMENT pro tabulku `district_administration`
 --
 ALTER TABLE `district_administration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT pro tabulku `meanings`
 --
 ALTER TABLE `meanings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pro tabulku `nouns`
 --
 ALTER TABLE `nouns`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT pro tabulku `part_of_speeches`
 --
 ALTER TABLE `part_of_speeches`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pro tabulku `terms`
 --
 ALTER TABLE `terms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pro tabulku `tokens`
 --
@@ -6608,12 +6644,12 @@ ALTER TABLE `tokens`
 -- AUTO_INCREMENT pro tabulku `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT pro tabulku `verbs`
 --
 ALTER TABLE `verbs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
