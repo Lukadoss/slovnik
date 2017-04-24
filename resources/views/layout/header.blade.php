@@ -14,7 +14,7 @@
             @if(auth()->check())
                     <?php
                     $num = (new \App\Http\Controllers\TermController())->getNonCheckTermNum();
-                    if ($num>1){?>
+                    if ($num>0){?>
                         <a class="mdl-navigation__link" href="/term/waiting" style="font-size: 20px; color: yellow;">
                     <?php
                     }
@@ -25,7 +25,7 @@
                     } elseif ($num>4) {
                         echo $num . ' nových hesel';
                     }
-                    if($num>1){?> </a> | <?php } ?>
+                    if($num>0){?> </a> | <?php } ?>
 
                 <a class="mdl-navigation__link" href="/profile" style="font-size: 24px">{{auth()->user()->name}}</a>
                 <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">

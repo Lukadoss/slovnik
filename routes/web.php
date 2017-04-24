@@ -13,18 +13,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/protected', ['middleware' => ['auth', 'admin'], function() {
-    return "this page requires that you be logged in and an Admin";
-}]);
-
-Route::get('/', 'MainController@index')->name('home');
-Route::get('/register', 'MainController@register');
-Route::get('/login', 'MainController@login');
-Route::get('/term/{id}', 'MainController@termDetail');
-Route::get('/list/{sign}', 'MainController@showTerms');
-Route::get('/list', 'MainController@showTerms');
-Route::get('/search', 'MainController@searchTerms');
-
 Route::get('/members', 'PageController@showMembers');
 Route::get('/districts', 'PageController@showDistricts');
 Route::get('/comments', 'PageController@showComments');
@@ -58,3 +46,10 @@ Route::get('/term/edit/{id}', 'TermController@showEdit');
 Route::patch('/term/edit/{id}', 'TermController@editTerm');
 Route::delete('/term/delete/{id}', 'TermController@deleteTerm');
 
+Route::get('/', 'MainController@index')->name('home');
+Route::get('/register', 'MainController@register');
+Route::get('/login', 'MainController@login');
+Route::get('/term/{id}', 'MainController@termDetail');
+Route::get('/list/{sign}', 'MainController@showTerms');
+Route::get('/list', 'MainController@showTerms');
+Route::get('/search', 'MainController@searchTerms');

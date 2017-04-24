@@ -80,6 +80,7 @@ class User extends Authenticatable
         return $this->belongsTo(District::class, 'current_city');
     }
 
+
     public function meanings()
     {
         return $this->hasMany(Meaning::class)->orderBy('id', 'desc')->take(5);
