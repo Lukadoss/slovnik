@@ -14,7 +14,7 @@
 
             <label class="mdl-cell mdl-cell--4-col textLabel">Email<span style="color: red">*</span>:</label>
             <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                <input class="mdl-textfield__input" type="email" id="email" name="email" value="{{ old('email') }}" pattern="[a-zA-Z0-9-_]*@[a-zA-Z0-9-_]*\.[a-z]{2,4}">
+                <input class="mdl-textfield__input" type="email" id="email" name="email" value="{{ old('email') }}">
                 <label class="mdl-textfield__label" for="email">jan.novy@email.cz</label>
                 <span class="mdl-textfield__error">Není validní email</span>
                 <span class="error">{{$errors->first('email')}}</span>
