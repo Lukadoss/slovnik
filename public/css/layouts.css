@@ -37,6 +37,17 @@
     color: red;
 }
 
+.paginate .mdl-button{
+    min-width: 35px;
+    padding: 0;
+}
+
+a:disabled{
+    background-color: rgba(255,0,0,0.5);
+    color: white;
+    border-radius: 5px;
+}
+
 dialog {
     position: absolute;
     left: 0; right: 0;

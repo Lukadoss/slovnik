@@ -34,7 +34,8 @@ class MainController extends Controller
         $term->save();
 
         $meaning = $term->meaning->first();
-        return view('term.detail', compact('term', 'meaning'));
+        $district = $meaning->district;
+        return view('term.detail', compact('term', 'meaning', 'district'));
     }
 
     public function searchTerms(){

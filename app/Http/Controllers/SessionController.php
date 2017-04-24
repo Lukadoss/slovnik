@@ -49,8 +49,7 @@ class SessionController extends Controller
         return redirect()->back()->with('error', 'Špatný email nebo heslo. Zkuste to prosím znovu');
     }
 
-    public
-    function logout()
+    public function logout()
     {
         auth()->logout();
         return redirect()->home();

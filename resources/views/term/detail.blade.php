@@ -16,6 +16,14 @@
                 </div>
                 <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
                     <p class="mdl-cell mdl-cell--3-col" style="text-align: right; max-width: 100px;">
+                        Oblast užití:<br>
+                    </p>
+                    <p class="mdl-cell mdl-cell--6-col">
+                        {{$district->municipality.", ".$district->district.", ".$district->region}}<br>
+                    </p>
+                </div>
+                <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
+                    <p class="mdl-cell mdl-cell--3-col" style="text-align: right; max-width: 100px;">
                         Příklad ve větě:<br>
                     </p>
                     <p class="mdl-cell mdl-cell--6-col">
@@ -105,26 +113,30 @@
                         </p>
                     </div>
                 @endif
-                <div class="mdl-cell mdl-cell--12-col mdl-grid">
-                    <a type="button" href="/term/edit/{{$term->id}}" class="mdl-button mdl-js-button mdl-cell mdl-cell--2-col mdl-button--raised mdl-button--primary">
-                        Editovat
-                    </a>
-                    <button id="{{$term->id}}" type="button" about="{{$term->term}}"  class="mdl-button mdl-js-button mdl-cell mdl-cell--2-col mdl-button--raised mdl-button--accent dial">
-                        Smazat
-                    </button>
-                    <dialog class="mdl-dialog">
-                        <form class="yolo" method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
-                            <h4 class="rolo" style="text-align: center"></h4>
-                            <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-                                <button type="submit" class="mdl-button">Smazat heslo</button>
-                                <button type="button" class="mdl-button close">Zavřít</button>
-                            </div>
-                        </form>
+                @if(auth()->check())
+                    @if(auth()->user()->isTermViable($district->region))
+                        <div class="mdl-cell mdl-cell--12-col mdl-grid">
+                            <button id="{{$term->id}}" type="button" class="mdl-button mdl-js-button mdl-cell mdl-cell--2-col mdl-button--raised mdl-button--primary edit">
+                                Editovat
+                            </button>
+                            <button id="{{$term->id}}" type="button" about="{{$term->term}}" class="mdl-button mdl-js-button mdl-cell mdl-cell--2-col mdl-button--raised mdl-button--accent dial">
+                                Smazat
+                            </button>
+                            <dialog class="mdl-dialog">
+                                <form class="yolo" method="post">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <h4 class="rolo" style="text-align: center"></h4>
+                                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                                        <button type="submit" class="mdl-button">Smazat heslo</button>
+                                        <button type="button" class="mdl-button close">Zavřít</button>
+                                    </div>
+                                </form>
 
-                    </dialog>
-                </div>
+                            </dialog>
+                        </div>
+                    @endif
+                @endif
                 <script>
                     $(document).ready(function () {
 
@@ -136,6 +148,11 @@
                             dialog.showModal();
                             $(".yolo").attr("action", "/term/delete/" + id);
                             $(".rolo").text(name);
+                        });
+
+                        $(".edit").click(function () {
+                            var id = $(this).attr('id');
+                            location.href = "/term/edit/"+ id;
                         });
 
                         var dialog = document.querySelector('dialog');

@@ -34,14 +34,14 @@ class PageController extends Controller
     }
 
     public function showMembers(){
-        $users = User::all('id', 'name', 'year_of_birth', 'native', 'current_city', 'auth_level')->where('auth_level','<>', '0');
+        $users = User::where('auth_level','<>', '0')->paginate(15);
         $waitingUsers = User::all('id', 'name', 'email', 'auth_level')->where('auth_level', '0');
 
         return view('auth.members', compact('users', 'waitingUsers'));
     }
 
     public function showDistricts(){
-        $districts = District::all()->take(15);
+        $districts = District::paginate(15);
         return view('auth.districts', compact('districts'));
     }
 
