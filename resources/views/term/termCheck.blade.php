@@ -3,7 +3,7 @@
 @section('content')
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--10-col mdl-grid">
-            @if(auth()->user()->isAdmin())
+            @if(count($terms)>0)
                 <div class="mdl-cell mdl-cell--2-col">
                     <div class="mdl-color--white mdl-grid mdl-shadow--2dp">
                         <div style="text-align: center" class="mdl-cell mdl-cell--12-col"><h4>Vyberte akci na heslo</h4></div>
@@ -21,32 +21,33 @@
                         </label>
                     </div>
                 </div>
-            @else
-                <span class="mdl-layout-spacer"></span>
-            @endif
-            <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--10-col mdl-shadow--2dp mdl-color--white">
-                <thead>
-                <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Uživatel</th>
-                    <th class="mdl-data-table__cell--non-numeric">Správce oblastí</th>
-                    <th class="mdl-data-table__cell--non-numeric">Původní bydliště</th>
-                    <th class="mdl-data-table__cell--non-numeric">Momentální bydliště</th>
-                    <th>Rok narození</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($terms as $term)
-                    <tr id="{{$term->id}}" class="clickable" about="{{$term->term}}">
-                        <td class="mdl-data-table__cell--non-numeric">{{$term->term}}</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{$term->term}}</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{$term->term}}</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{$term->term}}</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{$term->term}}</td>
 
+                <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--10-col mdl-shadow--2dp mdl-color--white">
+                    <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">Heslo</th>
+                        <th class="mdl-data-table__cell--non-numeric">Výslovnost</th>
+                        <th class="mdl-data-table__cell--non-numeric">Význam</th>
+                        <th class="mdl-data-table__cell--non-numeric">Oblast užití</th>
+                        <th class="mdl-data-table__cell--non-numeric">Přidal</th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    @foreach($terms as $term)
+                        <tr id="{{$term->id}}" class="clickable" about="{{$term->term}}">
+                            <td class="mdl-data-table__cell--non-numeric">{{$term->term}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">[{{$term->pronunciation}}]</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{$term->meaning->first()->meaning}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{$term->meaning->first()->district->municipality.', '.$term->meaning->first()->district->district.', '.$term->meaning->first()->district->region}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{$term->meaning->first()->user->name}}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @else
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-cell mdl-cell--10-col mdl-shadow--2dp mdl-color--white" style="padding: 10px; text-align: center">Momentálně zde nejsou žádná hesla k potvrzení.</div>
+            @endif
         </div>
         @if (session('success'))
             <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--green-500 mdl-color-text--primary-contrast" style="margin-top: 10px; text-align: center">
@@ -61,12 +62,12 @@
         <span class="mdl-layout-spacer"></span>
     </div>
     <dialog class="mdl-dialog">
-        <form class="yolo" action="/term/waiting" method="post">
+        <form class="yolo" method="post">
             {{ csrf_field() }}
             {{ method_field('DELETE') }}
             <h4 class="rolo" style="text-align: center"></h4>
             <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-                <button type="submit" class="mdl-button">Smazat uživatele</button>
+                <button type="submit" class="mdl-button">Smazat heslo</button>
                 <button type="button" class="mdl-button close">Zavřít</button>
             </div>
         </form>
@@ -88,11 +89,11 @@
                             case 2:
                                 dialogPolyfill.registerDialog(dialog);
                                 dialog.showModal();
-                                $(".yolo").attr("action", "/term/delete-" + id);
+                                $(".yolo").attr("action", "/term/delete/" + id);
                                 $(".rolo").text(name);
                                 break;
                             case 3:
-                                location.href = "/term/accept-" + id;
+                                location.href = "/term/accept/" + id;
                                 break;
                             default:
                                 location.href = "/term/edit/" + id;

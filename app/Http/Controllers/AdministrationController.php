@@ -77,6 +77,10 @@ class AdministrationController extends Controller
                         $checked = array_values($checked);
                         $i--;
                         break;
+                    }elseif ($selected[$i]===''){
+                        unset($selected[$i]);
+                        $i--;
+                        break;
                     }
                 }
             }

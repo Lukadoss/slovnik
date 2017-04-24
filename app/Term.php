@@ -12,7 +12,7 @@ class Term extends Model
         return $this->hasMany(Meaning::class);
     }
 
-    public function pos(){
+    public function part_of_speech(){
         return $this->belongsTo(Part_of_speech::class);
     }
 

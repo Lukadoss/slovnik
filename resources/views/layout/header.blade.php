@@ -12,22 +12,23 @@
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation">
             @if(auth()->check())
-                @if(auth()->user()->isAdmin())
-                    <a class="mdl-navigation__link" href="/term/waiting" style="font-size: 20px; color: yellow;">
-                        <?php
-                            $num = (new \App\Term())::where('accepted', 0)->count();
-                            if ($num === 1){
-                                echo $num.' nové heslo';
-                            }elseif($num <= 4){
-                                echo $num.' nová hesla';
-                            }else{
-                                echo $num.' nových hesel';
-                            }
-                        ?>
-                    </a> |
-                @endif
+                    <?php
+                    $num = (new \App\Http\Controllers\TermController())->getNonCheckTermNum();
+                    if ($num>1){?>
+                        <a class="mdl-navigation__link" href="/term/waiting" style="font-size: 20px; color: yellow;">
+                    <?php
+                    }
+                    if ($num === 1) {
+                        echo $num . ' nové heslo';
+                    } elseif ($num <= 4 && $num>1) {
+                        echo $num . ' nová hesla';
+                    } elseif ($num>4) {
+                        echo $num . ' nových hesel';
+                    }
+                    if($num>1){?> </a> | <?php } ?>
+
                 <a class="mdl-navigation__link" href="/profile" style="font-size: 24px">{{auth()->user()->name}}</a>
-                <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon" >
+                <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
                     <i class="material-icons">more_vert</i>
                 </button>
 
@@ -48,13 +49,13 @@
     @if(Request::segment(1)==='list')
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
             <?php
-                $alphabet = (new \App\Http\Controllers\TermController())->getAlphabet();
-                Request::segment(2) ? $activeSign = Request::segment(2) : $activeSign = $alphabet[0];
+            $alphabet = (new \App\Http\Controllers\TermController())->getAlphabet();
+            Request::segment(2) ? $activeSign = Request::segment(2) : $activeSign = $alphabet[0];
             foreach ($alphabet as $letter){
             ?>
-                <a href="/list/{{$letter}}" @if($activeSign===$letter) class="mdl-layout__tab is-active" @else class="mdl-layout__tab" @endif>{{$letter}}</a>
+            <a href="/list/{{$letter}}" @if($activeSign===$letter) class="mdl-layout__tab is-active" @else class="mdl-layout__tab" @endif>{{$letter}}</a>
             <?php
-                }
+            }
             ?>
         </div>
     @endif

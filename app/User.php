@@ -44,6 +44,20 @@ class User extends Authenticatable
         }
     }
 
+    public function isTermViable($region)
+    {
+        if ($this->auth_level === 2) {
+            return true;
+        } elseif ($this->districtAdmin()->count() > 0) {
+            foreach ($this->districtAdmin() as $district){
+                if($region === $district->region) return true;
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
+
     public function getUserCities()
     {
         $cities = "";

@@ -138,13 +138,13 @@
                     </div>
 
                     <div id="podstjm" class="mdl-grid" style="padding: 0;">
-                        <label class="mdl-cell mdl-cell--4-col textLabel">Koncovka 2. pádu:</label>
+                        <label class="mdl-cell mdl-cell--4-col textLabel">Jmenný rod:</label>
                         <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
                             <input type="text" class="mdl-textfield__input" id="noun_gender" name="noun_gender" value="{{ old('noun_gender') }}">
                             <label class="mdl-textfield__label" for="noun_gender"></label>
                             <span class="error">{{$errors->first('noun_gender')}}</span>
                         </div>
-                        <label class="mdl-cell mdl-cell--4-col textLabel">Jmenný rod:</label>
+                        <label class="mdl-cell mdl-cell--4-col textLabel">Koncovka 2. pádu:</label>
                         <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
                             <input class="mdl-textfield__input" type="text" id="noun_sufix" name="noun_sufix" value="{{ old('noun_sufix') }}">
                             <label class="mdl-textfield__label" for="noun_sufix"></label>

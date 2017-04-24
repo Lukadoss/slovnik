@@ -28,7 +28,7 @@ class PageController extends Controller
             'text' => 'required'
         ]);
 
-//        Comment::create(request()->all());
+        Comment::create(request()->all());
 
         return redirect()->back();
     }

@@ -71,7 +71,7 @@
                 </thead>
                 <tbody>
                 @foreach($users as $user)
-                    <tr id="{{$user->id}}" class="clickable" about="{{$user->name}}">
+                    <tr id="{{$user->id}}" class="clickable" about="{{$user->name}}" @if(!auth()->user()->isAdmin()) onclick="location.href = '/profile/{{$user->id}}'" @endif>
                         <td class="mdl-data-table__cell--non-numeric">{{$user->name}}</td>
                         <td class="mdl-data-table__cell--non-numeric">{{$user->getUserCities()}}</td>
                         <td class="mdl-data-table__cell--non-numeric">@if(isset($user->native)){{$user->getNativeCity->municipality}} @else neuvedeno @endif</td>

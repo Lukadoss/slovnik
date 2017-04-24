@@ -52,8 +52,8 @@ Route::get('/term/waiting', 'TermController@checkTerms');
 Route::get('/list/{sign}', 'TermController@showTerms');
 Route::get('/list', 'TermController@showTerms');
 
-Route::get('/term/accept-{id}', 'TermController@acceptTerm');
+Route::get('/term/accept/{id}', 'TermController@acceptTerm');
 Route::get('/term/edit/{id}', 'TermController@showEdit');
-Route::patch('/term/edit-{id}', 'TermController@editTerm');
-Route::delete('/term/delete-{id}', 'TermController@deleteTerm');
+Route::patch('/term/edit/{id}', 'TermController@editTerm');
+Route::delete('/term/delete/{id}', 'TermController@deleteTerm');
 
