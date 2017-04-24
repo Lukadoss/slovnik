@@ -58,7 +58,7 @@
                             </thead>
                             <tbody>
                             @foreach($user->meanings as $meaning)
-                                <tr id="{{$meaning->term_id."-".$meaning->term->term}}" class="clickable">
+                                <tr id="{{$meaning->term_id}}" class="clickable">
                                     <td class="mdl-data-table__cell--non-numeric">{{$meaning->term->term}}</td>
                                     <td>
                                         @if(!$meaning->term->accepted)<i class="material-icons mdl-list__item-icon" style="color: #ff0007;">close</i>

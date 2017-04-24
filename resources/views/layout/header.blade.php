@@ -49,7 +49,7 @@
     @if(Request::segment(1)==='list')
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
             <?php
-            $alphabet = (new \App\Http\Controllers\TermController())->getAlphabet();
+            $alphabet = (new \App\Http\Controllers\MainController())->getAlphabet();
             Request::segment(2) ? $activeSign = Request::segment(2) : $activeSign = $alphabet[0];
             foreach ($alphabet as $letter){
             ?>

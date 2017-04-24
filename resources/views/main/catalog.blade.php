@@ -2,10 +2,34 @@
 
 @section('content')
     <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col mdl-color--amber page-content" style="-webkit-column-count: 10; -moz-column-count: 10; column-count: 15;">
-            @foreach ($terms as $term)
-                {{$term->term}}<br>
+        <div class="mdl-cell mdl-cell--12-col page-content mdl-grid">
+            @foreach ($terms->chunk(10) as $chunk)
+                <ul class="mdl-list mdl-cell mdl-cell--4-col mdl-grid">
+                    @foreach($chunk as $term)
+                        <li id="{{$term->id}}" class="mdl-list__item mdl-cell mdl-cell--12-col mdl-list__item--two-line clickable mdl-color--grey-50 mdl-shadow--2dp">
+                            <span class="mdl-list__item-primary-content">
+                            <span>{{$term->term." [".$term->pronunciation."] "}}</span>
+                            <span class="mdl-list__item-sub-title">{{$term->meaning->first()->context}}</span>
+                            </span>
+                            <span class="mdl-list__item-secondary-content">
+                                <i>{{$term->meaning->first()->meaning}}</i>
+                            </span>
+                        </li>
+                    @endforeach
+                </ul>
             @endforeach
+            @if(count($terms)<1)
+                    <div class="mdl-layout-spacer"></div>
+                    <div class="mdl-cell mdl-cell--10-col mdl-shadow--2dp mdl-color--white" style="padding: 10px; text-align: center">Nebylo nalezeno žádné heslo.</div>
+                    <div class="mdl-layout-spacer"></div>
+                @endif
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('.clickable').click(function () {
+                location.href = "/term/"+$(this).attr('id');
+            });
+        })
+    </script>
 @endsection

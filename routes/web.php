@@ -17,10 +17,13 @@ Route::get('/protected', ['middleware' => ['auth', 'admin'], function() {
     return "this page requires that you be logged in and an Admin";
 }]);
 
-Route::get('/tmpl{id}', 'MainController@template');
 Route::get('/', 'MainController@index')->name('home');
 Route::get('/register', 'MainController@register');
 Route::get('/login', 'MainController@login');
+Route::get('/term/{id}', 'MainController@termDetail');
+Route::get('/list/{sign}', 'MainController@showTerms');
+Route::get('/list', 'MainController@showTerms');
+Route::get('/search', 'MainController@searchTerms');
 
 Route::get('/members', 'PageController@showMembers');
 Route::get('/districts', 'PageController@showDistricts');
@@ -49,8 +52,6 @@ Route::post('/user/district', 'DistrictController@addDistrict');
 
 Route::post('/term/new', 'TermController@addTerm');
 Route::get('/term/waiting', 'TermController@checkTerms');
-Route::get('/list/{sign}', 'TermController@showTerms');
-Route::get('/list', 'TermController@showTerms');
 
 Route::get('/term/accept/{id}', 'TermController@acceptTerm');
 Route::get('/term/edit/{id}', 'TermController@showEdit');
