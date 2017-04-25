@@ -4,11 +4,15 @@
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col page-content mdl-grid">
             @foreach ($terms->chunk(10) as $chunk)
-                <ul class="mdl-list mdl-cell mdl-cell--4-col mdl-grid">
+                <ul class="mdl-list mdl-cell mdl-cell--4-col">
                     @foreach($chunk as $term)
                         <li id="{{$term->id}}" class="mdl-list__item mdl-cell mdl-cell--12-col mdl-list__item--two-line clickable mdl-color--grey-50 mdl-shadow--2dp">
                             <span class="mdl-list__item-primary-content">
+                                @if(strlen($term->pronunciation)>0)
                             <span>{{$term->term." [".$term->pronunciation."] "}}</span>
+                                @else
+                            <span>{{$term->term}}</span>
+                                @endif
                             <span class="mdl-list__item-sub-title">{{$term->context}}</span>
                             </span>
                             <span class="mdl-list__item-secondary-content">

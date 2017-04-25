@@ -37,8 +37,18 @@
                         <tr id="{{$term->id}}" class="clickable" about="{{$term->term}}">
                             <td class="mdl-data-table__cell--non-numeric">{{$term->term}}</td>
                             <td class="mdl-data-table__cell--non-numeric">[{{$term->pronunciation}}]</td>
-                            <td class="mdl-data-table__cell--non-numeric">{{$term->meaning}}</td>
-                            <td class="mdl-data-table__cell--non-numeric">{{$term->district->municipality.', '.$term->district->district.', '.$term->district->region}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                @if(strlen($term->meaning)>30)
+                                    <?php echo substr($term->meaning, 0, 30) . "..." ?>
+                                @else
+                                    {{$term->meaning}}
+                                @endif
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                @if(strlen($term->district->region)>1){{$term->district->municipality.', '.$term->district->district.', '.$term->district->region}}
+                                @else {{$term->district->municipality}}
+                                @endif
+                            </td>
                             <td class="mdl-data-table__cell--non-numeric">{{$term->user->name}}</td>
                         </tr>
                     @endforeach

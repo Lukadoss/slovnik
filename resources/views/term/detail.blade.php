@@ -19,7 +19,9 @@
                         Oblast užití:<br>
                     </p>
                     <p class="mdl-cell mdl-cell--6-col">
-                        {{$district->municipality.", ".$district->district.", ".$district->region}}<br>
+                        @if(strlen($term->district->region)>1){{$term->district->municipality.', '.$term->district->district.', '.$term->district->region}}
+                        @else {{$term->district->municipality}}
+                        @endif<br>
                     </p>
                 </div>
                 <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
