@@ -11,7 +11,7 @@
                         Význam:<br>
                     </p>
                     <p class="mdl-cell mdl-cell--6-col">
-                        {{$meaning->meaning}}<br>
+                        {{$term->meaning}}<br>
                     </p>
                 </div>
                 <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
@@ -27,7 +27,7 @@
                         Příklad ve větě:<br>
                     </p>
                     <p class="mdl-cell mdl-cell--6-col">
-                        {{$meaning->examples}}<br>
+                        {{$term->examples}}<br>
                     </p>
                 </div>
                 <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
@@ -35,7 +35,7 @@
                         Kontext:<br>
                     </p>
                     <p class="mdl-cell mdl-cell--6-col">
-                        {{$meaning->context}}<br>
+                        {{$term->context}}<br>
                     </p>
                 </div>
                 <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
@@ -43,7 +43,7 @@
                         Exemplifikace:<br>
                     </p>
                     <p class="mdl-cell mdl-cell--6-col">
-                        {{$meaning->exemplification}}<br>
+                        {{$term->exemplification}}<br>
                     </p>
                 </div>
                 <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
@@ -51,15 +51,16 @@
                         Symptom:<br>
                     </p>
                     <p class="mdl-cell mdl-cell--6-col">
-                        {{$meaning->symptom}}<br>
+                        {{$term->symptom}}<br>
                     </p>
                 </div>
+
                 <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
                     <p class="mdl-cell mdl-cell--3-col" style="text-align: right; max-width: 100px;">
                         Synonymum:<br>
                     </p>
                     <p class="mdl-cell mdl-cell--6-col">
-                        {{$meaning->synonym}}<br>
+                        {{$term->synonym}}<br>
                     </p>
                 </div>
                 <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
@@ -67,7 +68,7 @@
                         Thesaurus:<br>
                     </p>
                     <p class="mdl-cell mdl-cell--6-col">
-                        {{$meaning->thesaurus}}<br>
+                        {{$term->thesaurus}}<br>
                     </p>
                 </div>
                 <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
@@ -75,10 +76,10 @@
                         Audio záznam:<br>
                     </p>
                     <p class="mdl-cell mdl-cell--6-col">
-                        {{$meaning->audio_path}}<br>
+                        {{$term->audio_path}}<br>
                     </p>
                 </div>
-                @if($term->part_of_speech->part_of_speech === "Podstatné jméno")
+            @if($term->part_of_speech->part_of_speech === "Podstatné jméno")
                     <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
                         <p class="mdl-cell mdl-cell--3-col" style="text-align: right; max-width: 100px;">
                             Jmenný rod:<br>

@@ -81,9 +81,9 @@ class User extends Authenticatable
     }
 
 
-    public function meanings()
+    public function terms()
     {
-        return $this->hasMany(Meaning::class)->orderBy('id', 'desc')->take(5);
+        return $this->hasMany(Term::class)->orderBy('id', 'desc')->take(5);
     }
 
     public function districtAdmin()

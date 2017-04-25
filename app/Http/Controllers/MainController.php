@@ -32,10 +32,9 @@ class MainController extends Controller
         $term = Term::findOrFail($id);
         $term->last_find = Carbon::now();
         $term->save();
+        $district = $term->district;
 
-        $meaning = $term->meaning->first();
-        $district = $meaning->district;
-        return view('term.detail', compact('term', 'meaning', 'district'));
+        return view('term.detail', compact('term', 'district'));
     }
 
     public function searchTerms(){
@@ -46,10 +45,8 @@ class MainController extends Controller
 
     public function showTerms($sign = null)
     {
-        $sign===null ? $terms = Term::where('term', 'LIKE', $this->getAlphabet()[0].'%')->where('accepted', '1')->get() : $terms = Term::where('term', 'LIKE', $sign.'%')->where('accepted', '1')->get();
-//        $sign===null ? $terms = District::where('municipality', 'LIKE', $this->getAlphabet()[0].'%')->get() : $terms = District::where('municipality', 'LIKE', $sign.'%')->get();
-
         $alphabet = $this->getAlphabet();
+        $sign===null ? $terms = Term::where('term', 'LIKE', $alphabet[0].'%')->where('accepted', '1')->get() : $terms = Term::where('term', 'LIKE', $sign.'%')->where('accepted', '1')->get();
         return view('main.catalog', compact('alphabet', 'terms'));
     }
 

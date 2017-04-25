@@ -67,6 +67,7 @@
             <?php
             $alphabet = (new \App\Http\Controllers\MainController())->getAlphabet();
             Request::segment(2) ? $activeSign = Request::segment(2) : $activeSign = $alphabet[0];
+
             foreach ($alphabet as $letter){
             ?>
             <a href="/list/{{$letter}}" @if($activeSign===$letter) class="mdl-layout__tab is-active" @else class="mdl-layout__tab" @endif>{{$letter}}</a>

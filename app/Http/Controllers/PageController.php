@@ -15,22 +15,7 @@ class PageController extends Controller
         Carbon::setLocale('cs');
         date_default_timezone_set('Europe/Prague');
 
-        $this->middleware('auth', ['only' => ['showMembers', 'showDistricts', 'showNewTerm']]);
-    }
-
-    public function showComments(){
-        $comments = Comment::all()->sortByDesc('created_at');
-        return view('main.msg_board', compact('comments'));
-    }
-
-    public function publishComment(){
-        $this->validate(request(), [
-            'text' => 'required'
-        ]);
-
-        Comment::create(request()->all());
-
-        return redirect()->back();
+        $this->middleware('auth');
     }
 
     public function showMembers(){

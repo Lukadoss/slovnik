@@ -37,9 +37,9 @@
                         <tr id="{{$term->id}}" class="clickable" about="{{$term->term}}">
                             <td class="mdl-data-table__cell--non-numeric">{{$term->term}}</td>
                             <td class="mdl-data-table__cell--non-numeric">[{{$term->pronunciation}}]</td>
-                            <td class="mdl-data-table__cell--non-numeric">{{$term->meaning->first()->meaning}}</td>
-                            <td class="mdl-data-table__cell--non-numeric">{{$term->meaning->first()->district->municipality.', '.$term->meaning->first()->district->district.', '.$term->meaning->first()->district->region}}</td>
-                            <td class="mdl-data-table__cell--non-numeric">{{$term->meaning->first()->user->name}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{$term->meaning}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{$term->district->municipality.', '.$term->district->district.', '.$term->district->region}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{$term->user->name}}</td>
                         </tr>
                     @endforeach
                     </tbody>

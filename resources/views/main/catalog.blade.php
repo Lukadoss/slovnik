@@ -9,10 +9,10 @@
                         <li id="{{$term->id}}" class="mdl-list__item mdl-cell mdl-cell--12-col mdl-list__item--two-line clickable mdl-color--grey-50 mdl-shadow--2dp">
                             <span class="mdl-list__item-primary-content">
                             <span>{{$term->term." [".$term->pronunciation."] "}}</span>
-                            <span class="mdl-list__item-sub-title">{{$term->meaning->first()->context}}</span>
+                            <span class="mdl-list__item-sub-title">{{$term->context}}</span>
                             </span>
                             <span class="mdl-list__item-secondary-content">
-                                <i>{{$term->meaning->first()->meaning}}</i>
+                                <i>{{$term->meaning}}</i>
                             </span>
                         </li>
                     @endforeach

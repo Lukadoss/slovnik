@@ -48,49 +48,49 @@
 
                 <label class="mdl-cell mdl-cell--4-col textLabel">Význam<span style="color: red">*</span>:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <input class="mdl-textfield__input" type="text" id="meaning" name="meaning" value="{{$meaning->meaning}}">
+                    <input class="mdl-textfield__input" type="text" id="meaning" name="meaning" value="{{$term->meaning}}">
                     <label class="mdl-textfield__label" for="meaning"></label>
                     <span class="error">{{$errors->first('meaning')}}</span>
                 </div>
 
                 <label class="mdl-cell mdl-cell--4-col textLabel">Příklad ve větě:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <input class="mdl-textfield__input" type="text" id="example" name="example" value="{{$meaning->examples}}">
+                    <input class="mdl-textfield__input" type="text" id="example" name="example" value="{{$term->examples}}">
                     <label class="mdl-textfield__label" for="example"></label>
                     <span class="error">{{$errors->first('example')}}</span>
                 </div>
 
                 <label class="mdl-cell mdl-cell--4-col textLabel">Exemplifikace:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <input class="mdl-textfield__input" type="text" id="exemplification" name="exemplification" value="{{$meaning->exemplification}}">
+                    <input class="mdl-textfield__input" type="text" id="exemplification" name="exemplification" value="{{$term->exemplification}}">
                     <label class="mdl-textfield__label" for="exemplification"></label>
                     <span class="error">{{$errors->first('exemplification')}}</span>
                 </div>
 
                 <label class="mdl-cell mdl-cell--4-col textLabel">Kontext:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <input class="mdl-textfield__input" type="text" id="context" name="context" value="{{$meaning->context}}">
+                    <input class="mdl-textfield__input" type="text" id="context" name="context" value="{{$term->context}}">
                     <label class="mdl-textfield__label" for="context"></label>
                     <span class="error">{{$errors->first('context')}}</span>
                 </div>
 
                 <label class="mdl-cell mdl-cell--4-col textLabel">Příznak:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <input class="mdl-textfield__input" type="text" id="symptom" name="symptom" value="{{$meaning->symptom}}">
+                    <input class="mdl-textfield__input" type="text" id="symptom" name="symptom" value="{{$term->symptom}}">
                     <label class="mdl-textfield__label" for="symptom"></label>
                     <span class="error">{{$errors->first('symptom')}}</span>
                 </div>
 
                 <label class="mdl-cell mdl-cell--4-col textLabel">Synonymum:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <input class="mdl-textfield__input" type="text" id="synonym" name="synonym" value="{{$meaning->synonym}}">
+                    <input class="mdl-textfield__input" type="text" id="synonym" name="synonym" value="{{$term->synonym}}">
                     <label class="mdl-textfield__label" for="synonym"></label>
                     <span class="error">{{$errors->first('synonym')}}</span>
                 </div>
 
                 <label class="mdl-cell mdl-cell--4-col textLabel">Thesaurus:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <input class="mdl-textfield__input" type="text" id="thesaurus" name="thesaurus" value="{{$meaning->thesaurus}}">
+                    <input class="mdl-textfield__input" type="text" id="thesaurus" name="thesaurus" value="{{$term->thesaurus}}">
                     <label class="mdl-textfield__label" for="thesaurus"></label>
                     <span class="error">{{$errors->first('thesaurus')}}</span>
                 </div>
@@ -100,7 +100,7 @@
                     <select id="distSel" class="district" style="width: 100%;">
                         <option selected="selected"></option>
                         @foreach($towns as $town)
-                            <option value="{{$town->id}}" @if($meaning->district_id===$town->id) selected="selected" @endif>{{$town->municipality.", ".$town->district.", ".$town->region}}</option>
+                            <option value="{{$town->id}}" @if($term->district_id===$town->id) selected="selected" @endif>{{$town->municipality.", ".$town->district.", ".$town->region}}</option>
                         @endforeach
                     </select>
                     <input id="district" name="district" type="hidden" value="">
@@ -109,7 +109,7 @@
 
                 <label class="mdl-cell mdl-cell--4-col textLabel">Audio soubor:</label>
                 <div class="mdl-cell--8-col mdl-cell mdl-textfield mdl-js-textfield mdl-textfield--file">
-                    <input class="mdl-textfield__input" type="text" id="uploadFile" name="fileUp" value="{{$meaning->audio_path}}" readonly/>
+                    <input class="mdl-textfield__input" type="text" id="uploadFile" name="fileUp" value="{{$term->audio_path}}" readonly/>
                     <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
                         <i class="material-icons">attach_file</i><input type="file" id="uploadBtn">
                     </div>

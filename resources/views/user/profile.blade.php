@@ -45,7 +45,7 @@
                         </p>
                     @endif
                 </div>
-                @if($user->meanings->count()>0)
+                @if($user->terms->count()>0)
                     <div class="mdl-cell--12-col mdl-cell">
                         <hr>
                         <strong style="font-size: 18px;">Nedávná hesla přidaná uživatelem: </strong>
@@ -57,11 +57,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($user->meanings as $meaning)
-                                <tr id="{{$meaning->term_id}}" class="clickable">
-                                    <td class="mdl-data-table__cell--non-numeric">{{$meaning->term->term}}</td>
+                            @foreach($user->terms as $term)
+                                <tr id="{{$term->term_id}}" class="clickable">
+                                    <td class="mdl-data-table__cell--non-numeric">{{$term->term}}</td>
                                     <td>
-                                        @if(!$meaning->term->accepted)<i class="material-icons mdl-list__item-icon" style="color: #ff0007;">close</i>
+                                        @if(!$term->accepted)<i class="material-icons mdl-list__item-icon" style="color: #ff0007;">close</i>
                                         @else <i class="material-icons mdl-list__item-icon" style="color: #009813;">check</i>
                                         @endif
                                     </td>

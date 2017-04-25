@@ -8,17 +8,23 @@ class Term extends Model
         'accepted' => 'boolean',
     ];
 
-    public function meaning(){
-        return $this->hasMany(Meaning::class);
+    public function isAccepted(){
+        if($this->accepted)
+            return true;
+        return false;
     }
 
     public function part_of_speech(){
         return $this->belongsTo(Part_of_speech::class);
     }
 
-    public function isAccepted(){
-        if($this->accepted)
-            return true;
-        return false;
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class);
     }
 }
