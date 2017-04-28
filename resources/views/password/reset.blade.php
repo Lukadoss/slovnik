@@ -3,32 +3,32 @@
     <div class="mdl-grid">
         <div class="mdl-layout-spacer"></div>
         <div class="mdl-cell mdl-cell--4-col">
-            <form action="/login" method="post" class="mdl-grid mdl-color--white mdl-shadow--2dp">
+            <form action="/password/reset" method="post" class="mdl-grid mdl-color--white mdl-shadow--2dp">
                 {{ csrf_field() }}
-                <h4 class="mdl-cell--12-col mdl-cell">Přihlášení uživatele</h4>
-
-                <label class="mdl-cell mdl-cell--4-col textLabel">Email:</label>
+                <h4 class="mdl-cell--12-col mdl-cell">Zapomenuté heslo pro email</h4>
+                <input type="hidden" name="token" value="{{ $token }}">
+                <label class="mdl-cell mdl-cell--4-col textLabel">Potvrďte email:<span style="color: red">*</span>:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <input class="mdl-textfield__input" type="email" id="email" name="email" value="{{ old('email') }}">
+                    <input class="mdl-textfield__input" type="email" id="email" name="email">
                     <label class="mdl-textfield__label" for="email"></label>
-                    <span class="mdl-textfield__error">Není validní email</span>
                     <span class="error">{{$errors->first('email')}}</span>
                 </div>
 
-                <label class="mdl-cell mdl-cell--4-col textLabel">Heslo:</label>
+                <label class="mdl-cell mdl-cell--4-col textLabel">Nové heslo<span style="color: red">*</span>:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
                     <input class="mdl-textfield__input" type="password" id="password" name="password">
                     <label class="mdl-textfield__label" for="password"></label>
                     <span class="error">{{$errors->first('password')}}</span>
                 </div>
 
-                <label class="mdl-cell mdl-cell--4-col textLabel"></label>
-                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-cell--8-col mdl-cell" for="checkbox">
-                    <input type="checkbox" id="checkbox" name="remember" class="mdl-checkbox__input">
-                    <span class="mdl-checkbox__label">Pamatovat si mě</span>
-                </label>
-                <a href="/resetPassword" class="mdl-cell mdl-cell--4-col">Zapomněl jsem heslo</a>
-                <button type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Přihlásit</button>
+                <label class="mdl-cell mdl-cell--4-col textLabel">Potvrzení nového hesla<span style="color: red">*</span>:</label>
+                <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
+                    <input class="mdl-textfield__input" type="password" id="password_confirmation" name="password_confirmation">
+                    <label class="mdl-textfield__label" for="password_confirmation"></label>
+                    <span class="error">{{$errors->first('password_confirmation')}}</span>
+                </div>
+
+                <button type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Odeslat</button>
             </form>
             @if (session('error'))
                 <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--red-500 mdl-color-text--primary-contrast" style="margin-top: 10px; text-align: center">

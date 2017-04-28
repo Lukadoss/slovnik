@@ -39,7 +39,10 @@ class SessionController extends Controller
             'password' => 'required',
         ]);
 
-        if (User::where('email', request('email'))->firstOrFail()->auth_level === 0) {
+        $user = User::where('email', request('email'))->first();
+        if(!isset($user)) return redirect()->back()->with('error', 'Zadaný uživatel nenalezen.');
+
+        if ($user->auth_level === 0) {
             return redirect()->back()->with('info', 'Uživatel ještě není schválen administrátorem.<br>Kontaktujte administrátora pro schválení registrace.');
         } else {
             if (auth()->attempt(request(['email', 'password']), request('remember'))) {

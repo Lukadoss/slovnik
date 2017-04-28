@@ -4,14 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Term;
 use Carbon\Carbon;
+use Illuminate\Auth\Passwords\PasswordBroker;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
 
-    public function __construct()
+    use SendsPasswordResetEmails;
+
+    public function __construct(Guard $auth = null, PasswordBroker $passwords = null)
     {
-        $this->middleware('guest', ['only' => ['register', 'login']]);
+        $this->auth = $auth;
+        $this->passwords = $passwords;
+
+        $this->middleware('guest', ['only' => ['register', 'login', 'showSendEmail', 'showResetForm']]);
     }
+
 
     public function index()
     {
@@ -26,6 +36,14 @@ class MainController extends Controller
     public function login()
     {
         return view('user.login');
+    }
+
+    public function showSendEmail(){
+        return view('password.passReset');
+    }
+
+    public function showResetForm(Request $request, $token = null){
+        return view('password.reset', compact('request', 'token'));
     }
 
     public function termDetail($id){

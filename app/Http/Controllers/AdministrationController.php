@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\District;
 use App\District_administration;
+use App\Mail\Welcome;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AdministrationController extends Controller
 {
@@ -17,26 +19,35 @@ class AdministrationController extends Controller
 
     public function authUser($id)
     {
-        $user = User::findOrFail($id);
-        $user->auth_level = 1;
-        $user->save();
-
-        return redirect()->back()->with('success', 'Uživateli "' . $user->name . '" byla schválena registrace.');
+        $user = User::find($id);
+        if (isset($user)) {
+            $user->auth_level = 1;
+            $user->save();
+            Mail::to($user)->send(new Welcome($user));
+            return redirect()->back()->with('success', 'Uživateli "' . $user->name . '" byla schválena registrace a poslán email.');
+        }
+        return redirect()->back()->with('error', 'Zadaný uživatel nenalezen.');
     }
 
     public function editUser($id)
     {
-        $user = User::findOrFail($id);
-        $towns = District::all();
-        return view('user.settings', compact('user', 'towns'));
+        $user = User::find($id);
+        if (isset($user)) {
+            $towns = District::all();
+            return view('user.settings', compact('user', 'towns'));
+        }
+        return redirect()->back()->with('error', 'Zadaný uživatel nenalezen.');
     }
 
     public function deleteUser($id)
     {
         if (Hash::check(request('password'), auth()->user()->password)) {
             $name = User::findOrFail($id)->name;
-            User::destroy($id);
-            return redirect()->back()->with('info', 'Uživatel "' . $name . '" smazán.');
+            if (isset($name)) {
+                User::destroy($id);
+                return redirect()->back()->with('info', 'Uživatel "' . $name . '" smazán.');
+            }
+            return redirect()->back()->with('error', 'Zadaný uživatel nenalezen.');
         }
         return redirect()->back();
     }
@@ -51,16 +62,20 @@ class AdministrationController extends Controller
 
     public function showUserDistrict($id)
     {
-        $user = User::findOrFail($id);
-        $towns = District::distinct()->select('region')->get();
-        $checked = $user->districtAdmin();
-        return view('auth.distSettings', compact('user', 'towns', 'checked'));
+        $user = User::find($id);
+        if (isset($user)) {
+            $towns = District::distinct()->select('region')->get();
+            $checked = $user->districtAdmin();
+            return view('auth.distSettings', compact('user', 'towns', 'checked'));
+        }
+        return redirect()->back()->with('error', 'Zadaný uživatel nenalezen.');
     }
 
     public function addUserDistrict()
     {
         $selected = explode(',', request('region_name'));
         $user = User::findOrFail(request('user_id'));
+        if(!isset($user))  return redirect()->back()->with('error', 'Zadaný uživatel nenalezen.');
         $checked = array();
 
         foreach ($user->districtAdmin() as $district) {
@@ -77,7 +92,7 @@ class AdministrationController extends Controller
                         $checked = array_values($checked);
                         $i--;
                         break;
-                    }elseif ($selected[$i]===''){
+                    } elseif ($selected[$i] === '') {
                         unset($selected[$i]);
                         $i--;
                         break;
@@ -101,7 +116,8 @@ class AdministrationController extends Controller
         return redirect('/members')->with('success', 'Uživateli nyní spravuje vybrané oblasti.');
     }
 
-    public function getWaitingUsers(){
+    public function getWaitingUsers()
+    {
         return User::all('id', 'name', 'email', 'auth_level')->where('auth_level', '0')->count();
     }
 }

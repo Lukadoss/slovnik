@@ -1,6 +1,6 @@
 <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-        <img src="{{asset('images/zcu-logo.png')}}" style="height: 100%;">
+        <img src="{{asset('images/zcu-logo.png')}}" alt="ZČU logo" style="height: 100%;">
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="/">Vyhledávač</a>
             <a class="mdl-navigation__link" href="/list">Rejstřík</a>

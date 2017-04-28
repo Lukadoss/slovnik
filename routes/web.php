@@ -53,3 +53,8 @@ Route::get('/term/{id}', 'MainController@termDetail');
 Route::get('/list/{sign}', 'MainController@showTerms');
 Route::get('/list', 'MainController@showTerms');
 Route::get('/search', 'MainController@searchTerms');
+
+Route::get('/resetPassword',  'MainController@showSendEmail');
+Route::post('/resetPassword', 'MainController@sendResetLinkEmail');
+Route::get('/password/reset/{token}', ['uses' => 'MainController@showResetForm', 'as' => 'mail.reset']);
+Route::post('/password/reset', 'PasswordController@reset');

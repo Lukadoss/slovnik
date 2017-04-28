@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\District;
-use App\District_administration;
 use Carbon\Carbon;
+use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
+    use ResetsPasswords;
 
     public function __construct()
     {
