@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Pát 28. dub 2017, 20:48
+-- Vytvořeno: Pát 28. dub 2017, 22:32
 -- Verze serveru: 10.1.21-MariaDB
 -- Verze PHP: 7.1.1
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Databáze: `dialect_dictionary`
 --
+CREATE DATABASE IF NOT EXISTS `dialect_dictionary` DEFAULT CHARACTER SET utf8 COLLATE utf8_czech_ci;
+USE `dialect_dictionary`;
 
 -- --------------------------------------------------------
 
@@ -9562,7 +9564,7 @@ INSERT INTO `terms` (`id`, `term`, `pronunciation`, `meaning`, `origin`, `sympto
 (198, 'odpust', 'otpust', 'pouť, posvícení ', 'ML, Kr', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 198, 0, 0),
 (199, 'ozibat', 'ozybať', 'zábst', 'Z, ML', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 199, 0, 0),
 (200, 'pamatat', 'pamatať', 'pamatovat si', 'Z', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 200, 0, 0),
-(201, 'pantok', '', 'velká sekera', 'ML', '', '', '', '', '', '', '', '2017-04-28 16:22:22', 1, 201, 0, 0),
+(201, 'pantok', '', 'velká sekera', 'ML', '', '', '', '', '', '', '', '2017-04-28 17:04:20', 1, 201, 0, 0),
 (202, 'panva', '', 'kamnovec (nádrž na vodu zabudovaná do kamen)', 'Z', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 202, 0, 0),
 (203, 'paryzol', '', 'deštník ', 'Ch, Kr', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 203, 0, 0),
 (204, 'paskuda', '', 'pamlsek, laskomina', 'Z, Ch', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 204, 0, 0),
@@ -9828,7 +9830,7 @@ INSERT INTO `terms` (`id`, `term`, `pronunciation`, `meaning`, `origin`, `sympto
 (463, 'švigermuter', '', 'šuplík', 'Kr', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 469, 0, 0),
 (464, 'švrlak', 'šfrlak', 'zásvka u stolu', 'ML, Ch, Z', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 470, 0, 0),
 (465, 'švrčina', 'šfrčyna', 'válet, např. těsto v rukách', 'ML, Ch', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 471, 0, 0),
-(466, 'ťapat', 'čapač (Ch), ťapat (Z)', 'válet, např. těsto v rukách', '', '', '', '', '', '', '', '', '2017-04-28 16:32:04', 1, 472, 0, 0),
+(466, 'ťapat', 'čapač (Ch), ťapat (Z)', 'válet, např. těsto v rukách', '', '', '', '', '', '', '', '', '2017-04-28 17:04:18', 1, 472, 0, 0),
 (467, 'tela', 'těla, čela (Ch), ťěla, tela (ML, Z)', 'pěkný, hezký', '', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 473, 0, 0),
 (468, 'tetka', 'četka', 'skořápka', 'Ch, Kr', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 474, 0, 0),
 (469, 'tačky', '', 'teta', 'Z, ML', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 475, 0, 0),
@@ -9871,17 +9873,17 @@ INSERT INTO `terms` (`id`, `term`, `pronunciation`, `meaning`, `origin`, `sympto
 (506, 'štecher,', '', 'jednou, jedenkrát', 'ML', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 513, 0, 0),
 (507, 'štechůvka', '-ufka', 'kolikrát', 'Ch', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 514, 0, 0),
 (508, 'šucplech', '', 'naposledy', 'Ch', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 515, 0, 0),
-(509, 'achtlik', '', 'manželka, matka robátek', '', '', '', '', '', '', '', '', '2017-04-27 14:40:38', 1, 516, 0, 0),
+(509, 'achtlik', '', 'manželka, matka robátek', '', '', '', '', '', '', '', '', '2017-04-28 18:25:59', 1, 516, 0, 0),
 (510, 'ajerkucha', '', 'švestka', '', '', '', '', '', '', '', '', '2017-04-27 14:40:38', 1, 517, 0, 0),
 (511, 'aji', '', 'povidla', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '2017-04-25 18:06:48', 1, 518, 0, 0),
-(512, 'ajmer', '', 'březí (kráva)', '', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 520, 0, 0),
-(513, 'ajnkvartyrunk', '', 'rýč', '', '', '', '', '', 'štechůvka', '', '', '2017-04-25 18:06:48', 1, 521, 0, 0),
+(512, 'ajmer', '', 'březí (kráva)', '', '', '', '', '', '', '', '', '2017-04-28 17:08:12', 1, 520, 0, 0),
+(513, 'ajnkvartyrunk', '', 'rýč', '', '', '', '', '', 'štechůvka', '', '', '2017-04-28 17:07:23', 1, 521, 0, 0),
 (514, 'alebo/lebo', '', 'rýč', 'Ch, ML', '', '', '', '', 'štecher', '', '', '2017-04-25 18:06:48', 1, 522, 0, 0),
-(515, 'ancug', 'ancuk', 'blatník šufan; zdrob. šufanek,naběračka (kuchyňská n. zednická) ', 'Ch, ML, Z, Kr', '', '', '', '', '', '', '', '2017-04-25 17:11:01', 1, 523, 0, 0),
-(516, 'apfelzina', 'apfelzyna', 'hospodská míra', 'Ch', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 524, 0, 0),
+(515, 'ancug', 'ancuk', 'blatník šufan; zdrob. šufanek,naběračka (kuchyňská n. zednická) ', 'Ch, ML, Z, Kr', '', '', '', '', '', '', '', '2017-04-28 17:08:14', 1, 523, 0, 0),
+(516, 'apfelzina', 'apfelzyna', 'hospodská míra', 'Ch', '', '', '', '', '', '', '', '2017-04-28 17:07:59', 1, 524, 0, 0),
 (517, 'arbajtka', '', 'palačinka', 'ML', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 525, 0, 0),
 (518, 'auzgus', '', 'i, též', 'Ch', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 526, 0, 0),
-(519, 'auvaštiš', '-ty-', 'i, též', 'Ch', '', '', '', '', '', '', '', '2017-04-25 17:03:37', 1, 527, 0, 0),
+(519, 'auvaštiš', '-ty-', 'i, též', 'Ch', '', '', '', '', '', '', '', '2017-04-28 17:08:09', 1, 527, 0, 0),
 (520, 'až', 'aš', 'kbelík', 'ML, Z, Ch', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 528, 0, 0),
 (521, 'baj', '', 'ubytování', 'Ch, ML, Z, Kr', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 529, 0, 0),
 (522, 'bajstler', '', '', 'Ch', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 530, 0, 0),
@@ -10246,7 +10248,7 @@ INSERT INTO `terms` (`id`, `term`, `pronunciation`, `meaning`, `origin`, `sympto
 (887, 'lyžka', 'łyžka', 'vypomáhat', '', '', 'Podej mi lyžke!', '', '', '', '', '', '2017-04-25 18:06:48', 1, 899, 0, 0),
 (889, 'drogi', '', 'bolest hlavy', '', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 901, 0, 0),
 (890, 'kanůnada na brane', '', 'hladit', '', 'em. ', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 902, 0, 0),
-(891, 'albo', '', 'hloupost', 'Komorní Lhotka', '', '', '', '', '', '', '', '2017-04-25 18:06:48', 1, 903, 0, 0),
+(891, 'albo', '', 'hloupost', 'Komorní Lhotka', '', '', '', '', '', '', '', '2017-04-28 17:02:47', 1, 903, 0, 0),
 (892, 'picť ', '', 'bočnice vozu', 'Bohumín', '', '', 'Buchty pikla mama. ', '', '', '', '', '2017-04-25 18:06:48', 1, 904, 0, 0),
 (893, 'pijan', '', 'nahnilé ovoce', 'Bohumín', '', '', 'On byl teš pijan. ', '', '', '', '', '2017-04-25 18:06:48', 1, 905, 0, 0),
 (894, 'kelerub', '', 'talíř', 'Jilešovice', '', '', '', '', NULL, '', '', '2017-04-25 18:06:48', 1, 906, 0, 0),
@@ -10944,7 +10946,7 @@ INSERT INTO `terms` (`id`, `term`, `pronunciation`, `meaning`, `origin`, `sympto
 (1623, 'karak', '', 'zranit se', '', '', 'Ja bych ho nechtila se všim s jeho dvorem, karak nemám nic.', '', '', '', '', '', '2017-04-25 18:06:48', 1, 1659, 0, 0),
 (1624, 'karakdlouho', 'karakdlouho', 'štětec', '', '', 'S mámou huž to trvá karakdlouho', '', '', '', '', '', '2017-04-25 18:06:48', 1, 1660, 0, 0),
 (1625, 'kdežkolivkoli', 'gdeškolifkoli', 'kolena', '', '', 'S mlčením vobrátíš kdežkolivkoli a s křikem zvrátíš na rovným poli', '', '', '', '', '', '2017-04-25 18:06:48', 1, 1661, 0, 0),
-(1626, 'kekanyj', 'kekanij', 'téct', '', '', 'Koukni, máš kekanyj po čadle', '', '', '', '', '', '2017-04-25 18:06:48', 1, 1662, 0, 0),
+(1626, 'kekanyj', 'kekanij', 'téct', '', '', 'Koukni, máš kekanyj po čadle', '', '', '', '', '', '2017-04-28 17:04:22', 1, 1662, 0, 0),
 (1627, 'kličkovat', '', 'kolotoč', '', '', 'Ječmen kličkuje', '', '', '', '', '', '2017-04-25 18:06:48', 1, 1663, 0, 0),
 (1628, 'klín', '', 'dělat', '', '', 'Tůlik klínů, to je na nic vorání, je samá obrátka. ', '', '', '', '', '', '2017-04-25 18:06:48', 1, 1664, 0, 0),
 (1629, 'klípě', 'klípje', 'malá židla', '', '', 'Já si skočím na záhumenec pro klípě trávy housatom.', '', '', '', '', '', '2017-04-25 18:06:48', 1, 1665, 0, 0),
@@ -11142,7 +11144,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `year_of_birth`, `native`, `current_city`, `remember_token`, `auth_level`) VALUES
 (0, 'admin', '$2y$10$bf4jNhqx1f86P84CivJkZ.LyGDFp/cfcOqKYIwIICzPhrimBTVKGW', 'admin@admin.cz', NULL, NULL, NULL, 'ZodmzcjGQ7orSILQOVuSvbPU0pLcrbMhtCl2s5awE8YtOFb223HfF6j8POqc', 2),
-(1, 'Petr Lukašík', '$2y$10$Cg5IxXyHxCqDcrDvhv0ZM.u66Tultp/3ICcqt1PkPMcQc0Ar5FdwK', 'asd@asd.asd', 1995, 5529, 3858, 'AseHpBHDVrHdu3Cieqf1XKb0gf7zPXKpFYeUdgXlQwbvFvTkxnXW3XYNUvKJ', 2),
+(1, 'Petr Lukašík', '$2y$10$Cg5IxXyHxCqDcrDvhv0ZM.u66Tultp/3ICcqt1PkPMcQc0Ar5FdwK', 'asd@asd.asd', 1995, 5529, 3858, 'baCR51s8D9kb632WchNtGrOAMag618s10dOUE71sQD1vrZxrvSrheid8oMNQ', 2),
 (2, 'Pepa Novák', '$2y$10$iIbYKyqGzu5JBk64xw/7DO8Nqx0jz3hktOvpN9jsocTXnHMuGuoGS', 'qwq@wqd.ca', 1982, 89, 2271, 'Np9kvtQuOVHSKjf37yg6wYK4gdDmiSfQlKZotOgYDPAapQveEyZS85kzRsvF', 1),
 (19, 'spravce', '$2y$10$96GH8GcKSvdvX99v4ysScuHvdJw69Oj6bR9GUy5cmQx7Rebj36fue', 'spravce@spravce.cz', NULL, NULL, NULL, 'QLDopRhrB03KWRFnDOfLpRQAfXkFR1CZsX1pczcuf1C8Yj3hnVd3yMaOWtk0', 1),
 (20, 'user', '$2y$10$sdUeXswPzhztZODIBoEcAuSJ2o3lst3ccXyYPqG24HJLTTsRiqlkW', 'user@user.cz', NULL, NULL, NULL, 'F0wrmapW8jW3Gy9SzXekfM7vFnuBoviXwbzqtLNlhXCRKUOO8jkJKn39Oqh0', 1),
@@ -11567,7 +11569,7 @@ ALTER TABLE `part_of_speeches`
 -- AUTO_INCREMENT pro tabulku `terms`
 --
 ALTER TABLE `terms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1777;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1776;
 --
 -- AUTO_INCREMENT pro tabulku `tokens`
 --
