@@ -3,10 +3,10 @@
 @section('content')
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col page-content mdl-grid">
-            @foreach ($terms->chunk(10) as $chunk)
-                <ul class="mdl-list mdl-cell mdl-cell--4-col">
+            @foreach ($terms->chunk(3) as $chunk)
+                <ul class="mdl-list mdl-cell mdl-cell--12-col mdl-grid" style="padding: 0; margin: 0;">
                     @foreach($chunk as $term)
-                        <li id="{{$term->id}}" class="mdl-list__item mdl-cell mdl-cell--12-col mdl-list__item--two-line clickable mdl-color--grey-50 mdl-shadow--2dp">
+                        <li id="{{$term->id}}" class="mdl-list__item mdl-cell mdl-cell--4-col mdl-list__item--two-line clickable mdl-color--grey-50 mdl-shadow--2dp">
                             <span class="mdl-list__item-primary-content">
                                 @if(strlen($term->pronunciation)>0)
                             <span>{{$term->term." [".$term->pronunciation."] "}}</span>
@@ -26,7 +26,7 @@
                     <div class="mdl-layout-spacer"></div>
                     <div class="mdl-cell mdl-cell--10-col mdl-shadow--2dp mdl-color--white" style="padding: 10px; text-align: center">Nebylo nalezeno žádné heslo.</div>
                     <div class="mdl-layout-spacer"></div>
-                @endif
+            @endif
         </div>
         @if (session('success'))
             <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--green-400 mdl-color-text--primary-contrast" style="margin-top: 150px; text-align: center">

@@ -33,19 +33,19 @@ class SessionController extends Controller
 
     public function login()
     {
-
         $this->validate(request(), [
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
+        request('remember')==="on" ? $remember = true : $remember = false;
         $user = User::where('email', request('email'))->first();
         if(!isset($user)) return redirect()->back()->with('error', 'Zadaný uživatel nenalezen.');
+
 
         if ($user->auth_level === 0) {
             return redirect()->back()->with('info', 'Uživatel ještě není schválen administrátorem.<br>Kontaktujte administrátora pro schválení registrace.');
         } else {
-            if (auth()->attempt(request(['email', 'password']), request('remember'))) {
+            if (auth()->attempt(request(['email', 'password']), $remember)) {
                 return redirect()->home()->with('success', '<strong>Úspěšně přihlášen!</strong>');
             }
         }

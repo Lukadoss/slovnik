@@ -80,7 +80,7 @@
                 </div>
 
                 <button type="submit" onclick="sub()" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">
-                    Odeslat
+                    Uložit
                 </button>
             </form>
         </div>

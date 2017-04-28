@@ -4,7 +4,8 @@
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col page-content mdl-color--white mdl-shadow--2dp">
             <div class="mdl-grid">
-                <h3 class="mdl-cell mdl-cell--12-col"><strong>{{$term->term}}</strong> &nbsp;<span style="font-size: 28px">{{"[".$term->pronunciation."]"}}</span>&nbsp;@if(isset($term->origin))<span
+                <h3 class="mdl-cell mdl-cell--12-col"><strong>{{$term->term}}</strong> @if(strlen($term->pronunciation)>0)&nbsp;<span
+                            style="font-size: 28px">{{"[".$term->pronunciation."]"}}</span>@endif&nbsp;@if(strlen($term->origin)>0)<span
                             style="font-size: 22px"> z {{$term->origin}}</span>@endif</h3>
                 <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
                     <p class="mdl-cell mdl-cell--3-col" style="text-align: right; max-width: 100px;">
@@ -81,7 +82,7 @@
                         {{$term->audio_path}}<br>
                     </p>
                 </div>
-            @if($term->part_of_speech->part_of_speech === "Podstatné jméno")
+                @if($term->part_of_speech->part_of_speech === "Podstatné jméno")
                     <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
                         <p class="mdl-cell mdl-cell--3-col" style="text-align: right; max-width: 100px;">
                             Jmenný rod:<br>
@@ -155,7 +156,7 @@
 
                         $(".edit").click(function () {
                             var id = $(this).attr('id');
-                            location.href = "/term/edit/"+ id;
+                            location.href = "/term/edit/" + id;
                         });
 
                         var dialog = document.querySelector('dialog');

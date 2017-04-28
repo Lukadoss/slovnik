@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\District;
 use App\Term;
 use Carbon\Carbon;
 use Illuminate\Auth\Passwords\PasswordBroker;
@@ -25,7 +26,9 @@ class MainController extends Controller
 
     public function index()
     {
-        return view('main.index');
+        $towns = District::all();
+        $lastTerms = Term::where('accepted', '1')->orderBy('last_find', 'desc')->take(5)->get();
+        return view('main.index', compact('lastTerms', 'towns'));
     }
 
     public function register()
@@ -38,15 +41,18 @@ class MainController extends Controller
         return view('user.login');
     }
 
-    public function showSendEmail(){
+    public function showSendEmail()
+    {
         return view('password.passReset');
     }
 
-    public function showResetForm(Request $request, $token = null){
+    public function showResetForm(Request $request, $token = null)
+    {
         return view('password.reset', compact('request', 'token'));
     }
 
-    public function termDetail($id){
+    public function termDetail($id)
+    {
         $term = Term::findOrFail($id);
         $term->last_find = Carbon::now();
         $term->save();
@@ -55,8 +61,22 @@ class MainController extends Controller
         return view('term.detail', compact('term', 'district'));
     }
 
-    public function searchTerms(){
-        $terms = Term::where('term', 'LIKE', '%'.request('searchTerm').'%')->where('accepted', '1')->get();
+    public function searchTerms()
+    {
+
+        switch ((int)request('filter')) {
+            case 1:
+                $terms = Term::where('term', 'LIKE', '%' . request('searchTerm') . '%')->where('accepted', '1')->get();
+                break;
+            case 2:
+                $terms = Term::where('meaning', 'LIKE', '%' . request('searchTerm') . '%')->where('accepted', '1')->get();
+                break;
+            case 3:
+                $terms = Term::where('district_id', request('district'))->where('accepted', '1')->get();
+                break;
+            default:
+                return redirect()->back()->with('error', 'Straší tady duchové, nešahat!');
+        }
         $alphabet = $this->getAlphabet();
         return view('main.catalog', compact('alphabet', 'terms'));
     }
@@ -64,7 +84,7 @@ class MainController extends Controller
     public function showTerms($sign = null)
     {
         $alphabet = $this->getAlphabet();
-        $sign===null ? $terms = Term::where('term', 'LIKE', $alphabet[0].'%')->where('accepted', '1')->get() : $terms = Term::where('term', 'LIKE', $sign.'%')->where('accepted', '1')->get();
+        $sign === null ? $terms = Term::where('term', 'LIKE', $alphabet[0] . '%')->where('accepted', '1')->get() : $terms = Term::where('term', 'LIKE', $sign . '%')->where('accepted', '1')->get();
         return view('main.catalog', compact('alphabet', 'terms'));
     }
 
@@ -84,15 +104,18 @@ class MainController extends Controller
         }
     }
 
-    public function getAlphabet(){
+    public function getAlphabet()
+    {
         $terms = Term::orderBy('term', 'asc')->where('accepted', '1')->get();
         $alphabet = array();
-        foreach ($terms as $term){
-            if (!in_array(mb_strtoupper($this->mb_str_split($term->term)[0]), $alphabet))
-            {
+        foreach ($terms as $term) {
+            if (!in_array(mb_strtoupper($this->mb_str_split($term->term)[0]), $alphabet)) {
                 $alphabet[] = mb_strtoupper($this->mb_str_split($term->term)[0]);
             }
         }
+
+        $alphabet = array_diff($alphabet, ['Ć', 'Ĺ', 'Ź', 'Ď', 'Ó', 'Ť']);
+
         return $alphabet;
     }
 }
