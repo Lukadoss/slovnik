@@ -2,7 +2,7 @@
 -- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Počítač: 127.0.0.1
+-- Počítač: localhost
 -- Vytvořeno: Sob 29. dub 2017, 03:30
 -- Verze serveru: 10.1.21-MariaDB
 -- Verze PHP: 7.1.1
