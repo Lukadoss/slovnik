@@ -54,7 +54,7 @@ class UserController extends Controller
             'native' => 'nullable|exists:districts,id',
             'curr_city' => 'nullable|exists:districts,id'
         ]);
-        auth()->user()->isAdmin() ? $user = User::find(request('id')) : $user = auth()->user();
+        auth()->user()->isAdmin() ? $user = User::findOrFail(request('id')) : $user = auth()->user();
 
         if (request()->has('name') && (request('name') !== $user->name)) {
             $user->name = request('name');

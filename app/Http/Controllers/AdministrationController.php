@@ -19,7 +19,7 @@ class AdministrationController extends Controller
 
     public function authUser($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         if (isset($user)) {
             $user->auth_level = 1;
             $user->save();
@@ -31,7 +31,7 @@ class AdministrationController extends Controller
 
     public function editUser($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         if (isset($user)) {
             $towns = District::all();
             return view('user.settings', compact('user', 'towns'));
@@ -62,7 +62,7 @@ class AdministrationController extends Controller
 
     public function showUserDistrict($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         if (isset($user)) {
             $towns = District::distinct()->select('region')->get();
             $checked = $user->districtAdmin();

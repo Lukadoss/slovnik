@@ -79,7 +79,7 @@ class TermController extends Controller
     public function showEdit($id){
         $term = Term::findOrFail($id);
         $towns = District::all();
-        $pos = Part_of_speech::find($term->part_of_speech_id);
+        $pos = Part_of_speech::findOrFail($term->part_of_speech_id);
         $noun = Noun::where('part_of_speech_id', $pos->id)->first();
         $verb = Verb::where('part_of_speech_id', $pos->id)->first();
 
@@ -93,7 +93,7 @@ class TermController extends Controller
         if(!auth()->user()->isTermViable($term->district->region))
             return redirect()->to('/list')->with('info', 'K takové operaci nemáte přístup');
 
-        $pos = Part_of_speech::find($term->part_of_speech_id);
+        $pos = Part_of_speech::findOrFail($term->part_of_speech_id);
 
         if($noun = Noun::where('part_of_speech_id', $pos->id)->first()){
             Noun::destroy($noun->id);
@@ -107,7 +107,7 @@ class TermController extends Controller
     }
 
     public function acceptTerm($id){
-        $term = Term::find($id);
+        $term = Term::findOrFail($id);
         if(!auth()->user()->isTermViable($term->district->region))
             return redirect()->to('/term/waiting')->with('info', 'K takové operaci nemáte přístup');
 
@@ -126,11 +126,11 @@ class TermController extends Controller
             'pos' => 'required'
         ]);
 
-        $term = Term::find($termId);
+        $term = Term::findOrFail($termId);
         if(!auth()->user()->isTermViable($term->district->region))
             return redirect()->to('/list')->with('info', 'K takové operaci nemáte přístup');
 
-        $pos = Part_of_speech::find($term->part_of_speech_id);
+        $pos = Part_of_speech::findOrFail($term->part_of_speech_id);
 
         if($noun = Noun::where('part_of_speech_id', $pos->id)->first()){
             Noun::destroy($noun->id);
