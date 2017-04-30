@@ -16,15 +16,11 @@
     </head>
 
     <body>
-        <?php echo '<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-drawer-button mdl-layout__header--scroll mdl-layout--fixed-tabs">' ?>
-
-        @include('layout.header')
-
-        <main class="mdl-layout__content mdl-color--grey-100">
-            @yield('content')
-        </main>
-{{--        @include('layout.footer')--}}
-
-    <?php echo '</div>' ?>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-drawer-button mdl-layout__header--scroll mdl-layout--fixed-tabs">
+            @include('layout.header')
+            <main class="mdl-layout__content mdl-color--grey-100">
+                @yield('content')
+            </main>
+        </div>
     </body>
 </html>

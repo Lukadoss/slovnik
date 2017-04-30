@@ -89,7 +89,7 @@ class TermController extends Controller
     }
 
     public function deleteTerm($id){
-        $term = Term::find($id);
+        $term = Term::findOrFail($id);
         if(!auth()->user()->isTermViable($term->district->region))
             return redirect()->to('/list')->with('info', 'K takové operaci nemáte přístup');
 

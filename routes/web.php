@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/members', 'PageController@showMembers');
 Route::get('/districts', 'PageController@showDistricts');
-Route::get('/comments', 'PageController@showComments');
 Route::post('/comments', 'PageController@publishComment');
 Route::get('/term', 'PageController@showNewTerm');
 

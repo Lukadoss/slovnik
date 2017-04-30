@@ -40,7 +40,7 @@
                 </label>
                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-cell mdl-cell--4-col" for="opt3">
                     <input type="radio" id="opt3" class="mdl-radio__button" name="filter" value="3">
-                    <span class="mdl-radio__label">Oblast užití hesla</span>
+                    <span class="mdl-radio__label">Oblast</span>
                 </label>
                 <div class="mdl-cell mdl-cell--12-col"></div>
             </form>
