@@ -4,7 +4,7 @@
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--2-offset mdl-cell--2-col mdl-shadow--2dp mdl-color--white mdl-grid" style="text-align: center;">
             <div class="mdl-cell mdl-cell--12-col">
-                <img src="{{asset('images/profile.png')}}" style="width: 50%;  background-color: rgba(0,0,0,0.05)">
+                <img alt="User image" src="{{asset('images/profile.png')}}" style="width: 50%;  background-color: rgba(0,0,0,0.05)">
             </div>
             <div class="mdl-cell mdl-cell--12-col" style="word-wrap: break-word;">
                 <h3 style="margin-bottom: auto; padding-bottom: 0"><strong>{{$user->name}}</strong></h3>
@@ -58,7 +58,7 @@
                             </thead>
                             <tbody>
                             @foreach($user->terms as $term)
-                                <tr id="{{$term->term_id}}" class="clickable">
+                                <tr id="{{$term->id}}" class="clickable">
                                     <td class="mdl-data-table__cell--non-numeric">{{$term->term}}</td>
                                     <td>
                                         @if(!$term->accepted)<i class="material-icons mdl-list__item-icon" style="color: #ff0007;">close</i>

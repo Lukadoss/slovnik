@@ -20,9 +20,9 @@ class UserController extends Controller
         $this->middleware('auth', ['except' => 'showMember']);
     }
 
-    public function showMember($id = 0)
+    public function showMember($id = -1)
     {
-        if (auth()->check() && $id === 0) {
+        if (auth()->check() && $id === -1) {
             $user = auth()->user();
             return view('user.profile', compact('user'));
         } else if (DB::table('users')->where('id', $id)->exists()) {
