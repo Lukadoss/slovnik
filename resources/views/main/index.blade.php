@@ -7,7 +7,7 @@
             <form action="/search" style="padding: 0 5%;" class="mdl-grid mdl-shadow--6dp mdl-color--white">
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell distr" style="display: none;">
                     <select id="distSel" class="district" style="width: 100%;">
-                        <option selected="selected"></option>
+                        <option value="" selected="selected">nevybráno</option>
                         @foreach($towns as $town)
                             <option value="{{$town->id}}">{{$town->municipality.", ".$town->region}}</option>
                         @endforeach
@@ -20,12 +20,13 @@
                     <label class="mdl-textfield__label" for="searchTerm">Hledané heslo</label>
                 </div>
 
-                <button type="submit" onclick="sub()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--4-col mdl-cell--middle mdl-cell--2-offset-tablet">
+                <button type="submit" onclick="sub()"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--4-col mdl-cell--middle mdl-cell--2-offset-tablet">
                     <i class="material-icons">search</i> Hledej
                 </button>
                 <script>
                     function sub() {
-                        if(document.getElementById("distSel").value !== "")
+                        if (document.getElementById("distSel").value !== "")
                             document.getElementById("district").value = document.getElementById("distSel").value;
                         else document.getElementById("district").value = 0;
                     }
@@ -56,10 +57,12 @@
                 </div>
             @endif
             @if(isset($lastTerms))
-                <ul class="mdl-list mdl-cell mdl-cell--12-col mdl-grid " style="margin-top: 10%">
-                    <h4 class="mdl-cell mdl-cell--12-col" style="text-align: center">Poslední vyhledaná slova<hr></h4>
-                    @foreach($lastTerms as $term)
-                        <li id="{{$term->id}}" class="mdl-list__item mdl-cell mdl-cell--12-col mdl-list__item--two-line clickable mdl-color--grey-50 mdl-shadow--2dp">
+                <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin-top: 10%">
+                    <h4 class="mdl-cell mdl-cell--12-col" style="text-align: center">Poslední vyhledaná slova</h4>
+                    <hr class="mdl-cell mdl-cell--12-col">
+                    <ul class="mdl-list mdl-cell mdl-cell--12-col">
+                        @foreach($lastTerms as $term)
+                            <li id="{{$term->id}}" class="mdl-list__item mdl-cell mdl-cell--12-col mdl-list__item--two-line clickable mdl-color--grey-50 mdl-shadow--2dp">
                             <span class="mdl-list__item-primary-content">
                                 @if(strlen($term->pronunciation)>0)
                                     <span>{{$term->term." [".$term->pronunciation."] "}}</span>
@@ -68,12 +71,13 @@
                                 @endif
                                 <span class="mdl-list__item-sub-title">{{$term->context}}</span>
                             </span>
-                            <span class="mdl-list__item-secondary-content">
+                                <span class="mdl-list__item-secondary-content">
                                 <i>{{$term->meaning}}</i>
                             </span>
-                        </li>
-                    @endforeach
-                </ul>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
         </div>
         <div class="mdl-layout-spacer"></div>
@@ -87,20 +91,20 @@
             });
 
             $('.mdl-radio').change(function () {
-                if (parseInt($( "input:checked" ).val()) === 1) {
+                if (parseInt($("input:checked").val()) === 1) {
                     $(".search").show();
                     $(".distr").hide();
-                }else if(parseInt($( "input:checked" ).val()) === 3){
+                } else if (parseInt($("input:checked").val()) === 3) {
                     $(".search").hide();
                     $(".distr").show();
-                }else{
+                } else {
                     $(".search").show();
                     $(".distr").hide();
                 }
             });
 
             $('.clickable').click(function () {
-                location.href = "/term/"+$(this).attr('id');
+                location.href = "/term/" + $(this).attr('id');
             });
         });
     </script>
