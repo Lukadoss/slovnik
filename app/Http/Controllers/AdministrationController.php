@@ -20,13 +20,10 @@ class AdministrationController extends Controller
     public function authUser($id)
     {
         $user = User::findOrFail($id);
-        if (isset($user)) {
-            $user->auth_level = 1;
-            $user->save();
-            Mail::to($user)->send(new Welcome($user));
-            return redirect()->back()->with('success', 'Uživateli "' . $user->name . '" byla schválena registrace a poslán email.');
-        }
-        return redirect()->back()->with('error', 'Zadaný uživatel nenalezen.');
+        $user->auth_level = 1;
+        $user->save();
+        Mail::to($user)->send(new Welcome($user));
+        return redirect()->back()->with('success', 'Uživateli "' . $user->name . '" byla schválena registrace a poslán email.');
     }
 
     public function editUser($id)
@@ -63,19 +60,16 @@ class AdministrationController extends Controller
     public function showUserDistrict($id)
     {
         $user = User::findOrFail($id);
-        if (isset($user)) {
-            $towns = District::distinct()->select('region')->get();
-            $checked = $user->districtAdmin();
-            return view('auth.distSettings', compact('user', 'towns', 'checked'));
-        }
-        return redirect()->back()->with('error', 'Zadaný uživatel nenalezen.');
+        $towns = District::distinct()->select('region')->get();
+        $towns->pull(0);
+        $checked = $user->districtAdmin();
+        return view('auth.distSettings', compact('user', 'towns', 'checked'));
     }
 
     public function addUserDistrict()
     {
         $selected = explode(',', request('region_name'));
         $user = User::findOrFail(request('user_id'));
-        if(!isset($user))  return redirect()->back()->with('error', 'Zadaný uživatel nenalezen.');
         $checked = array();
 
         foreach ($user->districtAdmin() as $district) {
