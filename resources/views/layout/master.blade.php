@@ -16,7 +16,7 @@
     </head>
 
     <body>
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-drawer-button mdl-layout__header--scroll mdl-layout--fixed-tabs">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button mdl-layout--no-desktop-drawer mdl-layout--fixed-tabs">
             @include('layout.header')
             <main class="mdl-layout__content mdl-color--grey-100">
                 @yield('content')

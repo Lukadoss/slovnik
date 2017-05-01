@@ -28,7 +28,7 @@
                     <span class="mdl-checkbox__label">Pamatovat si mě</span>
                 </label>
                 <a href="/resetPassword" class="mdl-cell mdl-cell--4-col">Zapomněl jsem heslo</a>
-                <button type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Přihlásit</button>
+                <button name="login" type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Přihlásit</button>
             </form>
             @if (session('error'))
                 <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--red-500 mdl-color-text--primary-contrast" style="margin-top: 10px; text-align: center">

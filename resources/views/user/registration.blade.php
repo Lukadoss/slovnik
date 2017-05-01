@@ -34,7 +34,7 @@
                 <span class="error">{{$errors->first('password_confirmation')}}</span>
             </div>
 
-            <button type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Vytvoř nový účet</button>
+            <button name="create" type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Vytvoř nový účet</button>
         </form>
 
     </div>
