@@ -193,4 +193,8 @@ class TermController extends Controller
         return count($terms);
     }
 
+    public function download($id){
+        $term = Term::findOrFail($id);
+        return response()->download(Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix().$term->audio_path);
+    }
 }

@@ -79,11 +79,9 @@
                         Audio záznam:<br>
                     </p>
                     @if(isset($term->audio_path))
-                    <audio controls>
-                        <source src="{{$audio}}" type="audio/mpeg">
-                        <source src="{{$audio}}" type="audio/wav">
-                        Your browser does not support the audio element.
-                    </audio>
+                        <a href="/download/audio-{{$term->id}}" type="button" class="mdl-button mdl-js-button mdl-button--raised">
+                            <i class="material-icons">file_download</i>
+                        </a>
                     @endif
                 </div>
                 @if($term->part_of_speech->part_of_speech === "Podstatné jméno")

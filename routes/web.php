@@ -40,6 +40,7 @@ Route::post('/user/district', 'DistrictController@addDistrict');
 Route::post('/term/new', 'TermController@addTerm');
 Route::get('/term/waiting', 'TermController@checkTerms');
 
+Route::get('/download/audio-{id}', 'TermController@download');
 Route::get('/term/accept/{id}', 'TermController@acceptTerm');
 Route::get('/term/edit/{id}', 'TermController@showEdit');
 Route::patch('/term/edit/{id}', 'TermController@editTerm');

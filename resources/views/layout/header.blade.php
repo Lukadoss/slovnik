@@ -44,7 +44,7 @@
                     if($num>0){?> </a> | <?php } ?>
 
                 <a class="mdl-navigation__link" href="/profile" style="font-size: 24px">{{auth()->user()->name}}</a>
-                <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                <button class="mdl-button mdl-js-button mdl-button--icon">
                     <i class="material-icons">more_vert</i>
                 </button>
 

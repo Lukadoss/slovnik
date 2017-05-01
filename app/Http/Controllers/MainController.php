@@ -58,9 +58,7 @@ class MainController extends Controller
         $term->last_find = Carbon::now();
         $term->save();
 
-        if(strlen($term->audio_path)>0)
-            $audio = Storage::url('app/'.$term->audio_path);
-        return view('term.detail', compact('term', 'audio'));
+        return view('term.detail', compact('term'));
     }
 
     public function searchTerms()
