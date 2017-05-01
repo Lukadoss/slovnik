@@ -49,7 +49,7 @@ class UserController extends Controller
     public function editUser()
     {
         $this->validate(request(), [
-            'name' => 'nullable|min:3',
+            'name' => 'nullable|min:3|max:30',
             'year' => 'nullable|numeric|digits:4|min:' . (Carbon::now()->year-150) . '|max:' . Carbon::now()->year,
             'native' => 'nullable|exists:districts,id',
             'curr_city' => 'nullable|exists:districts,id'
@@ -79,7 +79,7 @@ class UserController extends Controller
         $this->validate(request(), [
             'oldpassword' => 'required',
             'email' => 'nullable|unique:users|email',
-            'password' => 'nullable|min:4|confirmed',
+            'password' => 'nullable|min:6|confirmed',
             'password_confirmation' => 'nullable|min:4'
         ]);
 

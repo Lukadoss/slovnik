@@ -9,6 +9,7 @@ use Illuminate\Auth\Passwords\PasswordBroker;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MainController extends Controller
 {
@@ -56,14 +57,14 @@ class MainController extends Controller
         $term = Term::findOrFail($id);
         $term->last_find = Carbon::now();
         $term->save();
-        $district = $term->district;
 
-        return view('term.detail', compact('term', 'district'));
+        if(strlen($term->audio_path)>0)
+            $audio = Storage::url('app/'.$term->audio_path);
+        return view('term.detail', compact('term', 'audio'));
     }
 
     public function searchTerms()
     {
-
         switch ((int)request('filter')) {
             case 1:
                 $terms = Term::where('term', 'LIKE', '%' . request('searchTerm') . '%')->where('accepted', '1')->get();

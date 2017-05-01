@@ -54,8 +54,8 @@ return [
         'string'  => 'The :attribute may not be greater than :max characters.',
         'array'   => 'The :attribute may not have more than :max items.',
     ],
-    'mimes'                => 'The :attribute must be a file of type: :values.',
-    'mimetypes'            => 'The :attribute must be a file of type: :values.',
+    'mimes'                => 'Záznam musí být typu: :values.',
+    'mimetypes'            => 'Záznam musí být typu: :values.',
     'min'                  => [
         'numeric' => 'Nelze nastavit menší rok než :min.',
         'file'    => 'The :attribute must be at least :min kilobytes.',
@@ -83,7 +83,7 @@ return [
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
     'unique'               => 'Tento :attribute byl již zabrán.',
-    'uploaded'             => 'The :attribute failed to upload.',
+    'uploaded'             => 'Audio se nezdařilo nahrát na server.',
     'url'                  => 'The :attribute format is invalid.',
 
     /*

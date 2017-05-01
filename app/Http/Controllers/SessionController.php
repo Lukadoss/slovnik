@@ -16,10 +16,10 @@ class SessionController extends Controller
     public function registration()
     {
         $this->validate(request(), [
-            'name' => 'required|min:3',
+            'name' => 'required|min:3|max:30',
             'email' => 'required|unique:users|email',
-            'password' => 'required|min:4|confirmed',
-            'password_confirmation' => 'required|min:4'
+            'password' => 'required|min:6|max:30|confirmed',
+            'password_confirmation' => 'required|min:4|max:30'
         ]);
 
         User::create([
@@ -40,7 +40,6 @@ class SessionController extends Controller
         request('remember')==="on" ? $remember = true : $remember = false;
         $user = User::where('email', request('email'))->first();
         if(!isset($user)) return redirect()->back()->with('error', 'Zadaný uživatel nenalezen.');
-
 
         if ($user->auth_level === 0) {
             return redirect()->back()->with('info', 'Uživatel ještě není schválen administrátorem.<br>Kontaktujte administrátora pro schválení registrace.');

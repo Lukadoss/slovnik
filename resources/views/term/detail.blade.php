@@ -78,9 +78,13 @@
                     <p class="mdl-cell mdl-cell--3-col" style="text-align: right; max-width: 100px;">
                         Audio záznam:<br>
                     </p>
-                    <p class="mdl-cell mdl-cell--6-col">
-                        {{$term->audio_path}}<br>
-                    </p>
+                    @if(isset($term->audio_path))
+                    <audio controls>
+                        <source src="{{$audio}}" type="audio/mpeg">
+                        <source src="{{$audio}}" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    @endif
                 </div>
                 @if($term->part_of_speech->part_of_speech === "Podstatné jméno")
                     <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
@@ -118,7 +122,7 @@
                     </div>
                 @endif
                 @if(auth()->check())
-                    @if(auth()->user()->isTermViable($district->region))
+                    @if(auth()->user()->isTermViable($term->district->region))
                         <div class="mdl-cell mdl-cell--12-col mdl-grid">
                             <button id="{{$term->id}}" type="button" class="mdl-button mdl-js-button mdl-cell mdl-cell--2-col mdl-button--raised mdl-button--primary edit">
                                 Editovat
@@ -139,6 +143,18 @@
 
                             </dialog>
                         </div>
+                        <script>
+                            $(".edit").click(function () {
+                                var id = $(this).attr('id');
+                                location.href = "/term/edit/" + id;
+                            });
+
+                            var dialog = document.querySelector('dialog');
+
+                            dialog.querySelector('.close').addEventListener('click', function () {
+                                dialog.close();
+                            });
+                        </script>
                     @endif
                 @endif
                 <script>
@@ -152,17 +168,6 @@
                             dialog.showModal();
                             $(".yolo").attr("action", "/term/delete/" + id);
                             $(".rolo").text(name);
-                        });
-
-                        $(".edit").click(function () {
-                            var id = $(this).attr('id');
-                            location.href = "/term/edit/" + id;
-                        });
-
-                        var dialog = document.querySelector('dialog');
-
-                        dialog.querySelector('.close').addEventListener('click', function () {
-                            dialog.close();
                         });
                     });
                 </script>

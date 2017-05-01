@@ -7,7 +7,9 @@ use App\Noun;
 use App\Part_of_speech;
 use App\Term;
 use App\Verb;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TermController extends Controller
 {
@@ -22,7 +24,8 @@ class TermController extends Controller
             'pronunciation' => 'required',
             'meaning' => 'required',
             'district' => 'required',
-            'pos' => 'required'
+            'pos' => 'required',
+            'fileUp' => 'file|mimes:mpga,wav|size:20000'
         ]);
 
         $pos = Part_of_speech::create([
@@ -31,20 +34,21 @@ class TermController extends Controller
 
         if(request('pos') === 'Podstatné jméno'){
             Noun::create([
-                'noun_gender' => request('noun_gender'),
-                'noun_sufix' => request('noun_sufix'),
+                'gender' => request('noun_gender'),
+                'sufix' => request('noun_sufix'),
                 'part_of_speech_id' => $pos->id
             ]);
         }elseif (request('pos') === 'Sloveso') {
             Verb::create([
-                'verb_aspect' => request('verb_aspect'),
-                'verb_valence' => request('verb_valence'),
+                'aspect' => request('verb_aspect'),
+                'valence' => request('verb_valence'),
                 'part_of_speech_id' => $pos->id
             ]);
         }
+        $file = request('fileUp');
+        isset($file) ? $filePath = Storage::putFile('audioFiles', new File($file)) : $filePath=null;
 
-
-        $term = Term::create([
+        Term::create([
             'term' => request('term'),
             'pronunciation' => request('pronunciation'),
             'origin' => request('origin'),
@@ -55,7 +59,7 @@ class TermController extends Controller
             'examples' => request('example'),
             'synonym' => request('synonym'),
             'thesaurus' => request('thesaurus'),
-            'audio_path' => request('fileUp'),
+            'audio_path' => $filePath,
             'user_id' => auth()->user()->id,
             'district_id' => request('district'),
             'part_of_speech_id' => $pos->id
@@ -123,7 +127,8 @@ class TermController extends Controller
             'pronunciation' => 'required',
             'meaning' => 'required',
             'district' => 'required',
-            'pos' => 'required'
+            'pos' => 'required',
+            'fileUp' => 'file|mimes:mpga,wav|size:20000'
         ]);
 
         $term = Term::findOrFail($termId);
@@ -143,17 +148,20 @@ class TermController extends Controller
 
         if(request('pos') === 'Podstatné jméno'){
             Noun::create([
-                'noun_gender' => request('noun_gender'),
-                'noun_sufix' => request('noun_sufix'),
+                'gender' => request('noun_gender'),
+                'sufix' => request('noun_sufix'),
                 'part_of_speech_id' => $pos->id
             ]);
         }elseif (request('pos') === 'Sloveso') {
             Verb::create([
-                'verb_aspect' => request('verb_aspect'),
-                'verb_valence' => request('verb_valence'),
+                'aspect' => request('verb_aspect'),
+                'valence' => request('verb_valence'),
                 'part_of_speech_id' => $pos->id
             ]);
         }
+
+        $file = request('fileUp');
+        isset($file) ? $filePath = Storage::putFile('audioFiles', new File($file)) : $filePath=null;
 
         $term->term = request('term');
         $term->pronunciation = request('pronunciation');
@@ -165,7 +173,7 @@ class TermController extends Controller
         $term->examples = request('example');
         $term->synonym = request('synonym');
         $term->thesaurus = request('thesaurus');
-        $term->audio_path = request('fileUp');
+        $term->audio_path = $filePath;
         $term->user_id = auth()->user()->id;
         $term->district_id = request('district');
         $term->part_of_speech_id = $pos->id;
