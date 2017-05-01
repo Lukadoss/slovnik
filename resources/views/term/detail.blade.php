@@ -78,7 +78,7 @@
                     <p class="mdl-cell mdl-cell--3-col" style="text-align: right; max-width: 100px;">
                         Audio záznam:<br>
                     </p>
-                    @if(isset($term->audio_path))
+                    @if(strlen($term->audio_path)>1)
                         <a href="/download/audio-{{$term->id}}" type="button" class="mdl-button mdl-js-button mdl-button--raised">
                             <i class="material-icons">file_download</i>
                         </a>
