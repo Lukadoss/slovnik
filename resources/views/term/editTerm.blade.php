@@ -111,8 +111,9 @@
                 <div class="mdl-cell--8-col mdl-cell mdl-textfield mdl-js-textfield mdl-textfield--file">
                     <input class="mdl-textfield__input" type="text" id="uploadFile" name="fileUp" value="{{$term->audio_path}}" readonly/>
                     <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-                        <i class="material-icons">attach_file</i><input type="file" id="uploadBtn">
+                        <i class="material-icons">attach_file</i><input type="file" id="uploadBtn" name="fileUp">
                     </div>
+                    <span class="error">{{$errors->first('fileUp')}}</span>
                 </div>
             </div>
             <div class="mdl-cell mdl-cell--4-col">
