@@ -25,7 +25,7 @@ class TermController extends Controller
             'meaning' => 'required',
             'district' => 'required',
             'pos' => 'required',
-            'fileUp' => 'file|mimes:mpga,wav|size:20000'
+            'fileUp' => 'file|mimes:mpga,wav|max:10000'
         ]);
 
         $pos = Part_of_speech::create([
@@ -46,7 +46,7 @@ class TermController extends Controller
             ]);
         }
         $file = request('fileUp');
-        isset($file) ? $filePath = Storage::putFile('audioFiles', new File($file)) : $filePath=null;
+        isset($file) ? $filePath = Storage::putFile('audio', new File($file)) : $filePath=null;
 
         Term::create([
             'term' => request('term'),
@@ -82,13 +82,14 @@ class TermController extends Controller
 
     public function showEdit($id){
         $term = Term::findOrFail($id);
+        if(!auth()->user()->isTermViable($term->district->region))
+            return redirect()->to('/list')->with('info', 'K takové operaci nemáte přístup');
+
         $towns = District::all();
         $pos = Part_of_speech::findOrFail($term->part_of_speech_id);
         $noun = Noun::where('part_of_speech_id', $pos->id)->first();
         $verb = Verb::where('part_of_speech_id', $pos->id)->first();
 
-        if(!auth()->user()->isTermViable($term->district->region))
-            return redirect()->to('/list')->with('info', 'K takové operaci nemáte přístup');
         return view('term.editTerm', compact('term', 'towns', 'pos', 'noun', 'verb'));
     }
 
@@ -104,8 +105,9 @@ class TermController extends Controller
         }elseif ($verb = Verb::where('part_of_speech_id', $pos->id)->first()) {
             Verb::destroy($verb->id);
         }
-        Part_of_speech::destroy($pos->id);
+        Storage::delete($term->audio_path);
         Term::destroy($id);
+        Part_of_speech::destroy($pos->id);
 
         return redirect()->to('/list')->with('info', 'Heslo úspěšně smazáno');
     }
@@ -128,7 +130,7 @@ class TermController extends Controller
             'meaning' => 'required',
             'district' => 'required',
             'pos' => 'required',
-            'fileUp' => 'file|mimes:mpga,wav|size:20000'
+            'fileUp' => 'file|mimes:mpga,wav|max:10000'
         ]);
 
         $term = Term::findOrFail($termId);
@@ -160,9 +162,6 @@ class TermController extends Controller
             ]);
         }
 
-        $file = request('fileUp');
-        isset($file) ? $filePath = Storage::putFile('audioFiles', new File($file)) : $filePath=null;
-
         $term->term = request('term');
         $term->pronunciation = request('pronunciation');
         $term->origin = request('origin');
@@ -173,10 +172,16 @@ class TermController extends Controller
         $term->examples = request('example');
         $term->synonym = request('synonym');
         $term->thesaurus = request('thesaurus');
-        $term->audio_path = $filePath;
         $term->user_id = auth()->user()->id;
         $term->district_id = request('district');
         $term->part_of_speech_id = $pos->id;
+
+        if(request('fileUp') !== null){
+            Storage::delete($term->audio_path);
+            $filePath = Storage::putFile('audio', new File(request('fileUp')));
+            $term->audio_path = $filePath;
+        }
+
         $term->save();
 
         return redirect()->back()->with('success', 'Heslo úspěšně upraveno.');

@@ -50,7 +50,7 @@ return [
     'json'                 => 'The :attribute must be a valid JSON string.',
     'max'                  => [
         'numeric' => 'The :attribute may not be greater than :max.',
-        'file'    => 'The :attribute may not be greater than :max kilobytes.',
+        'file'    => 'Audio soubor nesmí přesahovat :max kilobytes.',
         'string'  => 'The :attribute may not be greater than :max characters.',
         'array'   => 'The :attribute may not have more than :max items.',
     ],
@@ -76,14 +76,14 @@ return [
     'same'                 => 'The :attribute and :other must match.',
     'size'                 => [
         'numeric' => 'The :attribute must be :size.',
-        'file'    => 'The :attribute must be :size kilobytes.',
+        'file'    => 'Audio soubor nesmí přesahovat :size kilobytes.',
         'string'  => 'The :attribute must be :size characters.',
         'array'   => 'The :attribute must contain :size items.',
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
     'unique'               => 'Tento :attribute byl již zabrán.',
-    'uploaded'             => 'Audio se nezdařilo nahrát na server.',
+    'uploaded'             => 'Audio se nezdařilo nahrát na server. Max 10MB.',
     'url'                  => 'The :attribute format is invalid.',
 
     /*

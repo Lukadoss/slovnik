@@ -84,8 +84,19 @@ dialog:not([open]) {
     box-sizing: border-box;
     width: calc(100% - 32px);
 }
+
+.mdl-textfield--file-edit .mdl-textfield__input {
+    box-sizing: border-box;
+    width: calc(100% - 64px);
+}
+
 .mdl-button--file {
     right: -10px;
+    top: -40px;
+}
+
+.mdl-button--file-download {
+    right: 20px;
     top: -40px;
 }
 

@@ -9,7 +9,6 @@
                     <h6 class="mdl-cell--12-col mdl-cell" style="margin-top: 50px">Základní informace
                         <hr>
                     </h6>
-
                     <label class="mdl-cell mdl-cell--4-col textLabel">Heslo<span style="color: red">*</span>:</label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
                         <input type="text" class="mdl-textfield__input" id="term" name="term" value="{{$term->term}}">
@@ -108,11 +107,19 @@
                 </div>
 
                 <label class="mdl-cell mdl-cell--4-col textLabel">Audio soubor:</label>
-                <div class="mdl-cell--8-col mdl-cell mdl-textfield mdl-js-textfield mdl-textfield--file">
-                    <input class="mdl-textfield__input" type="text" id="uploadFile" name="fileUp" value="{{$term->audio_path}}" readonly/>
+                <div @if(isset($term->audio_path)) class="mdl-cell--8-col mdl-cell mdl-textfield mdl-js-textfield mdl-textfield--file-edit"
+                     @else  class="mdl-cell--8-col mdl-cell mdl-textfield mdl-js-textfield mdl-textfield--file" @endif>
+                    <input class="mdl-textfield__input" type="text" id="uploadFile" @if(isset($term->audio_path)) placeholder="Heslo obsahuje audio" @endif readonly/>
                     <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-                        <i class="material-icons">attach_file</i><input type="file" id="uploadBtn" name="fileUp">
+                        <i class="material-icons">attach_file</i>
+                        <input type="file" id="uploadBtn" name="fileUp">
                     </div>
+                    @if(isset($term->audio_path))
+                        <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file-download">
+                            <i id="{{$term->id}}" onclick="location.href = '/download/audio-'+$(this).attr('id')" class="material-icons">file_download</i>
+                            <a href=""></a>
+                        </div>
+                    @endif
                     <span class="error">{{$errors->first('fileUp')}}</span>
                 </div>
             </div>
@@ -164,7 +171,7 @@
                         </div>
                         <label class="mdl-cell mdl-cell--4-col textLabel">Valence:</label>
                         <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                            <input class="mdl-textfield__input" type="text" id="verb_valence" name="verb_valence"@if(isset($verb)) value="{{ $verb->verb_valence}}@endif">
+                            <input class="mdl-textfield__input" type="text" id="verb_valence" name="verb_valence" @if(isset($verb)) value="{{ $verb->verb_valence}}@endif">
                             <label class="mdl-textfield__label" for="verb_valence"></label>
                             <span class="error">{{$errors->first('verb_valence')}}</span>
                         </div>

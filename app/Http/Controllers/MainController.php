@@ -54,7 +54,8 @@ class MainController extends Controller
 
     public function termDetail($id)
     {
-        $term = Term::findOrFail($id);
+        $term = Term::where('id', $id)->where('accepted', '1')->first();
+        if(!isset($term)) abort(404);
         $term->last_find = Carbon::now();
         $term->save();
 
