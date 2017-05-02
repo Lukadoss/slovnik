@@ -16,15 +16,21 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->firstName.' '.$faker->lastName,
+        'name' => $faker->firstName,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'auth_level' => '1'
+    ];
+});
+
+$factory->state(App\User::class, 'registered', function ($faker) {
+    return [
         'auth_level' => 0
     ];
 });
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Term::class, function (Faker\Generator $faker) {
     return [
         'id' => $faker->numberBetween(1000,2000),
         'term' => $faker->word,

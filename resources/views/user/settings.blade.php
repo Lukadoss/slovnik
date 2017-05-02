@@ -56,7 +56,7 @@
                 <div class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" style="border-radius: 1px">
                     <label class="mdl-cell mdl-cell--4-col textLabel" for="native">Původní bydliště:</label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                        <select id="natsel" class="native" style="width: 100%;">
+                        <select id="natsel" name="natsel" class="native" style="width: 100%;">
                             <option selected="selected"></option>
                             @foreach($towns as $town)
                                 <option value="{{$town->id}}" @if($user->native===$town->id) selected="selected" @endif>{{$town->municipality.", ".$town->region}}</option>
@@ -79,7 +79,7 @@
                     </div>
                 </div>
 
-                <button type="submit" onclick="sub()" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">
+                <button name="save" type="submit" onclick="sub()" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">
                     Uložit
                 </button>
             </form>

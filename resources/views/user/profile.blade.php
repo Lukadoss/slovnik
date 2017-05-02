@@ -10,7 +10,7 @@
                 <h3 style="margin-bottom: auto; padding-bottom: 0"><strong>{{$user->name}}</strong></h3>
                 <h5 style="margin: 10px auto; color: #f82b2b;"><strong>{{$user->getRole()}}</strong></h5>
                 @if(auth()->user() == $user)
-                    <a type="button" href="/profile/settings" class="mdl-cell--12-col mdl-cell mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                    <a name="settings" type="button" href="/profile/settings" class="mdl-cell--12-col mdl-cell mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                         Nastavení
                     </a>
                     @if(auth()->user()->isAdmin())
