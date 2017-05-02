@@ -107,14 +107,14 @@
                 </div>
 
                 <label class="mdl-cell mdl-cell--4-col textLabel">Audio soubor:</label>
-                <div @if(isset($term->audio_path)) class="mdl-cell--8-col mdl-cell mdl-textfield mdl-js-textfield mdl-textfield--file-edit"
+                <div @if(strlen($term->audio_path)>1) class="mdl-cell--8-col mdl-cell mdl-textfield mdl-js-textfield mdl-textfield--file-edit"
                      @else  class="mdl-cell--8-col mdl-cell mdl-textfield mdl-js-textfield mdl-textfield--file" @endif>
-                    <input class="mdl-textfield__input" type="text" id="uploadFile" @if(isset($term->audio_path)) placeholder="Heslo obsahuje audio" @endif readonly/>
+                    <input class="mdl-textfield__input" type="text" id="uploadFile" @if(strlen($term->audio_path)>1) placeholder="Heslo obsahuje audio" @endif readonly/>
                     <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
                         <i class="material-icons">attach_file</i>
                         <input type="file" id="uploadBtn" name="fileUp">
                     </div>
-                    @if(isset($term->audio_path))
+                    @if(strlen($term->audio_path)>1)
                         <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file-download">
                             <i id="{{$term->id}}" onclick="location.href = '/download/audio-'+$(this).attr('id')" class="material-icons">file_download</i>
                             <a href=""></a>
