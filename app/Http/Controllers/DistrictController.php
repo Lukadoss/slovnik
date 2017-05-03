@@ -20,7 +20,13 @@ class DistrictController extends Controller
             'region' => 'required',
         ]);
 
-        District::create(request()->all());
+        foreach(District::where('municipality', request('municipality'))->get() as $district){
+            if($district->municipality === request('municipality') && $district->municipality === request('municipality') && $district->municipality === request('municipality'))
+                return redirect()->back()->with('info', 'Oblast v databázi již existuje.');
+        }
+
+
+        District::create(request()->except('snd'));
         return redirect()->back()->with('success', 'Oblast úspěšně přidána!');
     }
 }

@@ -26,7 +26,7 @@ class PageController extends Controller
     }
 
     public function showDistricts(){
-        $districts = District::paginate(15);
+        $districts = District::where('id', '>', '0')->orderBy('municipality', 'asc')->paginate(15);
         return view('auth.districts', compact('districts'));
     }
 

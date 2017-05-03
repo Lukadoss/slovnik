@@ -89,10 +89,10 @@ class User extends Authenticatable
     public function districtAdmin()
     {
         return District::distinct()->select('region')
-            ->join('district_administration', 'district_administration.district_id', '=', 'districts.id')
-            ->leftJoin('users', 'users.id' , '=', 'district_administration.user_id')
+            ->join('district_administrations', 'district_administrations.district_id', '=', 'districts.id')
+            ->leftJoin('users', 'users.id' , '=', 'district_administrations.user_id')
             ->where('user_id', $this->id)
             ->get();
-//            $this->belongsToMany(District::class, 'district_administration', 'user_id', 'district_id');
+//            $this->belongsToMany(District::class, 'district_administrations', 'user_id', 'district_id');
     }
 }

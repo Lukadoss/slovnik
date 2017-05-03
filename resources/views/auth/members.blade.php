@@ -50,7 +50,7 @@
                         </label>
                         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-cell mdl-cell--12-col" for="option-3">
                             <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="3">
-                            <span class="mdl-radio__label">Přidat správu oblasti</span>
+                            <span class="mdl-radio__label">Editovat správu oblasti</span>
                         </label>
                         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-cell mdl-cell--12-col" for="option-4">
                             <input type="radio" id="option-4" class="mdl-radio__button" name="options" value="4">
@@ -137,6 +137,7 @@
                         </a>
                     </div>
                 </div>
+                <span class="mdl-layout-spacer"></span>
             </div>
             @if (session('success'))
                 <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--green-500 mdl-color-text--primary-contrast" style="margin-top: 10px; text-align: center">
@@ -148,7 +149,6 @@
                     <?php echo session('info') ?>
                 </div>
             @endif
-            <span class="mdl-layout-spacer"></span>
     </div>
 
     <dialog class="mdl-dialog">

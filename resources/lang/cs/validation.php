@@ -54,7 +54,7 @@ return [
         'string'  => 'The :attribute may not be greater than :max characters.',
         'array'   => 'The :attribute may not have more than :max items.',
     ],
-    'mimes'                => 'Záznam musí být typu: :values.',
+    'mimes'                => 'Záznam musí být typu: .mp3 .wav',
     'mimetypes'            => 'Záznam musí být typu: :values.',
     'min'                  => [
         'numeric' => 'Nelze nastavit menší rok než :min.',

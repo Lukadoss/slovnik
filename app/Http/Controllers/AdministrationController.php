@@ -53,8 +53,9 @@ class AdministrationController extends Controller
     {
         if (Hash::check(request('password'), auth()->user()->password)) {
             District::destroy($id);
+            return redirect()->back()->with('info', 'Záznam obce byl smazán.');
         }
-        return redirect()->back();
+        return redirect()->back()->with('error', 'Špatné heslo!');
     }
 
     public function showUserDistrict($id)

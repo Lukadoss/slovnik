@@ -11,7 +11,7 @@
                         <span class="mdl-radio__label">Smazat oblast</span>
                     </label>
                 @endif
-                <button id="show-dialog" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent mdl-cell mdl-cell--12-col">Přidat novou oblast</button>
+                <button id="show-dialog" name="addD" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent mdl-cell mdl-cell--12-col">Přidat novou oblast</button>
             </div>
         </div>
         <div class="mdl-cell mdl-cell--8-col mdl-grid">
@@ -98,9 +98,14 @@
                 {{session('info')}}
             </div>
         @endif
+        @if (session('error'))
+            <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--red-500 mdl-color-text--primary-contrast" style="margin-top: 10px; text-align: center">
+                {{session('error')}}
+            </div>
+        @endif
         @if (count($errors)>0)
             <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--red-500 mdl-color-text--primary-contrast" style="margin-top: 10px; text-align: center">
-                {{"Oblast nemohla být přidána. Zkontrolujte si prosím "}}
+                {{"Oblast nemohla být přidána."}}
             </div>
         @endif
     </div>
@@ -150,8 +155,8 @@
                 </div>
             </div>
             <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-                <button type="submit" class="mdl-button">Přidat oblast</button>
-                <button type="button" class="mdl-button close">Zavřít</button>
+                <button type="submit" name="snd" class="mdl-button">Přidat oblast</button>
+                <button type="button" name="cl" class="mdl-button close">Zavřít</button>
             </div>
         </form>
 

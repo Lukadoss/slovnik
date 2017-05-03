@@ -28,6 +28,7 @@
                     <label class="mdl-cell mdl-cell--4-col textLabel" for="email">Nový email:</label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
                         <input type="email" class="mdl-textfield__input" id="email" name="email">
+                        <span class="mdl-textfield__error">Není validní email</span>
                         <span class="error">{{$errors->first('email')}}</span>
                     </div>
                 </div>
@@ -57,7 +58,7 @@
                         <span class="error">{{$errors->first('oldpassword')}}{{ session('oldpass') }}</span>
                     </div>
                 </div>
-                <button type="submit" style="margin-top: 20px" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Odeslat</button>
+                <button name="save" type="submit" style="margin-top: 20px" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Odeslat</button>
             </form>
         </div>
     </div>
