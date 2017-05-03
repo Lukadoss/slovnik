@@ -84,6 +84,22 @@
                         </a>
                     @endif
                 </div>
+                <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
+                    <p class="mdl-cell mdl-cell--3-col" style="text-align: right; max-width: 100px;">
+                        Ostatní:<br>
+                    </p>
+                    <p class="mdl-cell mdl-cell--6-col">
+                        {{$term->others}}<br>
+                    </p>
+                </div>
+                <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
+                    <p class="mdl-cell mdl-cell--3-col" style="text-align: right; max-width: 100px;">
+                        Slovní druh:<br>
+                    </p>
+                    <p class="mdl-cell mdl-cell--6-col">
+                        {{$term->part_of_speech->part_of_speech}}<br>
+                    </p>
+                </div>
                 @if($term->part_of_speech->part_of_speech === "Podstatné jméno")
                     <div class="mdl-cell mdl-cell--12-col mdl-grid" style="margin: auto;">
                         <p class="mdl-cell mdl-cell--3-col" style="text-align: right; max-width: 100px;">

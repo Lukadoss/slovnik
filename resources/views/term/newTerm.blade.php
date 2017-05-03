@@ -21,12 +21,22 @@
                         <label class="mdl-textfield__label" for="pronunciation"></label>
                         <span class="error">{{$errors->first('pronunciation')}}</span>
                     </div>
-
-                    <label class="mdl-cell mdl-cell--4-col textLabel">Původem z:</label>
+                    <label class="mdl-cell mdl-cell--4-col textLabel">Význam<span style="color: red">*</span>:</label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                        <input class="mdl-textfield__input" type="text" id="origin" name="origin" value="{{ old('origin') }}">
-                        <label class="mdl-textfield__label" for="origin"></label>
-                        <span class="error">{{$errors->first('origin')}}</span>
+                        <input class="mdl-textfield__input" type="text" id="meaning" name="meaning" value="{{ old('meaning') }}">
+                        <label class="mdl-textfield__label" for="meaning"></label>
+                        <span class="error">{{$errors->first('meaning')}}</span>
+                    </div>
+                    <label class="mdl-cell mdl-cell--4-col textLabel">Oblast užití<span style="color: red">*</span>:</label>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
+                        <select id="distSel" class="district" style="width: 100%;">
+                            <option selected="selected"></option>
+                            @foreach($towns as $town)
+                                <option value="{{$town->id}}">{{$town->municipality.", ".$town->district.", ".$town->region}}</option>
+                            @endforeach
+                        </select>
+                        <input id="district" name="district" type="hidden" value="">
+                        <span class="error">{{$errors->first('district')}}</span>
                     </div>
                     <button type="submit" onclick="sub()" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--middle mdl-cell--6-col mdl-button--raised mdl-button--accent">
                         Vytvořit nové heslo
@@ -43,12 +53,11 @@
                 <h6 class="mdl-cell--12-col mdl-cell" style="margin-top: 50px">Podrobné informace
                     <hr>
                 </h6>
-
-                <label class="mdl-cell mdl-cell--4-col textLabel">Význam<span style="color: red">*</span>:</label>
+                <label class="mdl-cell mdl-cell--4-col textLabel">Původem z:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <input class="mdl-textfield__input" type="text" id="meaning" name="meaning" value="{{ old('meaning') }}">
-                    <label class="mdl-textfield__label" for="meaning"></label>
-                    <span class="error">{{$errors->first('meaning')}}</span>
+                    <input class="mdl-textfield__input" type="text" id="origin" name="origin" value="{{ old('origin') }}">
+                    <label class="mdl-textfield__label" for="origin"></label>
+                    <span class="error">{{$errors->first('origin')}}</span>
                 </div>
 
                 <label class="mdl-cell mdl-cell--4-col textLabel">Příklad ve větě:</label>
@@ -93,18 +102,12 @@
                     <span class="error">{{$errors->first('thesaurus')}}</span>
                 </div>
 
-                <label class="mdl-cell mdl-cell--4-col textLabel">Oblast užití<span style="color: red">*</span>:</label>
+                <label class="mdl-cell mdl-cell--4-col textLabel">Ostatní:</label>
                 <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                    <select id="distSel" class="district" style="width: 100%;">
-                        <option selected="selected"></option>
-                        @foreach($towns as $town)
-                            <option value="{{$town->id}}">{{$town->municipality.", ".$town->district.", ".$town->region}}</option>
-                        @endforeach
-                    </select>
-                    <input id="district" name="district" type="hidden" value="">
-                    <span class="error">{{$errors->first('district')}}</span>
+                    <input class="mdl-textfield__input" type="text" id="others" name="others" value="{{ old('others') }}">
+                    <label class="mdl-textfield__label" for="others"></label>
+                    <span class="error">{{$errors->first('others')}}</span>
                 </div>
-
                 <label class="mdl-cell mdl-cell--4-col textLabel">Audio soubor:</label>
                 <div class="mdl-cell--8-col mdl-cell mdl-textfield mdl-js-textfield mdl-textfield--file">
                     <input class="mdl-textfield__input" type="text" id="uploadFile" readonly/>
