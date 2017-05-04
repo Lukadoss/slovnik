@@ -9,7 +9,6 @@ use Illuminate\Auth\Passwords\PasswordBroker;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class MainController extends Controller
 {

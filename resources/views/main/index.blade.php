@@ -20,7 +20,7 @@
                     <label class="mdl-textfield__label" for="searchTerm">Hledané heslo</label>
                 </div>
 
-                <button type="submit" onclick="sub()"
+                <button type="submit" onclick="sub()" name="snd"
                         class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--4-col mdl-cell--middle mdl-cell--2-offset-tablet">
                     <i class="material-icons">search</i> Hledej
                 </button>

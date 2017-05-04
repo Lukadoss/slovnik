@@ -14,9 +14,9 @@ return [
     */
 
     'password' => 'Heslo musí být minimální délky 6 znaků a hesla se musí shodovat.',
-    'reset' => 'Vaše heslo bylo změněno!',
-    'sent' => 'Odkaz na reset hesla byl úspěšně odeslán!',
-    'token' => 'Odkaz na změnu hesla je nevalidní. Špatný token!',
-    'user' => "Nemůžeme nalézt uživatele s touto emailovou adresou.",
+    'reset' => 'Vaše heslo bylo změněno.',
+    'sent' => 'Odkaz na reset hesla byl úspěšně odeslán.',
+    'token' => 'Odkaz na změnu hesla není validní.',
+    'user' => "Zadaný email neexistuje.",
 
 ];

@@ -14,7 +14,7 @@
                     <span class="mdl-textfield__error">Není validní email</span>
                     <span class="error">{{$errors->first('email')}}</span>
                 </div>
-                <button type="submit" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Odeslat</button>
+                <button type="submit" name="snd" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--6-col mdl-button--raised mdl-button--accent">Odeslat</button>
             </form>
             @if (session('error'))
                 <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--red-500 mdl-color-text--primary-contrast" style="margin-top: 10px; text-align: center">
