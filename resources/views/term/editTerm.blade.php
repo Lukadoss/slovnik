@@ -39,7 +39,7 @@
                         <input id="district" name="district" type="hidden" value="">
                         <span class="error">{{$errors->first('district')}}</span>
                     </div>
-                    <button type="submit" onclick="sub()"
+                    <button type="submit" onclick="sub()" name="snd"
                             class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--middle mdl-cell--6-col mdl-button--raised mdl-button--accent">
                         Editovat heslo
                     </button>

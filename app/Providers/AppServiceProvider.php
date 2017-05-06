@@ -24,8 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment('local', 'slovnik.dev')) {
-            $this->app->register(DuskServiceProvider::class);
-        }
+//        if ($this->app->environment('local', 'slovnik.dev')) {
+//            $this->app->register(DuskServiceProvider::class);
+//        }
     }
 }

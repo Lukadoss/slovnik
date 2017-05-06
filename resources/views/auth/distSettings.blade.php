@@ -55,7 +55,7 @@
             @endforeach
             <input type="hidden" id="str" name="region_name" value="" />
             <input type="hidden" id="user_id" name="user_id" value="{{$user->id}}" />
-            <button id="sub" type="submit" class="mdl-button mdl-js-button mdl-cell mdl-cell--4-offset-desktop mdl-cell--1-offset-tablet mdl-cell--4-col mdl-button--raised mdl-button--accent">
+            <button id="sub" type="submit" name="snd" class="mdl-button mdl-js-button mdl-cell mdl-cell--4-offset-desktop mdl-cell--1-offset-tablet mdl-cell--4-col mdl-button--raised mdl-button--accent">
                 Odeslat
             </button>
         </form>

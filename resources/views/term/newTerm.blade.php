@@ -29,7 +29,7 @@
                     </div>
                     <label class="mdl-cell mdl-cell--4-col textLabel">Oblast užití<span style="color: red">*</span>:</label>
                     <div class="mdl-textfield mdl-js-textfield mdl-cell--8-col mdl-cell">
-                        <select id="distSel" class="district" style="width: 100%;">
+                        <select id="distSel" name="distSel" class="district" style="width: 100%;">
                             <option selected="selected"></option>
                             @foreach($towns as $town)
                                 <option value="{{$town->id}}">{{$town->municipality.", ".$town->district.", ".$town->region}}</option>
@@ -38,7 +38,7 @@
                         <input id="district" name="district" type="hidden" value="">
                         <span class="error">{{$errors->first('district')}}</span>
                     </div>
-                    <button type="submit" onclick="sub()" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--middle mdl-cell--6-col mdl-button--raised mdl-button--accent">
+                    <button type="submit" onclick="sub()" name="snd" class="mdl-button mdl-js-button mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet mdl-cell--middle mdl-cell--6-col mdl-button--raised mdl-button--accent">
                         Vytvořit nové heslo
                     </button>
                     <script>

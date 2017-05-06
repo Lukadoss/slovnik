@@ -109,7 +109,7 @@ class TermController extends Controller
         Term::destroy($id);
         Part_of_speech::destroy($pos->id);
 
-        return redirect()->to('/list')->with('info', 'Heslo úspěšně smazáno');
+        return redirect()->to('/term/waiting')->with('info', 'Heslo úspěšně smazáno');
     }
 
     public function acceptTerm($id){
