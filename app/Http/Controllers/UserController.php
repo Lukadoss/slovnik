@@ -81,7 +81,7 @@ class UserController extends Controller
             'oldpassword' => 'required',
             'email' => 'nullable|unique:users|email',
             'password' => 'nullable|min:6|confirmed',
-            'password_confirmation' => 'nullable|min:4'
+            'password_confirmation' => 'nullable|min:6'
         ]);
 
         $user = auth()->user();

@@ -19,7 +19,7 @@ class SessionController extends Controller
             'name' => 'required|min:3|max:30',
             'email' => 'required|unique:users|email',
             'password' => 'required|min:6|max:30|confirmed',
-            'password_confirmation' => 'required|min:4|max:30'
+            'password_confirmation' => 'required|min:6|max:30'
         ]);
 
         User::create([
